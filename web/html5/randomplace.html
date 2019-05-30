@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>자리 이동 파일</title>
+    <meta charset="utf-8">
+    
+    <style>
+        h1{
+            background-color: dimgray;
+            padding:10px;
+            color:azure;
+            text-align: center;                
+        }
+        .nav {
+            
+            border: 1px solid #AAAAAA;
+            line-height: 50px;
+            padding: 10px 100px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        input {
+           
+            padding : 5px;
+            font-size: 18px;
+        }
+        
+        #container{
+            width : 1000px;
+        }
+        .seat{
+            width : 90px;
+            height : 90px;
+            border:  1px solid blue;
+            float:left;
+            margin : 5px;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 90px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .seat:first-child {
+            
+        }
+        .seat:nth-child(4){
+            margin-left:305px;
+        }
+        
+        .seat:nth-child(13), .seat:nth-child(22){
+            margin-left:105px;
+        }
+        .seat:nth-child(17){
+            background-color: darkslateblue;
+        }
+        .seat:nth-child(1), .seat:nth-child(2), .seat:nth-child(3), .seat:nth-child(8), .seat:nth-child(9), .seat:nth-child(10){
+            background-color: lightgoldenrodyellow;
+        }
+        .seat:nth-child(11), .seat:nth-child(12), .seat:nth-child(18), .seat:nth-child(19), .seat:nth-child(20), .seat:nth-child(21){
+            background-color: pink;
+        }
+        .seat:nth-child(4), .seat:nth-child(5), .seat:nth-child(6), .seat:nth-child(7), .seat:nth-child(13), .seat:nth-child(14){
+            background-color: chartreuse;
+        }
+        .seat:nth-child(15), .seat:nth-child(16), .seat:nth-child(22), .seat:nth-child(23), .seat:nth-child(24), .seat:nth-child(25){
+            background-color: cyan;
+        }
+    </style>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        
+        var stArr = ['박명지','권용민','남궁현','임욱표','손민희','정건','정성현','이현호','한혜원','강다희','박수현','김다애','김희수','노유리','송주은','김한솔','주예리나','백민종','강다은','소중원','최아리','김나연','유동준','■'];
+        
+    
+        $(document).ready(function(){
+            
+            var i=0;
+            
+            var siNum = setInterval(function(){
+                
+                $('#container').append('        <div id="seat'+i+'" class="seat"> 자리 '+ i +' </div>\n');
+                
+                i++;
+                
+                if(i>24){
+                    clearInterval(siNum);
+                }
+                
+            },100);
+            
+            $('#btn').click(function(){
+                //alert('wksdkq');
+                
+                    shuffle($('#num').val());
+                    var n=0;
+                    var siNum2 = setInterval(function(){
+
+                        var nn = n;
+                        if(n>15){
+                            nn = n+1;
+                        }
+                        
+                        //$('#seat'+nn).hide();
+                        $('#seat'+nn).html(stArr[n]);
+                        $('#seat'+nn).slideDown( "slow" );
+                        
+                        n++;
+                        if(n>24){
+                            clearInterval(siNum2);
+                        }
+                    },1000);
+                
+            });
+            
+            
+        });
+        
+        function shuffle(num){
+            alert('shuffle');
+            for(var j=0; j<num; j++){
+                
+                var rNum = Math.floor(Math.random() * 24);
+                                
+                var name = stArr[0];
+                stArr[0]=stArr[rNum];
+                stArr[rNum]=name;
+                
+            }
+            
+        }
+    
+    </script>
+</head>
+
+<body>
+    <h1>자리 찾기</h1>
+    <div class="nav">
+        네임 카드를 몇회 섞을까요? <input type="text" id="num" value="1000000"> <input type="button" id="btn" value="섞기">
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+
+</html>
