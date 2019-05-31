@@ -37,6 +37,11 @@ public class PhoneUnivInfo extends PhoneInfo {
 		System.out.println("학년 : " + this.grade);
 	}
 	
+	
+	static public void  send (){
+		
+	}
+	
 
 	
 	
