@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS3 선택자</title>
+        <style>
+            
+            /*전체선택*/        
+            * {
+                /*color: red;*/
+                /*background-color: aquamarine;*/
+            }
+            
+            /*테그선택*/
+            h1 {
+                /*color: red;
+                text-align:center;*/
+                /*background-color: yellow;*/
+            }
+            
+            p {
+                /*color: blue;
+                line-height: 32px;*/
+                /*background-color: yellow;*/
+            }
+            
+            div {
+                /*background-color: yellow;*/
+            }
+                        
+            /*중복 선택*/
+            h1, p, div {
+                
+               /* background-color: azure;*/
+                
+            }
+            
+            /*id 선택자*/
+            #header {
+                background-color: aqua;
+                
+                margin: 0 auto;
+                     /*상하  좌우*/
+                
+                
+                width:500px;
+            }
+            #wrap {
+                background-color: yellow;
+                padding:20px;
+                
+                margin: 0 auto;
+                     /*상하  좌우*/
+                
+                
+                width:500px;
+               
+            }
+            #content {
+                background-color: antiquewhite;
+                margin-bottom: 50px;
+            }
+            #aside {
+                background-color: aquamarine;
+            }
+            #footer {
+                background-color: burlywood;
+                margin: 0 auto;
+                     /*상하  좌우*/
+                
+                
+                width:500px;
+            }
+            
+            /*class 선택자*/
+            
+            .select {
+                color: red;
+            }
+            .text_bold {
+                font-weight: bold;
+            }
+            .text_itelic{
+                font-style: italic;
+            }
+            li.text_bold {
+                background-color: yellow;
+            }
+            
+            /*속성 선택자*/
+            input[type=text]{
+                background-color: aliceblue;
+                    /* 두께 모양 컬러*/
+                border: 1px solid #AAAAAA;
+                
+            }
+            input[type=password]{
+                 background-color: aqua;
+                border: 1px solid blue;
+            }
+            
+            input[type=checkbox]{
+                width: 30px;
+                height: 30px;
+            }
+            
+            input[type=button] {
+                padding: 10px 30px;
+                font-weight: 900;
+                background-color: cadetblue;
+                border: 1px solid #AAAAAA;
+                color: #FFFFFF;
+            }
+            
+            #header h1 {
+                color: red
+            }
+            
+            
+            #content h1 {
+                
+                color: blue;
+            }
+            
+            #header>h1{
+                background-color: black;
+            }
+            
+            #content>h1{
+                background-color: black;
+            }
+            
+            table>tbody>tr>th {
+                color: blue;
+            }
+            
+            
+            /*동위 선택자*/
+            h1+h2{
+                color: orange;
+            }
+            
+            h1~h2{
+                background-color: darkgray;
+            }
+            
+            h1:hover {
+                color: yellow;
+                background-color: darkblue;
+            }
+            
+            h1+h2:hover {
+                color:#000000;
+                background-color: orange;
+            }
+            
+            h1~h2:active {
+                color: red;
+                background-color: aqua;
+            }
+            
+            input:disabled {
+                background-color: black;
+            }
+            
+            input:focus {
+                background-color: chartreuse;
+            }
+            
+            #menu {
+                display: none;
+            }
+            
+            input[type=checkbox] {
+                display: none;
+            }
+            
+    input[type=checkbox]:checked+div#menu {
+                
+                display: block;
+                background-color: aqua;
+                
+                
+            }
+            
+            label {
+                cursor: pointer;
+            }
+            
+            label:hover{
+                background-color: aqua;
+            }
+            
+            #cir {
+                width:100px;
+                height:100px;
+                
+                background-color: aqua;
+                /*border-radius: 10px 30px 40px 50px;*/
+                border-radius: 50px
+            }
+            
+            img{
+                width:100px;
+                height:100px;
+                
+                border-radius: 50px;
+            }
+        
+        </style>
+    </head>
+    <body>
+        
+        <img src="warsdroid.jpg">
+             
+        
+        <div id="cir"></div>
+        
+        
+       <!-- <input  > <br>
+        <input disabled>
+        <label for="chk">메뉴</label>
+        <input type="checkbox" id="chk">
+        <div id="menu">
+            <ul>
+                <li>홈</li>
+                <li>회사소개</li>
+                <li>서비스소개</li>
+                <li>오시는길</li>
+            </ul>
+        </div>
+        -->
+        
+        
+        
+        <!--<h1>Header - 1</h1> 
+        <h2>Header - 2</h2> 
+        <h2>Header - 2</h2> 
+        <h2>Header - 2</h2> 
+        <h2>Header - 2</h2>-->
+        
+        
+        <!--<table border="1"> 
+            <tr> 
+                <th>이름</th> 
+                <th>주소</th> 
+            </tr> 
+            <tr> 
+                <td>유영진</td> 
+                <td>서울특별시 서초구</td> 
+            </tr> 
+        </table>-->
+        
+        
+        
+        <!--<div id="header">
+            <h1>타이틀</h1>
+            <div>
+                <h1>타이틀 2</h1>
+            </div>
+        </div>
+        
+        <div id="content">
+            <h1>타이틀 3</h1>
+            <p>내용</p>
+        </div>-->
+        
+        
+        
+        
+       <!-- 
+        <input type="text"> <br>
+        <input type="password"> <br>
+        <input type="button" value="버튼"> <br>
+        <input type="checkbox">
+        
+        
+        -->
+        
+        
+        
+        
+        
+        
+        
+        <!--<div class="text_bold">과일 리스트</div>
+        <ul>
+            <li class="select text_bold">사과</li>
+            <li>바나나</li>
+            <li class="select text_itelic">수박</li>
+            <li class="text_bold">메론</li>
+        </ul>-->
+        
+        
+        <!--
+        <div id="header">
+            Header 영역
+        </div>
+        <div id="wrap">
+            <div id="content"> Content 영역</div>
+            <div id="aside"> Aside 영역</div>
+        </div>
+        <div id="footer"> Footer 영역</div>
+    -->
+        <!--<h1 >제목 글자 테그</h1>
+        <p >
+            이번에 추가한 영수증 기능은 별도 인증 절차 없이 카카오페이 안에서 여러 카드사의 결제 영수증을 확인할 수 있는 기능이다. 영수증을 신청하면 카드 결제 시 종이 영수증과 동일한 형태의 전자 영수증이 제공된다. 결제 승인 영수증과 취소 영수증 모두 자동 보관된다.
+        </p>
+        <div>
+             DIV 블럭 영역
+        </div>-->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+    
+    
+    
+    
+    
+    
+    
+    
+</html>
