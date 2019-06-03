@@ -205,10 +205,78 @@
                 
                 border-radius: 50px;
             }
+            
+            #gnb {
+                list-style: none ;
+                overflow: hidden;
+            }
+            
+            #gnb>li {
+                float: left;
+                /*padding: 5px 15px;*/
+                border: 1px solid #DDDDDD;
+                margin-left:-1px;
+            }
+            
+            #gnb>li:first-child {
+                background-color: aqua;
+                border-radius:10px 0 0 10px;              
+            }
+            #gnb>li:last-child {
+                
+                background-color: aqua;
+                border-radius:0 10px 10px 0;
+            }
+            
+            #gnb>li:nth-child(2n) {
+                background-color: aquamarine
+            }
+            
+            
+            #gnb>li:nth-child(2n+1) {
+                background-color: aqua
+            }
+            
+            #gnb>li:hover {
+                background-color: darkslateblue;
+                color: azure;
+            }
+            
+            a {
+                text-decoration:  none   ; 
+                display: block;
+                padding : 5px 15px;
+            }
+            
+            a:visited {
+                color : black;
+            }
+            
+            
+            a:hover{
+                
+                background-color: darkslateblue;
+                color: azure;
+            }
+            
         
         </style>
     </head>
     <body>
+        
+        
+        <ul id="gnb">
+            <li><a href="http://www.naver.com">menu-00</a></li>
+            <li><a href="http://www.naver.com">menu-01</a></li>
+            <li><a href="http://www.naver.com">menu-02</a></li>
+            <li><a href="http://www.naver.com">menu-03</a></li>
+            <li><a href="http://www.naver.com">menu-04</a></li>
+            <li><a href="http://www.naver.com">menu-05</a></li>        
+        </ul>
+        
+        
+        
+        
         
         <img src="warsdroid.jpg">
              
