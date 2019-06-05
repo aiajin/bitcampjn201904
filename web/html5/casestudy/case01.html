@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>수평 정렬</title>
+        <style>
+            
+            * {
+                margin: 0; 
+                padding: 0;
+            }
+            
+            div {
+                border: 1px solid gray;
+            }
+            
+            /*해더*/
+            #header {
+                padding : 25px;
+                font-size : 36px;
+                font-weight: bold;
+                background-color: antiquewhite;
+            }
+            
+            /*네비게이션*/
+            #nav {
+                border-top: 3px solid darkblue;
+                border-bottom: 3px solid darkblue;
+                height : 30px;
+            }
+            
+            #nav>ul {
+                /*리스트 스타일 지정 : dot 삭제*/
+                list-style: none;  
+                overflow: hidden;
+            }
+            
+            #nav>ul>li {
+                float: left;
+                padding: 5px 15px;
+            }
+            
+            
+            /*컨텐츠 영역*/
+            #wrap {
+                /*clear: both;*/
+            }
+            
+            #content {
+                float : left;
+                width : 70%;
+                height: 250px;
+            }
+            
+            #aside {
+                float:right; 
+                width: 25%;
+                height: 200px;
+            }
+            
+            #footer {
+                clear: both;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <!--해더시작-->
+        <div id="header">해더</div>
+        <!--해더 끝-->
+        
+        <!--네비게이션 시작-->
+        <div id="nav">
+            <ul>
+                <li><a href="#">menu-00</a></li>
+                <li><a href="#">menu-01</a></li>
+                <li><a href="#">menu-02</a></li>
+                <li><a href="#">menu-03</a></li>
+                <li><a href="#">menu-04</a></li>
+            </ul>
+        </div>
+        <!--네비게이션 끝-->
+        <div id="wrap">
+            <div id="content">내용</div>
+            <div id="aside">광고</div>
+        </div>
+        <div id="footer">footer</div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>

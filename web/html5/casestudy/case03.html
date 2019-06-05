@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>중앙 정렬</title>
+        <link href="https://fonts.googleapis.com/css?family=Jua|Sunflower:300&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                background-color: beige;
+                font-family: "Jua";
+            }
+            
+            #main_wrap {
+                width: 300px;
+                height: 300px;
+                background-color: #FFF;
+                border: 1px solid #DDD;
+                box-shadow: 0px 10px 10px #AAA;
+                
+                position:absolute;
+                left: 50%;
+                top: 50%;
+                
+                margin-left: -150px;
+                margin-top: -200px;
+            }
+            
+            hr {
+                border: 0;
+                border-top: 1px solid #DDD;
+                margin: 5px 0;
+            }
+            
+            input, button {
+                width : 100%;                
+            }
+            
+            #main_wrap>h1 {
+                /*height: 80px;
+                line-height: 80px;*/
+                
+                padding: 15px 0;
+                
+                text-align: center;
+            }
+            
+            #main_wrap>form>table {
+                width : 100%;
+            }
+            
+            #main_wrap>form>table td {
+                padding: 5px;
+                text-align: center;
+            }
+            
+            #main_wrap>form>table td:nth-of-type(1) {
+                width: 75px;
+            }
+            
+            #info {
+                text-align: center;
+            }
+            
+            button, input[type=submit] {
+                display : block;
+                margin: 5px 0;
+                padding: 5px;
+            }
+            
+            button {
+                background-color: darkgray;
+                border: 1px solid #999999;
+            }
+            
+            input[type=submit] {
+                background-color: cornflowerblue;
+                color: #FFF;
+                border: 1px solid darkgray;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <div id="main_wrap">
+            
+            <h1>LOGIN</h1>
+            <hr>
+            <form>
+                <table>
+                    <tr>
+                        <td>ID</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>PW</td>
+                        <td><input type="password" ></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="로그인"> 
+                            <button>취소</button>
+                        </td>
+                        
+                    </tr>
+                </table>
+            </form>
+                        
+            <hr>
+            <div id="info">
+                <a href="">회원가입</a> |
+                <a href="">ID 찾기</a> |
+                <a href="">PW 찾기</a>
+            </div>
+        
+        </div>
+    
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>

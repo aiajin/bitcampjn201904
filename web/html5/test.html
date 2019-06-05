@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<htm1>
+ 
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            버튼만들기
+        </title>
+ 
+        <style>
+            body{
+                background-color: cornflowerblue;
+            }
+            #btn {
+                width: 300px;
+                height: 100px;
+                background-color: orange;
+                border-radius: 20px;
+                border: 10px solid orangered;
+                text-align: center;
+                line-height: 100px;
+                font-style: italic;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -160px;
+                margin-top: -50px;
+            }
+            #btn:hover {
+                background-color: orangered;
+                border-color: orange;
+                font-style: normal;
+            }
+            /*  a태그는 인라인 형식이라 그냥 얼라인 센터써봤자 쓰잘데기가 읎다*/
+            #btn>a {
+                font-size: 2.8em;
+                font-weight: bold;
+                text-decoration: none;
+                color: white;
+                display: block;
+            }
+            #back {
+                width: 300px;
+                height: 300px;
+                background-color: orangered;
+                border-radius: 50%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -150px;
+                margin-top: -150px;
+            }
+            #stick {
+                background-color: antiquewhite;
+                position: absolute;
+                width: 25px;
+                height: 600px;
+                left: 50%;
+                top: 50%;
+                border-radius: 0px 0px 50px 20px;
+                margin-left: -12.5px;
+                margin-top: -150px;
+            }
+ 
+        </style>
+    </head>
+ 
+    <body>
+ 
+ 
+ 
+        <div id="stick"></div>
+        <div id="back">
+            <div id="btn"><a href="http://www.naver.com">chupa chups</a> </div>
+        </div>
+    </body>
+</htm1>

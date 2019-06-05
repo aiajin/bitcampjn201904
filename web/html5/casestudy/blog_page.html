@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jin's BLOG</title>
+        <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic&display=swap" rel="stylesheet">
+        <style>
+            
+            /*초기화*/
+            * {
+                margin:0;
+                padding:0;                
+            }
+            
+            input {
+                padding:0;
+                margin: 0;
+                    
+            }
+            
+            body {
+                font-family: 'Nanum Gothic', sans-serif;
+                background-color: beige;
+            }
+            
+            
+            /*메인 블럭*/
+            #main_rwap {
+                width:938px;
+                
+                
+                padding: 10px;
+                
+                background-color: #FFF;
+                
+                border: 1px solid #DDD;
+                border-radius: 3px;
+                
+                box-shadow: 0 3px 3px #DDD;
+                
+                margin: 40px auto;
+                
+            }
+            
+            /*header*/
+            #header {
+                padding: 20px;
+            }
+            #header>h1 {
+                font-family: "Jua";
+                margin-bottom: 5px;
+            }
+            #header>h4 {
+                font-weight: normal;
+            }
+            
+            
+            /*네비게이션*/
+            #nav {
+                height: 35px;
+                
+                border-top: 1px solid #DDD;
+                border-bottom: 1px solid #DDD;
+                
+                overflow: hidden;
+            }
+            
+            #menu {
+                float: left;
+            }
+            #search {
+                float: right;
+                height : 35px;
+                /*line-height: 35px;*/ 
+                vertical-align: middle;
+            }
+            
+            #menu>ul {
+                list-style: none;
+            }
+            
+            #menu>ul>li {
+                height: 35px;
+                
+                line-height: 35px;
+                
+                float:left;
+                
+                /*padding: 0 20px;*/
+            }
+            
+            /*메뉴 링크*/
+            #menu>ul>li>a {
+                display: block;
+                line-height: 35px;
+                text-decoration: none;
+                padding: 0 20px;
+                
+            }
+            
+            
+            
+            #menu>ul>li>a:hover {
+                background-color: black;
+                color: aqua;
+            }
+            
+            #menu>ul>li:hover{
+                background-color: black;
+                color: aqua;
+            }
+            
+            
+            
+            #search>input[type=text] {
+                height: 22px;
+                border-radius: 10px 0 0 10px;
+                border: 1px solid #DDD;
+            }
+            #search>input[type=button] {
+                height: 24px;
+                margin-top:0px;
+                margin-left:-1px;
+                border-radius: 0 12px 12px 0;
+                border: 1px solid #DDD;
+            }
+            
+            #contents {
+                overflow: hidden;
+                padding: 5px;
+            }
+            #content {
+                float : left;
+                
+                width: 700px;
+                
+                /*background-color: aquamarine;*/
+            }
+            #aside {
+                float : right;
+                
+                width : 198px;
+                
+                /*background-color: burlywood;*/
+                
+                padding: 15px;
+            }
+            
+            #aside>ul {
+                list-style: none;
+                margin-left: 10px;
+                margin-top:5px;
+                margin-bottom:30px;
+            }
+            #aside>ul>li {
+                height: 30px;
+                line-height: 30px;
+            }
+            
+            #content>article {
+                margin: 25px 0;
+                border-bottom: 1px solid #DDD;
+            }
+            
+            #content>article>.img {
+                width : 300px;
+                margin-left: 5px;
+            }
+            
+            #content>article>.date {
+                display: block;
+                padding: 0 5px;
+                margin-bottom: 15px;
+            }
+            
+            #content>article>.title {
+                padding: 20px 5px;
+            }
+            
+            #content>article>p {
+                padding: 5px;
+                line-height: 160%;
+                font-size : 14px;
+            }
+            
+            
+            /*footer*/
+            
+            #footer {
+                text-align: center;
+            }
+            
+            
+        
+        </style>
+    </head>
+    <body>
+        <div id="main_rwap">
+            <div id="header">
+                <h1>Jin's Blog</h1>
+                <h4>매일 쓰는 일기</h4>
+            </div>
+            <div id="nav">
+                <div id="menu">
+                    <ul>
+                        <li><a href="#">java</a></li>
+                        <li><a href="#">html5</a></li>
+                        <li><a href="#">css3</a></li>
+                        <li><a href="#">javascript</a></li>
+                    </ul>
+                </div>
+                <div id="search">
+                    <input type="text"><input type="button" value="검색">
+                                              
+                </div>
+            </div>
+            <div id="contents">
+                <div id="content">
+                    <article>
+                        <h1 class="title">미니언즈</h1>
+                        <span class="date">2019.06.05 14:55</span>
+                        <img class="img" src="../images/mini.png">
+                        <p>
+                        비켜, 이 구역의 주인공은 나야!
+최고의 악당을 찾아 떠나는 ‘슈퍼배드 원정대’의 모험이 시작된다!
+                            인류가 탄생하기 훨씬 오래 전, 태초에 미니언이 있었다. 당대 최고의 슈퍼 악당만을 보스로 섬겨온 미니언들! </p>
+  <p>
+ 하지만 의도치 않은 치명적(?) 실수로 인해 보스들과 이별하게 되고, 우울증에 빠진 미니언들을 구하기 위해 용감한 리더 ‘케빈’은 자유로운 영혼 ‘스튜어트’와 무한 긍정 ‘밥’과 함께 ‘슈퍼배드 원정대’를 결성한다. </p>
+  <p>
+ 세계 악당 챔피언십에 참석해 최초의 여성 슈퍼 악당 ‘스칼렛’(산드라 블록)을 보고 첫눈에 홀~딱 반한 이들은 일생일대의 위기가 다가오는지도 모른 채 스칼렛의 특급 미션을 넙죽 받게 되는데…
+                        </p>
+                    </article>
+                    
+                    <article>
+                        <h1 class="title">스타워즈 드로이드</h1>
+                        <span class="date">2019.06.03 04:55</span>
+                        <img class="img" src="../images/warsdroid.jpg">
+                        <p>
+                        비켜, 이 구역의 주인공은 나야!
+최고의 악당을 찾아 떠나는 ‘슈퍼배드 원정대’의 모험이 시작된다!
+                            인류가 탄생하기 훨씬 오래 전, 태초에 미니언이 있었다. 당대 최고의 슈퍼 악당만을 보스로 섬겨온 미니언들! </p>
+  <p>
+ 하지만 의도치 않은 치명적(?) 실수로 인해 보스들과 이별하게 되고, 우울증에 빠진 미니언들을 구하기 위해 용감한 리더 ‘케빈’은 자유로운 영혼 ‘스튜어트’와 무한 긍정 ‘밥’과 함께 ‘슈퍼배드 원정대’를 결성한다. </p>
+  <p>
+ 세계 악당 챔피언십에 참석해 최초의 여성 슈퍼 악당 ‘스칼렛’(산드라 블록)을 보고 첫눈에 홀~딱 반한 이들은 일생일대의 위기가 다가오는지도 모른 채 스칼렛의 특급 미션을 넙죽 받게 되는데…
+                        </p>
+                    </article>
+                
+                
+                
+                
+                
+                </div>
+                <div id="aside">
+                    <h4>광고1</h4>
+                    <ul>
+                        <li>link1</li>
+                        <li>link2</li>
+                        <li>link3</li>
+                        <li>link4</li>
+                        <li>link5</li>
+                    </ul>
+                    <h4>광고1</h4>
+                    <ul>
+                        <li>link1</li>
+                        <li>link2</li>
+                        <li>link3</li>
+                        <li>link4</li>
+                        <li>link5</li>
+                    </ul>
+                </div>        
+            </div>
+            <div id="footer">
+            
+            이용약관 개인정보처리방침 책임의 한계와 법적고지 영화 고객센터<br>
+본 콘텐츠의 저작권은 저작권자 또는 제공처에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수 있습니다.<br><br>
+
+사업자등록번호 : 220-81-62517통신판매업 신고번호 : 경기성남 제 2006 - 692호대표이사 : 한성숙사업자등록정보 확인<br>
+주소 : 경기도 성남시 분당구 불정로 6 네이버 그린팩토리 대표전화 : 1588-3820
+<br><br>
+NAVER Copyright © NAVER Corp. All Rights Reserved.
+            
+            </div>
+        </div> 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>

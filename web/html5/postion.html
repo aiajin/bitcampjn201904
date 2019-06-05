@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>위치 속성 테스트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+
+            position: absolute;
+        }
+
+        #box1 {
+            background-color: red;
+            left: 10px;
+            top: 10px;
+            z-index: 100;
+        }
+
+        #box2 {
+            background-color: green;
+            left: 60px;
+            top: 60px;
+            z-index: 1000;
+        }
+
+        #box3 {
+            background-color: blue;
+            left: 110px;
+            top: 110px;
+            z-index: 10;
+        }
+
+        #wrap {
+            height: 100px;
+            border: 1px solid gray;
+            position: relative;
+
+            overflow: auto;
+
+        }
+
+        .img {
+            width: 20%;
+            float: left;
+            margin: 10px;
+        }
+        
+        h3 {
+            /*clear: both;*/
+        }
+
+        /*h3{
+                clear: both;
+            } */
+        .wrap {
+            overflow: hidden;
+        }
+        
+        .wrap>h1 {
+            margin: 10px 30px;
+            border: 1px solid gray;
+            box-shadow: 5px 5px 5px gray;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img class="img" src="warsdroid.jpg">
+        <h1>APPLE</h1>
+        <p>
+            애플은 쉽고 빠르고 안전하게 로그인할 수 있는 기능도 선보였다. ‘사인 인 위드 애플(Sign In with Apple)’은 앱이나 웹사이트에 SNS 계정이나 이메일 주소로 로그인하는 대신 애플 아이디를 사용해 이용자 프라이버시를 보호한다. 개발자가 이메일 주소를 요구해도 이메일 주소를 익명 처리하고 무작위로 생성된 이메일 주소를 제공해 개인정보가 유출되지 않도록 돕는다.
+
+
+        </p>
+    </div>
+    <h3>안드로이드</h3>
+
+    <!--<h1>header</h1>
+        
+        <div id="wrap">
+            <div id="box1" class="box"></div>
+            <div id="box2" class="box"></div>
+            <div id="box3" class="box"></div>
+        </div>
+        
+        <h1>footer</h1>
+        -->
+</body>
+
+</html>
