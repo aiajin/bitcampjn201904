@@ -25,10 +25,57 @@
             alert( typeof(functionType));
             alert( typeof(objType));*/
             
+            var num1 = '30';
+            var num2 = '30a';
+            
+            var num3 = Number(num1);
+            //alert(typeof(num3));
+            //alert(num3);
+            var num4 = Number(num2);
+            //alert(num4);//NaN
+            
+            
+            // javascript 배열
+            
+            var array = [1,2,3,4,5];
+            
+            alert(array);
+            
+            var result = 0;
+            
+            for(var i=0; i<array.length; i++){
+                result += array[i];
+            }
+            
+            alert(result);
+            
+            var array = [
+                1,
+                'one',
+                false,
+                function(){},
+                {},
+                [1,2,3,4,5]
+            ];
+            
+            //alert(array);
+            
+            // 객체의 프로퍼티 열거 
+            // -> var o : 식별할 수 있는 이름 또는 인덱스
+            for(var o in array){
+                alert(typeof(array[o]));
+            }
+            
+            
+            
+            
+            
+            
+            
             
             window.onload = function(){
                 
-                var chk = confirm('출력할까요?');
+                /*var chk = confirm('출력할까요?');
                 
                 if(chk){
                     
@@ -43,10 +90,10 @@
                     list += '   <li>' + objType + '</li>\n';
                     list += '</ul>\n';
 
-                    alert(list);
+                    //alert(list);
 
-                    document.body.innerHTML = list;
-                }
+                    //document.body.innerHTML = list;
+                }*/
                 
             };
             
