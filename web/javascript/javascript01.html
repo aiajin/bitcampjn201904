@@ -18,29 +18,36 @@
             var functionType = function(){}; // 5. function
             var objType = {}; // 6. object
             
-            /*alert(v);
-            alert(num);
-            alert(str);
-            alert(boolCheck);
-            alert(functionType);
-            alert(objType);*/
+            /*alert( typeof(v));
+            alert( typeof(num));
+            alert( typeof(str));
+            alert( typeof(boolCheck));
+            alert( typeof(functionType));
+            alert( typeof(objType));*/
             
             
             window.onload = function(){
                 
-                var list = '';
-                list += '<ul>\n';
-                list += '   <li>' + v + '</li>\n';
-                list += '   <li>' + num + '</li>\n';
-                list += '   <li>' + str + '</li>\n';
-                list += '   <li>' + boolCheck + '</li>\n';
-                list += '   <li>' + functionType + '</li>\n';
-                list += '   <li>' + objType + '</li>\n';
-                list += '</ul>\n';
+                var chk = confirm('출력할까요?');
                 
-                alert(list);
+                if(chk){
+                    
+                    
+                    var list = '';
+                    list += '<ul>\n';
+                    list += '   <li>' + v + '</li>\n';
+                    list += '   <li>' + num + '</li>\n';
+                    list += '   <li>' + str + '</li>\n';
+                    list += '   <li>' + boolCheck + '</li>\n';
+                    list += '   <li>' + functionType + '</li>\n';
+                    list += '   <li>' + objType + '</li>\n';
+                    list += '</ul>\n';
+
+                    alert(list);
+
+                    document.body.innerHTML = list;
+                }
                 
-                document.body.innerHTML = list;
             };
             
             
