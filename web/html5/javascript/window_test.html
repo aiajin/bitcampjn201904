@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Window 객체</title>
+        <meta charset="utf-8">
+        <script>
+            
+            //window.open();
+            //var child = window.open('', 'child', 'width=500, height=200' );
+            
+            //child.document.write('<h1 onclick="self.close();">from parent window</h1>');
+            /*
+            function moveUrl(2){
+                alert(location.href);
+                location.href='http://www.naver.com';
+            }
+            
+            alert(1);*/
+        
+        </script>        
+        <script>
+            //alert('new1');
+            window.onload=function(){
+                
+                // 캐스팅
+                var clock = document.getElementById('clock');
+                
+                setInterval(function(){
+                    clock.innerHTML=new Date();    
+                },1000);
+                
+                
+                
+                
+                
+                //alert('new2');  
+                
+                // 태그 생성
+                var header1 = document.createElement('h1');
+                // 태그에 넣을 텍스트 생성
+                var text1 = document.createTextNode('Hello~!!');
+                
+                 // 태그 생성
+                var header2 = document.createElement('h3');
+                // 태그에 넣을 텍스트 생성
+                var text2 = document.createTextNode('bye~!!');
+                
+                
+                // 이미지 태그생성
+                var img = document.createElement('img');
+                img.src = '../images/mini.png';
+                img.width = 100;
+                
+                
+                // 태그에 텍스트를 삽입
+                header1.appendChild(text1);
+                header2.appendChild(text2);
+                
+                // 새로 만든 테그를 body 테그에 삽입
+                //document.body.appendChild(header1);
+                //document.body.appendChild(header2);
+                
+                //document.getElementById('msg').appendChild(img);
+                //document.getElementById('msg').appendChild(header2);
+                
+                // 문서객체 케스팅 : TAG를 문서객체로 만드는것
+                var h1 = document.getElementById('msg');
+                
+                var div1 = document.querySelector('#text');
+                div1.innerHTML='안녕하세요';
+                div1.style.color='blue';
+                
+                var innerhtml = h1.innerHTML;
+                
+                h1.innerHTML='<span style="color:red">새로운 엘리먼트</span>';
+                
+                //alert(typeof(h1));
+                //alert(innerhtml);
+                
+                var p1 = document.querySelector('.title');
+                p1.innerHTML='제목입니다. <i>내용이 들어갑니다.</i>';
+                p1.style.backgroundColor='gray';
+                
+                
+                // 태그삭제 : 
+                // 1. 삭제 대상 캐스팅
+                // 2. 삭제대상의 부모태그를 캐스팅
+                // 3. 부모태그 객체 removeChild(삭제대상 객체)
+                
+                if(confirm('삭제하시겠습니까?')){
+                    var r = document.querySelector('#remove');
+                    document.body.removeChild(r);
+                }
+                
+                
+            };
+            
+            
+        </script>
+    </head>
+    
+    <body>
+        
+        <h1 id="clock"></h1>
+        
+        <!--<h1 style="cursor: pointer;background-color: aqua;" onclick="moveUrl();" >네이버</h1>-->
+        
+        <h1 id="msg"><i>h1</i></h1>
+        
+        <div id="text"></div>
+        <p class="title"></p>
+        
+        <h1 id="remove">이 테그는 지워질겁니다.</h1>
+        
+    </body>
+    
+    
+    
+    
+    
+    
+    
+</html>

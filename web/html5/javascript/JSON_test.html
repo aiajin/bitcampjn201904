@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON 객체 활용</title>
+    </head>
+    <script>
+        
+        window.onload = function(){
+            
+            var h1_str = document.getElementById("json").innerHTML;
+            
+            //alert(h1_str);
+            
+            //document.getElementById("json").innerHTML='test';
+            
+            var book = {
+                name: '열혈JAVA',
+                price: 1000,
+                publisher:'오렌지미디어'
+            }; // 사용자로부터 받은 데이터를 기반으로 객체를 생성
+            
+            // 자바스크립트 객체 --> JSON 형식의 문자열로 변환
+            var obj_JSON = JSON.stringify(book);
+            document.getElementById('json').innerHTML=obj_JSON;
+            
+            var newJSON = '{"name":"Javascript","price":500,"publisher":"easy"}';
+            
+            // JSON 데이터 --> 자바스크립트의 객체로 변환
+            var newObj = JSON.parse(newJSON);
+            /*
+            {
+                name:"Javascript",
+                price:500,
+                publisher:"easy"
+                
+            }
+            */
+            alert(newObj.name);
+            alert(newObj.price);
+            alert(newObj.publisher);
+            
+            
+            
+            
+        };
+        
+    </script>
+    
+    
+    
+    <body>
+        <h1 id="json">안녕하세요.</h1>    
+    </body>
+</html>
