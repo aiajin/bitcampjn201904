@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트의 이벤트 처리</title>
+        
+    </head>
+    <body>
+        <h1 id="title">자바스크립트의 이벤트 처리</h1>
+        <input type="text" id="msg" placeholder="메시지를 입력해주세요." value="test">
+        <button id="btn">텍스트 변경</button>
+        
+        <h2 id="text"></h2>
+        
+    
+        
+        
+        
+        
+        
+        <script>
+            
+            window.onload = function(){
+                
+                var cnt = 0;
+                
+                // 버튼 캐스팅(문서객체로 변환)
+                var btn = document.getElementById('btn');
+                
+                // 이벤트 적용 : 버튼에 이벤트 속성에 함수로 등록
+                btn.onclick = function(e){
+                    
+                    var event = e || window.event;
+                    
+                    var text = document.getElementById('text');
+                    
+                    for(var key in event){
+                        text.innerHTML += key+' : '+event[key]+'<br>' ;
+                    }
+                    
+                    
+                    
+                    // this는 이벤트가 발생한 객체를 가르킨다.
+                    this.style.color='red';
+                    
+                    
+                    //alert('클릭!!');
+                    
+                    var title = document.getElementById('title');
+                    //alert(title.innerHTML);
+                    
+                    var msgString = document.getElementById('msg').value;
+                    
+                    title.innerHTML += '<br> ' + msgString + cnt++;
+                    
+                };
+                
+                var inputMsg = document.getElementById('msg');
+                
+                inputMsg.onfocus = function(){
+                    
+                    //var msgstr = this.value;
+                    //alert('input focus Evnt : this.value = ' + msgstr);
+                    
+                    //inputMsg.onfocus = null;
+                };
+                
+            };
+        
+        </script>
+        
+        
+        
+        
+        
+        
+    </body>
+</html>
