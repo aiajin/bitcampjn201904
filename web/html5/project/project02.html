@@ -84,6 +84,8 @@
     <div id="main_wrap">
         <h1 class="title"> MEMBER MANAGER</h1>
         <hr>
+        
+        <!--데이터 입력 영역 시작-->
         <div id="regBox">
             <h3>회원 등록</h3>
             <form id="regForm" type="post">
@@ -107,7 +109,13 @@
 
             </form>
         </div>
+        
+        <!--데이터 입력 영역 끝-->
+        
         <hr>
+        
+        <!--회원 리스트 테이블 start-->
+        
         <h3>Member LIST</h3>
         <div id="memberlist">
             <table class="table">
@@ -122,6 +130,38 @@
                 </tbody>
             </table>
         </div>
+        
+        <!--회원 리스트 테이블 end-->
+        
+        
+        <!--회원 정보 수정 폼 시작-->
+        <div id="editBox">
+            <h3>회원 정보 수정</h3>
+            <form id="editForm" method="post">
+                <table>
+                    <tr>
+                        <td>아이디</td>
+                        <td><input type="text" id="editId"></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input type="password" id="editPw"></td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td>
+                            <input type="text" id="editName">
+                            <input type="hidden" id="editIndex">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="수정하기"> <input type="button" value="취소"></td>                        
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!--회원정보 수정 폼 끝-->
+        
     </div>
 
 
@@ -184,6 +224,7 @@
             // regForm 문서객체 만들기 
             var regForm = document.getElementById('regForm');
             
+            // 회원입력 폼의 SUBMIT 재 정의            
             regForm.onsubmit =function(){
                 
                 // 사용자 입력 데이터 input 캐스팅
@@ -226,6 +267,58 @@
                 return false;
                 
             };
+            
+            
+            // 회원수정 폼의 submit 재 정의            
+            var editForm = document.getElementById('editForm');
+            editForm.onsubmit = function(){
+                
+                // 공백을 체크하는 유효성 검사
+                // 1. 캐스팅
+                // 2. 객체.value 값을 검사 : 문자열의 길이 검사
+                var editId = document.getElementById('editId');
+                var editPw = document.getElementById('editPw');
+                var editName = document.getElementById('editName');
+                var editIndex = document.getElementById('editIndex');
+                
+                if(editId.value.length<1){
+                    alert('아이디를 입력해주세요.');
+                    editId.focus();
+                    return false;
+                }
+                if(editPw.value.length<1){
+                    alert('아이디를 입력해주세요.');
+                    editPw.focus();
+                    return false;
+                }
+                if(editName.value.length<1){
+                    alert('아이디를 입력해주세요.');
+                    editName.focus();
+                    return false;
+                }
+                
+                //alert(editIndex.value);
+                
+                // 아이디 수정
+                members[editIndex.value].userId=editId.value;
+                // 비밀번호 수정
+                members[editIndex.value].userPw=editPw.value;
+                // 이름 수정
+                members[editIndex.value].userName=editName.value;
+                
+                //alert(members[editIndex.value]);
+                
+                
+                alert('수정되었습니다.');
+                
+                setListTable();
+                
+                editForm.reset();
+                
+                return false;
+            };
+            
+            
         };
         
         // members 배열의 요소들을 출력기능
@@ -252,6 +345,17 @@
         function editMember(index){
             alert(index+'번 요소 수정');
             
+            // 수정 폼의 아이디, 비밀번호, 이름 input 캐스팅
+            var eId = document.getElementById('editId');
+            var ePw = document.getElementById('editPw');
+            var eName = document.getElementById('editName');
+            var eIndex = document.getElementById('editIndex')
+            
+            // 기존 데이터를 캐스팅한 객체 value 값을 대입
+            eId.value=members[index].userId;
+            ePw.value=members[index].userPw;
+            eName.value=members[index].userName;
+            eIndex.value=index;
             // 수정 폼 만들기
             
             
