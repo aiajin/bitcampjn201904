@@ -193,8 +193,17 @@
     <script>
         
         // Member 객체들을 저장하기 위한 배열 생성
-        var members = [];
+        // var members = [];
         
+        var members;
+        
+        //.alert(localStorage.getItem('members'));
+        
+        
+        
+        
+        // 저장소 변수 선언
+        // localStorage 에서 데이터 유무에 따라 배열 선언
     
         // 회원 데이터 저장 목적으로 하는 생성자함수 정의
         // id: 회원의 아이디, 이메일 주소
@@ -243,6 +252,24 @@
         
         window.onload = function(){
             
+            
+            
+         if(localStorage.getItem('members') == null){
+            
+            // 최초 실행
+            members = [];
+            
+            // localStorage 에 배열을 저장
+            localStorage.setItem('members',JSON.stringify(members));
+        } else {
+            // localStorage 에 members 각 존재
+            members = JSON.parse(localStorage.getItem('members')); 
+            setListTable();
+        }
+            
+            
+            
+            
             // regForm 문서객체 만들기 
             var regForm = document.getElementById('regForm');
             // 회원입력 폼의 SUBMIT 재 정의            
@@ -277,6 +304,8 @@
                 //newMember.showData();
                 
                 members.push(newMember);
+                
+                localStorage.setItem('members',JSON.stringify(members));
                 
                 alert('정상적으로 입력되었습니다.');
                 
@@ -330,6 +359,9 @@
                 //alert(members[editIndex.value]);
                 
                 
+                localStorage.setItem('members',JSON.stringify(members));
+                
+                
                 alert('수정되었습니다.');
                 
                 setListTable();
@@ -361,7 +393,15 @@
             
             for(var i=0; i<members.length;i++){
                 //newHtml += members[i].toString();
-                newHtml += members[i].makeHtml(i);
+                //newHtml += members[i].makeHtml(i);
+                
+                newHtml += '<tr>\n';
+                newHtml += '  <td>'+i+'</td>\n';
+                newHtml += '  <td>'+members[i].userId+'</td>\n';
+                newHtml += '  <td>'+members[i].userPw+'</td>\n';
+                newHtml += '  <td>'+members[i].userName+'</td>\n';
+                newHtml += '  <td><a onclick="editMember('+i+');">수정</a> | <a onclick="delMember('+i+');">삭제</a></td>\n';
+                newHtml += '</tr>\n';
             }
             
             //alert(newHtml);
@@ -406,9 +446,15 @@
                 // 삭제 -> 배열에서 요소 삭제
                 members.splice(index,1);
                 
+                localStorage.setItem('members',JSON.stringify(members));
+                
                 alert('삭제되었습니다.');
                 
+                
+                
                 setListTable();
+                
+                
             }
         }
         
