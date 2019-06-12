@@ -58,6 +58,14 @@
             padding: 5px 0;
         }
         
+        #cancel {
+            background-color: crimson;
+            color: aliceblue;
+            border: 1px solid #DDD;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
         label {
             display: block;
         }
@@ -76,6 +84,20 @@
         a {
             cursor: pointer;
         }
+        
+        #editBox {
+            background-color: #FFF;
+            width : 300px;
+            padding: 10px;
+            border: 5px solid #AAA;
+            position: absolute;
+            top:50px;
+            left:50%;
+            margin-left:-150px;
+            display: none;
+        }
+        
+        
         
     </style>    
 </head>
@@ -155,7 +177,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="수정하기"> <input type="button" value="취소"></td>                        
+                        <td colspan="2"><input type="submit" value="수정하기"> <input type="button" value="취소" id="cancel"></td>                        
                     </tr>
                 </table>
             </form>
@@ -223,7 +245,6 @@
             
             // regForm 문서객체 만들기 
             var regForm = document.getElementById('regForm');
-            
             // 회원입력 폼의 SUBMIT 재 정의            
             regForm.onsubmit =function(){
                 
@@ -315,8 +336,16 @@
                 
                 editForm.reset();
                 
+                document.getElementById('editBox').style.display='none';
+                
                 return false;
             };
+            
+            var cBtn = document.getElementById('cancel');
+            cBtn.onclick = function(){
+                 document.getElementById('editBox').style.display='none';
+                
+            }
             
             
         };
@@ -343,6 +372,13 @@
         
         
         function editMember(index){
+            
+            //var eBox = document.getElementById('editBox');
+            //eBox.style.display='block';
+            
+            document.getElementById('editBox').style.display='block';
+            
+            
             alert(index+'번 요소 수정');
             
             // 수정 폼의 아이디, 비밀번호, 이름 input 캐스팅
@@ -362,7 +398,18 @@
         }
         
         function delMember(index){
-            alert(index+'번 요소 삭제');
+            //alert(index+'번 요소 삭제');
+            
+            var delChk = confirm('삭제하시겠습니까?');
+            
+            if(delChk){
+                // 삭제 -> 배열에서 요소 삭제
+                members.splice(index,1);
+                
+                alert('삭제되었습니다.');
+                
+                setListTable();
+            }
         }
         
         
