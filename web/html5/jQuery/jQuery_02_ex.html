@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <title>XML 파싱</title>
+        <style>
+            div {    
+                line-height: 50px;  
+            }
+            
+            a{      
+                display: block;
+                
+                width: 300px;            
+                /*height: 100px;   */
+                
+                border : 5px solid #DDD;
+                border-radius: 10px;
+                
+                background-color: aqua; 
+                
+                text-align: center; 
+                
+                text-decoration: none;
+            }
+            
+            a:hover {
+                background-color: aquamarine;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+        
+            $(document).ready(function(){
+                var xmlStr='';
+                xmlStr += '<Sites>';
+                xmlStr += ' <site>';
+                xmlStr += '     <name>NAVER</name>';
+                xmlStr += '     <url>http://www.naer.com</url>';
+                xmlStr += ' </site>';
+                xmlStr += ' <site>';
+                xmlStr += '     <name>Daum</name>';
+                xmlStr += '     <url>http://www.daum.net</url>';
+                xmlStr += ' </site>';
+                xmlStr += ' <site>';
+                xmlStr += '     <name>Facebook</name>';
+                xmlStr += '     <url>http://www.facebook.com</url>';
+                xmlStr += ' </site>';
+                xmlStr += '</Sites>';
+                
+                // xmlStr은 문자열 : 서버로부터 받은 문자열 데이터
+                // 문자열 데이터를 XML 문서 객체로 변환해야 함.
+                var xmlDoc = $.parseXML(xmlStr);
+                
+                // jQuery 메서드 사용을 위해 jQuery 객체로 변환
+                var xmlDocObj = $(xmlDoc);
+                
+                // <site> 엘리먼트 객체 생성
+                xmlDocObj.find('site').each(function(){
+                    
+                    // <site> 엘리먼트 내부의 <name> <url> 을 찾고 데이터를 축출한다.
+                    // this 는 반복 진행중 진행하는 위치의 <site> 엘리먼트 객체를 가르킨다.
+                    // 엘리먼트가 가지는 데이터를 축출할때는 text()메서드 사용.
+                    var name = $(this).find('name').text();
+                    var url = $(this).find('url').text();
+                    
+                    // 화면에 표현할 html 문자열 생성
+                    var nHtml = '';
+                    nHtml += '<div>';
+                    nHtml += '  <h1>';
+                    nHtml += '  <a href="'+url+'">'+name+'</a>';
+                    nHtml += '  </h1>';                    
+                    nHtml += '</div>';
+                    
+                    document.body.innerHTML += nHtml;
+                    
+                });
+            });
+            
+        </script>
+    </head>
+    <body>
+    
+    </body>
+</html>
