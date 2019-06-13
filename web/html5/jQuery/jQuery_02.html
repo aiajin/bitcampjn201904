@@ -7,8 +7,13 @@
         <style>
             div{
                 border: 1px solid #DDD;
-                margin : 20px;
+                
             }
+            
+            .title {
+                color: blueviolet;
+            }
+            
         </style>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script>
@@ -60,7 +65,7 @@
                     
                     var output = '';
                     output += '<div>';
-                    output += ' <h1>';
+                    output += ' <h1 class="title">';
                     output += name;
                     output += ' </h1>';
                     output += ' <h3>';
@@ -73,7 +78,9 @@
                 });
                 
                 
-                
+                setTimeout(function(){
+                    $('h1').removeClass('title');
+                },5*1000);
                 
             });
             
