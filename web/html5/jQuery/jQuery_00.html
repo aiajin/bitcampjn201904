@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script
+  src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+            // $=jQuery
+            // ready() : onload 속성 처리와 같다.
+            // 브라우저에 HTML이 모두 표시되고 난 후 실행
+            $(document).ready(function(){
+                
+                //alert('jQuery ready() 실행');
+                $('*').css('color', 'red');
+                $('h1').css('background-color', 'black');
+                $('#title').css('font-size', '40px');
+                $('h1.italic').css('font-style', 'italic');
+                
+                var str = $('input[type=text]').val();
+                alert(str);
+                /**$('input[type=text]').val**/
+                $('input[type=text]').val('안녕하세요.');
+                
+                $('input:submit').val('수정');
+                
+                setTimeout(function(){
+                    var chk = $('input:checkbox:checked').val();
+                    alert(chk);
+                },5000);
+                
+                setTimeout(function(){
+                    var v = $('select>option:selected').val();
+                    alert(v);
+                },1000*10);
+                
+                $('h2:odd').css('color', 'blue');
+                $('h2:even').css('color', 'green');
+                $('h2:first').css('background-color', 'yellow').css('color', 'black');
+                $('h2:last').css('background-color', 'gray');
+                
+                $('h2').each(function(index, item){
+                    $(item).html('h2'+index);
+                });
+                
+                
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+    
+        <h1 id="title">h1 Tag</h1>
+        <h2 class="italic">h1 Tag</h2>
+        
+        <input type="text" value="first jQuery"> <br>
+        <input type="submit" value="등록">
+        <br><br>
+        개인정보 동의 <input type="checkbox" value="Y"> <br>
+        성별 
+        <select name="gender">
+            <option value="ns">성별</option>
+            <option value="W">여자</option>    
+            <option value="M">남자</option>    
+        </select>
+        
+        <h2>h1 Tag</h2>
+        <h2>h1 Tag</h2>
+        <h1 class="italic">h1 Tag</h1>
+        <h2 class="italic">h1 Tag</h2>
+        <h2>h1 Tag</h2>
+        <h2>h1 Tag</h2>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>
