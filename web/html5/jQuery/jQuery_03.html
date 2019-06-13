@@ -11,7 +11,52 @@
                 
                 var imgPath = $('img').attr('src'); // getter
                 
-                alert(imgPath);
+                //alert(imgPath);
+                
+                setTimeout(function(){
+                    //$('img').attr('width', 200);
+                    /*$('img').attr('width', function(index){
+                        return (index+1)*50;
+                    });    */
+                    
+                    /*$('img').attr({
+                        src:'../images/mickey_mouse.png',
+                        width: function(index){
+                            return (index+1)*50;
+                        }                        
+                    });*/
+                    
+                    var chk1 = $('input:checkbox').attr('checked');
+                    var chk2 = $('input:checkbox').prop('checked');
+                    
+                    //alert(chk1 +' : ' + chk2);
+                    
+                    
+                    // checked 설정
+                    $('input:checkbox').prop('checked', true);
+                    
+                    if(!chk2){
+                        //alert('개인정보 동의에 체크해주세요.');
+                    }
+                    
+                    var href1 = $('a').attr('href');
+                    var href2 = $('a').prop('href');
+                    
+                    //alert(href1 + ' : ' + href2);
+                    
+                    //alert($('a').css('color'));
+                    
+                    var text1 = $('h1').html();
+                    var text2 = $('h1').text();
+                    
+                    alert(text1 + ' : ' + text2);
+                    
+                    //$('h1').html('<i>안녕</i>');
+                    $('h1').text('<i>안녕</i>');
+                    
+                    
+                },3000);
+                
                 
             });
             
@@ -19,8 +64,18 @@
     </head>
     <body>
         
-        <img src="../images/mini.png" width="100">
+        개인정보 동의<input type="checkbox">
+        <br><br><br><br>
+        <a href="jQuery_01_array.html">test</a>
         
+        <!--<img src="../images/mini.png" width="100">
+        <img src="../images/mini.png" width="100">
+        <img src="../images/mini.png" width="100">
+        <img src="../images/mini.png" width="100">-->
+        
+        <h1>
+            <p>안녕하세요.</p>
+        </h1>
         
         
         
