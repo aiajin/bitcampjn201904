@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            jQuery 메서드        
+        </title>
+        <style>
+            div{
+                border: 1px solid #DDD;
+                margin : 20px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+        
+            $(document).ready(function(){
+                
+                //$('h1:even').css('background-color', 'black').css('color', '#FFF');
+                
+                //$('h1').filter(':even').css('background-color', "#000").css('color', '#FFF');
+                
+                /*$('h1').filter(function(i){
+                    return i%2 == 1; // true-> 선택, false-> 미 선택
+                }).css('color', '#0F0');*/
+                
+                //$('h1').css('background-color', 'orange').filter(':even').css('color', '#FFF').end().filter(':odd').css('color', 'red');
+                // 1. 모든 h1 -> 검정색 배경 적용
+                // 2. 짝수번째 요소들 탐색/선택 -> 폰트 색을 흰색으로 변경
+                // 3. 짝수번째 선택 해재 -> 모든 h1을 선택
+                // 4. 홀수번째 요소들 선택 -> 폰트색을 빨간색으로 변경
+                
+                //$('h1').css('background-color', 'aqua').add('h2').css('color', 'blue').css('float', 'left');
+                
+                //$('input').parent().css('border', '3px solid #0F0');
+                
+                
+                
+                var xml = '';
+                xml += '<friends>';
+                xml += '    <friend>';
+                xml += '        <name>네이버</name>';
+                xml += '        <language>JAVA</language>';
+                xml += '    </friend>';
+                xml += '    <friend>';
+                xml += '        <name>다음</name>';
+                xml += '        <language>C#</language>';
+                xml += '    </friend>';
+                xml += '    <friend>';
+                xml += '        <name>FaceBook</name>';
+                xml += '        <language>Javascript</language>';
+                xml += '    </friend>';
+                xml += '</friends>';
+                
+                var xmlDoc = $.parseXML(xml);
+                
+                $(xmlDoc).find('friend').each(function(index){
+                    
+                    var name = $(this).find('name').text();
+                    var language = $(this).find('language').text();
+                    
+                    var output = '';
+                    output += '<div>';
+                    output += ' <h1>';
+                    output += name;
+                    output += ' </h1>';
+                    output += ' <h3>';
+                    output += ' ' + language;
+                    output += ' </h3>';
+                    output += '</div>';
+                    
+                    document.body.innerHTML += output;
+                    
+                });
+                
+                
+                
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        
+        <!--<h1>h1-00</h1>
+        <h1>h1-01</h1>
+        <h1>h1-02</h1>
+        <h1>h1-03</h1>
+        <h1>h1-04</h1>-->
+        <!--<h1>h1-05</h1>
+        <h1>h1-06</h1>
+        <h1>h1-07</h1>
+        <h1>h1-08</h1>
+        <h1>h1-09</h1>-->
+        <!--<h2>h2-00</h2>
+        <h2>h2-01</h2>
+        
+        <div>
+            <input>
+        </div>-->
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>
