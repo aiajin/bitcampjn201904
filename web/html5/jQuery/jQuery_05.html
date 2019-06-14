@@ -4,7 +4,7 @@
         <title>jQuery 이벤트</title>
         <style>
             
-            h1 {
+            /*h1 {
                 border : 1px solid #000;                
             }
             .reverse {
@@ -12,6 +12,19 @@
                 color: aliceblue;
                 text-align: right;
             }
+            
+            
+            div {
+                border : 1px solid #DDD;
+                border-radius: 5px;
+                
+                width : 150px;
+                padding : 10px;
+            }*/
+            
+            
+            
+            
         </style>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script>
@@ -19,12 +32,14 @@
             $(document).ready(function(){
                 
                 
-                $('h1').on('click',function(){
+                /*$('h1').on('click',function(){
                     $(this).html(function(index, html){
+                        
+                        $(this).off();
                         
                         return html+'+';
                     });
-                });
+                });*/
                 
                 /*$('h1').on({
                     mouseenter : function(){
@@ -35,22 +50,187 @@
                     }
                 });*/
                 
-                $('h1').hover(function(){
-                    
+                /*$('h1').hover(function(){
+                    $(this).addClass('reverse');
                 },function(){
+                    $(this).removeClass('reverse');
+                });*/
+                
+                /*$('div').click(function(){
                     
+                    var name = $('h1', this).text();
+                    var pNum = $('p', this).text();
+                    alert( name + ' : ' + pNum);
+                });*/
+                
+                /*$('a').click(function(event){
+                    
+                    alert('이동하지 않습니다.');
+                    //event.preventDefault();
+                    //event.stopPropagation();
+                    
+                    return false;
                 });
                 
                 
+                $('#div1').click(function(event){
+                    alert('div1 click!');
+                    event.stopPropagation();
+                    
+                });
+                $('#div2').click(function(event){
+                    alert('div2 click!');
+                    event.stopPropagation();
+                });
+                $('h5').click(function(event){
+                    alert('h5 click!');
+                    event.stopPropagation();
+                });
+                */
+                
+                /*$('h1').on('click', function(){
+                    var length = $('h1').length;
+                    var nHtml = $(this).html();
+                    $('#wrap').append('<h1>'+length+'-'+nHtml+'</h1>');
+                    //                 <h1>1-headers</h1>
+                });*/
+                
+                $('#wrap').on('click','h1',function(){
+                    var length = $('h1').length;
+                    var nHtml = $(this).html();
+                    $('#wrap').append('<h1>'+length+'-'+nHtml+'</h1>');
+                });
+                
+                $('textarea').keyup(function(){
+                    
+                    var inputVal = $(this).val();
+                    var inputLength = inputVal.length;
+                    var remain = 150 - inputLength;
+                    
+                    if(remain<1){
+                        alert('글자수 제한으로 더이상 글을 쓸 수 없습니다.')
+                        var inStr = inputVal.substr(0,150);
+                        $(this).val(inStr);
+                        $('h2').html('0');
+                        return;
+                    }
+                    
+                    $('h2').html(remain);
+                });
+                
+                $('#form').submit(function(event){
+                    
+                    var userId = $('#userId').val();
+                    var userPw = $('#userPw').val();
+                    
+                    if(userId.length < 1){
+                        alert('아이디를 입력해주세요.');
+                        $('#userId').focus();
+                        return false;
+                    }
+                    
+                    if(userPw.length<1){
+                        alert('비밀번호를 입력해주세요.');
+                        $('#userPw').focus();
+                        return false;
+                    }
+                    
+                    return true;
+                });
+                
+                $('#allCheck').change(function(){
+                    var chk = $(this).prop('checked');
+                             // this.checked
+                    if(chk){
+                        $('#item').children().prop('checked', true);
+                    } else {
+                        $('#item').children().prop('checked', false);
+                    }
+                });
+                
+                $('#year').change(function(){
+                    var v1 = $('#year>option:selected').val();
+                    //alert(v1);
+                    location.href=v1;
+                });
                 
             });
             
         </script>
     </head>
     <body>
-        <h1>h1-00</h1>
+        
+        <form id="form">
+            년도
+            <select id="year">
+                <option value="http://www.naver.com">네이버</option>
+                <option value="http://www.daum.net">다음</option>
+                <option value="http://www.facebook.com">페이스북</option>
+            </select>
+            
+            <br>
+            
+            모두선택 <input type="checkbox" id="allCheck">
+            <div id="item">
+                <input type="checkbox">1<br>
+                <input type="checkbox">2<br>
+                <input type="checkbox">3<br>
+                <input type="checkbox">4<br>
+                <input type="checkbox">5<br>
+            </div>
+            
+            
+            
+            id <input type="text" id="userId" name="userId"> <br>
+            pw <input type="password" id="userPw" name="userPw"><br>
+        
+            내용<br>
+            <textarea name="memo"></textarea>
+            <h2>150</h2>
+            
+            <br>
+            <input type="submit" value="입력">
+        </form>
+        
+        <div id="wrap">
+            <h1>headers</h1>        
+        </div>
+        
+        
+        
+        
+        
+       <!-- <div id="div1" style="padding:10px;background-color: aqua; width :100%; ">
+            <div id="div2" style="padding:10px;background-color: aquamarine;width: 50%;">
+                <h5 style="padding:10px;background-color: chartreuse;width: 25%"> <a href="http://www.naver.com" >클릭 !!!</a></h5>
+            </div>
+        </div>
+        -->
+       <!-- 
+         <a href="http://www.naver.com">NAVER</a>
+        
+        <div>
+            <h1>손흥민</h1>
+            <p>010-999-7777</p>
+        </div>
+        
+        <div>
+            <h1>이강인</h1>
+            <p>010-3333-0000</p>
+        </div>
+        
+        <div>
+            <h1>유영진</h1>
+            <p>010-7777-2222</p>
+        </div>
+        
+        
+        
+        -->
+        
+        <!--<h1>h1-00</h1>
         <h1>h1-01</h1>
-        <h1>h1-02</h1>
+        <h1>h1-02</h1>-->
     </body>
     
     
