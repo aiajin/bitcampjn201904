@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head> 
+        <title>동적 문서객체 생성</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+        
+            $(document).ready(function(){
+                
+                /*동적 문서객체를 생성*/
+                // h1 태그의 문서 객체 생성
+                // appendTo(대상) 메서드를 이용해서 객체를 추가 -> 화면에 노출 
+                /*$('<h1></h1>').html('<i>안녕하세요</i>').appendTo('body');
+                $('<p><b>안녕하세요</b></p>').appendTo('body');
+                
+                $('<img>').attr({
+                    src : '../images/mini.png',
+                    width:150
+                }).appendTo('body');
+                
+                $('<img>',{
+                    src: '../images/mickey_mouse.png',
+                    width : 150,
+                    height : 150
+                }).appendTo('body');
+                
+                
+                var h1='<h1>새로운 H1 Tag 00</h1>';
+                var h2='<h1>새로운 H1 Tag 01</h1>';*/
+                
+                //$('body').append(h1, h2, h1, h2, h1);
+                
+                /*var arr = [];
+                arr.push({name: 'NAVER', url : 'http://www.naver.com' });
+                arr.push({name: 'Daum', url : 'http://www.daum.net' });
+                arr.push({name: 'facebook', url : 'http://www.facebook.com' });
+                
+                $('div').append(function(index){
+                    
+                    var output = '';
+                    output += '<a href="'
+                        +arr[index].url
+                        +'">'
+                        +arr[index].name
+                        +'</a>';
+                    
+                    return output;
+                });
+                });*/
+                
+                
+                
+                
+                setInterval(function(){
+                    
+                    $('img').first().appendTo('div');
+                    
+                },3000);
+                
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        
+        <div></div>
+        <div></div>
+        <div></div>
+        
+        
+        <div style="width:150px;height: 150px; border: 3px solid #DDD; overflow: hidden;">
+            <img src="../images/mickey_mouse.png" width="150" >
+            <img src="../images/mini.png" width="150">
+            <img src="../images/warsdroid.jpg" width="150" >
+
+        </div>
+            
+    </body>
+</html>

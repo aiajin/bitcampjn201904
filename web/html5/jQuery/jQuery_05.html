@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jQuery 이벤트</title>
+        <style>
+            
+            h1 {
+                border : 1px solid #000;                
+            }
+            .reverse {
+                background-color: blueviolet;
+                color: aliceblue;
+                text-align: right;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+        
+            $(document).ready(function(){
+                
+                
+                $('h1').on('click',function(){
+                    $(this).html(function(index, html){
+                        
+                        return html+'+';
+                    });
+                });
+                
+                /*$('h1').on({
+                    mouseenter : function(){
+                        $(this).addClass('reverse');
+                    },
+                    mouseleave : function(){
+                        $(this).removeClass('reverse');
+                    }
+                });*/
+                
+                $('h1').hover(function(){
+                    
+                },function(){
+                    
+                });
+                
+                
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        <h1>h1-00</h1>
+        <h1>h1-01</h1>
+        <h1>h1-02</h1>
+    </body>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</html>
