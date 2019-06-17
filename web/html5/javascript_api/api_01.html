@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Forms</title>
+  <script>
+    function initiate(){
+      name1=document.getElementById("firstname");
+      name2=document.getElementById("lastname");
+      name1.addEventListener("input", validation, false);
+      name2.addEventListener("input", validation, false);
+      validation();
+    }
+    function validation(){
+      if(name1.value=='' && name2.value==''){
+        name1.setCustomValidity('이름을 입력시에는 성을 먼저 입력하세요.');
+        name1.style.background='#FFDDDD';
+      }else{
+        name1.setCustomValidity('');
+        name1.style.background='#FFFFFF';
+      }
+    }
+    window.addEventListener("load", initiate, false);
+  </script>
+</head>
+<body>
+  <section id="form">
+      
+    <form name="registration" method="get">
+      First Name:  
+        
+        <input type="text" name="firstname" id="firstname">
+      Last Name: 
+      
+        <input type="text" name="lastname" id="lastname">
+      
+        
+        <input type="submit" id="send" value="sign up">
+    </form>
+      
+  </section>
+</body>
+    
+    
+    
+    
+    
+    
+</html>
