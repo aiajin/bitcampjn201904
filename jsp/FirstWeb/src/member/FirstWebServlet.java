@@ -1,4 +1,4 @@
-package web;
+package member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/first")
+@WebServlet(name = "servlet", urlPatterns = "/first")
 public class FirstWebServlet extends HttpServlet {
 	
 	/**
