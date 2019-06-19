@@ -29,6 +29,15 @@
 	<!-- 오른쪽 영역 시작 -->
 	<%@ include file="include/right.jsp" %>
 	<!-- 오른쪽 영역 끝 -->
+	
+	<!-- footer 시작 -->
+	<jsp:include page="include/footer.jsp">
+	<jsp:param value="010-7777-8888" name="tel"/>
+	<jsp:param value="test@test.com" name="email"/>
+	</jsp:include>
+	<!-- footer 끝 -->
+	
+	
 
 
 
