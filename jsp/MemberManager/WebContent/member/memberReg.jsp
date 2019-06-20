@@ -13,16 +13,13 @@
 </head>
 <body>
 <%
+	request.setCharacterEncoding("utf-8");
+
 	String userId = request.getParameter("uId");
-	String userPW = request.getParameter("uPW");
-	
-	if(
-			userId != null && userPW != null 
-			&& userId.equals("admin") && userPW.equals("admin")) {
-		
-		response.sendRedirect(request.getContextPath()); // /mm
-	}
+	String userPw = request.getParameter("uPW");
+	String userName = request.getParameter("uName");
 %>
+
 <!-- 해더 시작 -->
 <%@ include file="../frame/header.jsp" %>
 <!-- 해더 끝 -->
@@ -33,17 +30,25 @@
 
 <!-- 컨텐츠 시작 -->
 <div id="contents">
-	<h3>로그인 요청 처리 페이지</h3>
+	<h3>회원가입 요청 처리 페이지</h3>
 	<hr>
 
 	<table>
 		<tr>
-			<td>아이디</td>
-			<td><input type="text" name="uId" value="<%= userId%>"> </td>
+			<td>아이디(이메일)</td>
+			<td><input type="email" name="uId" value="<%= userId %>" > </td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="text" name="uPW" value="<%= userPW%>"> </td>
+			<td><input type="password" name="uPW" value="<%= userPw %>" > </td>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td><input type="text" name="uName" value="<%= userName %>" > </td>
+		</tr>
+		<tr>
+			<td>사진</td>
+			<td><input type="file" name="uPhoto"> </td>
 		</tr>
 		<tr>
 			<td></td>
