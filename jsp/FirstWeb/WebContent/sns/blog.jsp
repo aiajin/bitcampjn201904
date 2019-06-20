@@ -12,6 +12,7 @@
 
 </head>
 <body>
+
 	<div id="main_rwap">
 		<!-- 헤더 시작 -->
 		<%@ include file="../frame/header.jsp" %>
