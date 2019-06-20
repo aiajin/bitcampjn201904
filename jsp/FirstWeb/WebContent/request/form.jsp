@@ -13,7 +13,7 @@
 <body>
 	
 	<h1>회원가입</h1>
-	<form action="viewParameter.jsp" method="post">
+	<form action="viewParameter.jsp" method="get">
 		<table>
 			<tr>
 				<td>이름</td>
