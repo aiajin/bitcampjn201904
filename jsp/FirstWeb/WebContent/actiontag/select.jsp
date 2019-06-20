@@ -14,7 +14,8 @@
 
 	<form action="page.jsp" method="get">
 	
-		<input type="hidden" name="no" value="0">
+		no <input type="text" name="no" value="0"> 
+		name <input type="text" name="uname">
 		
 		Page Type
 		<select name="type">
