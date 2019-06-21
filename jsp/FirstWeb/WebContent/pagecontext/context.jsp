@@ -11,26 +11,58 @@
 </style>
 </head>
 <body>
+<h1>
+
 	<%
-		session = request.getSession(false);
+		HttpServletRequest req = 
+		(HttpServletRequest)pageContext.getRequest();
+	
 	%>
+	<%= request == req %>
 	
-	name : <%= session.getAttribute("name") %> <br>
-	id : <%= session.getAttribute("id") %> <br>
-	isLogin : <%= session.getAttribute("isLogin") %> <br>
-	age : <%= session.getAttribute("age") %> <br>
-	<%= session.getAttribute("user") %>
+	<br>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<%
+		out.print(123+"<br>");
+		pageContext.getOut().print("같은 객체를 사용합니다.");
+		
+	%>
+
+
+
+
+
+
+
+
+
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
