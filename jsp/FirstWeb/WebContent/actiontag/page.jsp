@@ -7,6 +7,9 @@
 	String no = request.getParameter("no"); 
 	String uname = request.getParameter("uname");
 	
+	
+	request.setAttribute("name",uname );
+	
 	if(pType == null){
 		pType = "a";
 	}
