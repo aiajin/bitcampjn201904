@@ -10,6 +10,17 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <context-param>
+  	<description>logEnabled</description>
+  	<param-name>logEnabled</param-name>
+  	<param-value>false</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>debugLevel</param-name>
+  	<param-value>1</param-value>
+  </context-param>
+  
   
   <!-- 서블릿 등록 : 서블릿 이름, 클래스 이름(페키지명을 포함하는 풀네임 등록)-->
   <servlet>
