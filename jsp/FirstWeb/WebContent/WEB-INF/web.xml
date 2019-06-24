@@ -3,17 +3,15 @@
   <display-name>FirstWeb</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  
+  <!-- 프로그램 전체에서 공유가능한 데이터 등록 -->
   <context-param>
   	<description>logEnabled</description>
   	<param-name>logEnabled</param-name>
-  	<param-value>false</param-value>
+  	<param-value>true</param-value>
   </context-param>
   
   <context-param>
@@ -34,6 +32,42 @@
   	<servlet-name>Hello</servlet-name>
   	<url-pattern>/hello</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  	
+  	<!-- 에러페이지 지정 -->
+  	<!-- http 코드로 지정 -->
+  	<error-page>
+  		<error-code>404</error-code>
+  		<location>/errorpage/viewError404.jsp</location>
+  	</error-page>
+  	<error-page>
+  		<error-code>500</error-code>
+  		<location>/errorpage/viewError500.jsp</location>
+  	</error-page>
+  	
+  	<!-- 에러타입으로 지정 -->
+  	<error-page>
+  		<exception-type>java.lang.NullPointerException</exception-type>
+  		<location>/errorpage/viewErrorNull.jsp</location>
+  	</error-page>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
