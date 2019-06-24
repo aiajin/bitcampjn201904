@@ -23,6 +23,7 @@
 		response.sendRedirect(request.getContextPath()); // /mm
 	}
 %>
+
 <!-- 해더 시작 -->
 <%@ include file="../frame/header.jsp" %>
 <!-- 해더 끝 -->
@@ -58,6 +59,20 @@
 <!-- 푸터 시작 -->
 <%@ include file="../frame/footer.jsp" %>
 <!-- 푸터 끝 -->
+
+
+
+<jsp:useBean id="loginInfo" class="member.MemberInfo" scope="session"/>
+<jsp:setProperty property="uId" name="loginInfo" value="<%= userId %>"/>
+<%
+	loginInfo.setuPW(userPW);
+%>
+
+
+
+
+
+
 
 
 
