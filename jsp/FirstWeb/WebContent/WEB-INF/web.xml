@@ -52,6 +52,16 @@
   		<exception-type>java.lang.NullPointerException</exception-type>
   		<location>/errorpage/viewErrorNull.jsp</location>
   	</error-page>
+  	
+  	
+  	<!-- 자동 코드 추가 설정  -->
+  	<jsp-config>
+  		<jsp-property-group>
+  			<url-pattern>/actiontag/view/*</url-pattern>
+  			<include-prelude>/common/variable.jspf</include-prelude>
+  			<include-coda>/common/footer.jspf</include-coda>
+  		</jsp-property-group>
+  	</jsp-config>
   
   
   
