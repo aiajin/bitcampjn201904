@@ -20,19 +20,20 @@
 		if (cookies != null && cookies.length > 0) {
 			for(int i=0; i<cookies.length; i++ ){
 				
-				if(cookies[i].getName().equals("name")){
+				//if(cookies[i].getName().equals("name")){
 	%>	
 		<h3>
 		<%= cookies[i].getName() %> :  
 		<%= cookies[i].getValue()  %>
 		</h3>
 	<%
-				}
+//				}
 			}
 		}		
 	%>
 
-<a href="editCookie.jsp">editCookie</a>
+<a href="editCookie.jsp">editCookie</a> <br>
+<a href="delCookie.jsp">delCookie</a>
 
 
 
