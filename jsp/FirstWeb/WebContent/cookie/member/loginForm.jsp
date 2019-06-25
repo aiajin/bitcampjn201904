@@ -15,9 +15,13 @@
 	<hr>
 	<form action="login.jsp" method="post">
 		아이디 <input type="text" name="id"> <br> 
-		비밀번호 <input type="text" name="pw"> <br> 
+		비밀번호 <input type="text" name="pw"> <br>
+		아이디 저장해서 사용 <input type="checkbox"> <br> 
 		<input type="submit" value="로그인">
 	</form>
+	
+	<br>
+	<a href="loginCheck.jsp">loginCheck</a>
 
 
 

@@ -36,6 +36,7 @@
 	<%
 		if(chk){
 			out.println("<h1>로그인 되었습니다.</h1>");
+			out.println("<a href=\"loginCheck.jsp\">loginCheck</a>");
 		} else {
 			out.println("<script>alert(\'로그인 실패\'); history.go(-1); </script>");
 		}
