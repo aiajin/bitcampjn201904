@@ -15,6 +15,7 @@
 쿠키이름 <input type="text" id="cName">, 
 쿠키 데이터 <input type="text" id="cValue">
 <input type="button" id="createCookie" value="쿠키 생성">
+<input type="button" id="deleteCookie" value="쿠키 삭제">
 <hr>
 <input type="button" id="viewCookie" value="쿠키값 확인">
 <div id="view">
@@ -26,7 +27,13 @@
 
 	$(document).ready(function(){
 		
-		var name  = 'name';
+		//var name  = 'name';
+		
+		$('#deleteCookie').click(function(){
+			var cName = $('#cName').val();
+			deleteCookie(cName);
+			alert('쿠키가 삭제되었습니다.')
+		});
 		
 		
 		$('#createCookie').click(function(){
@@ -35,6 +42,7 @@
 			var cValue = $('#cValue').val();
 			
 			setCookie(cName, cValue, 1);
+			alert("쿠키가 생성되었습니다.")
 			
 		});
 		
@@ -46,13 +54,17 @@
 			+ ';path=/';
 		};
 		
-		
+		var deleteCookie = function(name) {
+			var date = new Date();
+			document.cookie = name + "= " + "; expires=" 
+			+ date.toUTCString() + "; path=/";
+		}
 		
 		
 		
 		$('#viewCookie').click(function(){
 			
-			name = $('#cName').val();
+			var name = $('#cName').val();
 			
 			var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
 			
@@ -60,7 +72,7 @@
 			
 			alert(value);
 			
-			$('#view').html('name='+value);
+			$('#view').html(name+'='+value);
 		});
 		
 		
