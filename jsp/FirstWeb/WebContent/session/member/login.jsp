@@ -1,3 +1,4 @@
+<%@page import="member.LoginInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 
@@ -23,7 +24,16 @@
 	if(id != null && pw != null && id.equals(pw)){
 		// 같을 때 : 세션에 사용자 데이터 저장, loginChk = true
 		// 3. 세션에 사용자 데이터 저장 : 속성을 이용해서 데이터 저장				
-		session.setAttribute("loginId", id); // 사용자가 로그인 했는지 여부 확인용
+		//session.setAttribute("loginId", id); // 사용자가 로그인 했는지 여부 확인용
+		//session.setAttribute("photo", "c:\\");
+		//session.setAttribute("grade", 5);
+		//session.setAttribute("nicname", "cool");
+		
+		LoginInfo loginInfo = new LoginInfo(id);
+		
+		session.setAttribute("LoginInfo", loginInfo);
+		
+		
 		loginChk = true;
 	}
 
