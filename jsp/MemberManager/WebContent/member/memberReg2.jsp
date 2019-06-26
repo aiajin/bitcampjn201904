@@ -8,6 +8,15 @@
 <jsp:useBean id="memberInfo" class="member.MemberInfo"/>
 <!-- 생성된 객체에 데이터 바인딩 : 폼의 name 속성과 beans 클래스의 변수 이름이 동일해야한다 !!!!!  -->
 <jsp:setProperty property="*" name="memberInfo"/>
+<%
+	if(memberInfo.getuPhoto() == null){
+		memberInfo.setuPhoto("noImg.jpg");
+	}
+
+	// 내장객체에 회원정보 객체를 저장
+	application.setAttribute(memberInfo.getuId(), memberInfo);
+
+%>
 <!DOCTYPE html>
 <html>
 <head>

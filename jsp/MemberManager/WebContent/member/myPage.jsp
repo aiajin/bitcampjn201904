@@ -1,6 +1,10 @@
+<%@page import="member.LoginInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
-<jsp:useBean id="loginInfo" class="member.MemberInfo" scope="session"/>
+<%-- <jsp:useBean id="loginInfo" class="member.MemberInfo" scope="session"/> --%>
+<%
+	LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +28,27 @@
 
 <!-- 컨텐츠 시작 -->
 <div id="contents">
+	<%
+		if(loginInfo != null){
+	%>
 	<h3>회원 정보 페이지</h3>
 	<hr>
 	
-	<%= loginInfo %>
+		<img src="../images/<%= loginInfo.getuPhoto()%>">
+		<h4>이름 : <%= loginInfo.getuName() %></h4>
+		<h4>아이디 : <%= loginInfo.getuId() %></h4>
+	
+	<%--= loginInfo --%>
+	<%
+		} else {
+	%>
+	<script>
+		alert('로그인 후 이용가능한 페이지 입니다.');
+		location.href = 'login.jsp';
+	</script>
+	<%
+		}
+	%>
 	
 </div>
 <!-- 컨텐츠 끝 -->

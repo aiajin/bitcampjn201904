@@ -96,6 +96,36 @@ public class MemberInfo {
 		return str;
 	}
 	
+	// MemberInfo 객체 -> LoginInfo 객체 반환
+	public LoginInfo toLoginInfo() {
+		
+		return new LoginInfo(uId, uName, uPhoto);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
