@@ -1,23 +1,13 @@
 <%@page import="member.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link href="/mm/css/default.css" rel="stylesheet" type="text/css">
-<style>
+    
 
-</style>
-</head>
-<body>
 <%
 	String userId = request.getParameter("uId");
 	String userPW = request.getParameter("uPW");
 	
-	boolean loginChk = false;
+	//boolean loginChk = false;
 	
 	/* 
 		1. 사용자가 입력한 id로 회원 정보 검색
@@ -36,6 +26,20 @@
 		// 세션에 회원 로그인 정보를 저장
 		session.setAttribute("loginInfo", memberInfo.toLoginInfo());
 		
+		// 로그인 처리 후 메인페이지로 이동		
+		response.sendRedirect(request.getContextPath());
+		
+		
+	} else {		
+		// id 검색결과가 null 또는 pw 비교에서 같지않은경우
+		
+		%>
+		<script>
+			alert('아이디 혹은 비밀번호가 틀립니다.\n다시로그인 해주세요');
+			history.go(-1);
+		</script>
+		<%
+		
 	}
 	
 	
@@ -48,6 +52,18 @@
 		response.sendRedirect(request.getContextPath()); // /mm
 	} */
 %>
+<%-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link href="/mm/css/default.css" rel="stylesheet" type="text/css">
+<style>
+
+</style>
+</head>
+<body>
 
 <!-- 해더 시작 -->
 <%@ include file="../frame/header.jsp" %>
@@ -59,6 +75,10 @@
 
 <!-- 컨텐츠 시작 -->
 <div id="contents">
+
+	
+
+
 	<h3>로그인 요청 처리 페이지</h3>
 	<hr>
 
@@ -86,13 +106,13 @@
 <!-- 푸터 끝 -->
 
 
-<%-- 
+
 <jsp:useBean id="loginInfo" class="member.MemberInfo" scope="session"/>
 <jsp:setProperty property="uId" name="loginInfo" value="<%= userId %>"/>
- --%>
-<%--
+
+
 	 loginInfo.setuPW(userPW);
---%>
+
 
 
 
@@ -109,4 +129,4 @@
 
 
 </body>
-</html>
+</html> --%>
