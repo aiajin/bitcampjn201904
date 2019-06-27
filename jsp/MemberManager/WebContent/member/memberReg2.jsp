@@ -46,7 +46,8 @@
 <div id="contents">
 	<h3>회원가입 페이지</h3>
 	<hr>
-	<%= memberInfo.makeHtmlDiv() %>
+	<%= memberInfo.makeHtmlDiv() %> 
+	${memberInfo.makeHtmlDiv()}
 </div>
 <!-- 컨텐츠 끝 -->
 
