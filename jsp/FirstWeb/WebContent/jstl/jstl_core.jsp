@@ -62,13 +62,15 @@
 	<hr>	
 	<table>
 		<tr>
+			<td>index/count</td>
 			<td>이름</td>
 			<td>아이디</td>
 			<td>전화번호</td>
 		</tr>
 		
-		<c:forEach items="${members}" var="member">
+		<c:forEach items="${members}" var="member" varStatus="status" begin="0" end="5">
 		<tr>
+			<td>${status.index} / ${status.count} </td>
 			<td>${member.name}</td>
 			<td>${member.id}</td>
 			<td>
@@ -80,6 +82,10 @@
 			</td>
 		</tr>
 		</c:forEach>
+		
+		<c:forTokens items="홍길동,010-8888-6666,서울" delims="," var="sel">
+			${sel} <br>			
+		</c:forTokens>
 	
 	
 	</table>

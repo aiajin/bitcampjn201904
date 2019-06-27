@@ -11,6 +11,7 @@
 </style>
 </head>
 <body>
+<h1> a - page </h1>
 	<h1>
 		<%-- Page_a.jsp 에서 만들어진 응답 결과 <br> no 파라미터의 값 :
 		<%=request.getParameter("num")%>

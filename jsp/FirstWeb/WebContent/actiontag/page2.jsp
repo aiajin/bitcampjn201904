@@ -51,8 +51,23 @@
 		<c:set value="page_c.jsp" var="uri"/>
 	</c:if> --%>
 	
-	<%-- <jsp:forward page="${uri}"/> --%>
-	<jsp:forward page="page_${pageType}.jsp"/>
+	<c:choose>
+		<c:when test="${pageType == 'a'}">
+			<c:set value="page_a.jsp" var="uri"/>
+		</c:when>
+		<c:when test="${pageType == 'b'}">
+			<c:set value="page_b.jsp" var="uri"/>
+		</c:when>
+		<c:when test="${pageType == 'c'}">
+			<c:set value="page_c.jsp" var="uri" />
+		</c:when>
+		<c:otherwise>
+			<c:set value="page_a.jsp" var="uri"/>
+		</c:otherwise>
+	</c:choose>
+	
+	<jsp:forward page="${uri}"/>
+	<%-- <jsp:forward page="page_${pageType}.jsp"/> --%>
 	
 	
 	
