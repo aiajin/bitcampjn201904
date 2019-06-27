@@ -36,6 +36,23 @@
 </head>
 <body>
 
+	<c:set value="test" var="msg" />
+	msg : ${msg} <br>
+	
+	<c:if test="${msg eq 'test'}">
+		
+		msg의 문자열은 test와 같습니다.
+		
+	</c:if>
+	
+	<c:if test="${msg eq 'test'}" var="condition" />
+	
+	<br>
+	결과값은 : ${condition}
+
+
+	<hr>
+
 	<h3>
 		${param.code} <br>
 		<c:out value="${param.code}" escapeXml="false">
