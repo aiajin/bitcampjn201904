@@ -70,6 +70,7 @@
 		
 		<!-- 리스트 반복 시작 -->
 		
+		
 		<c:forEach items="${mListName}" var="mId" varStatus="status">
 		
 		<c:if test="${fn:contains(mId, '@') }">
