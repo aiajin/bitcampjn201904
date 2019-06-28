@@ -36,6 +36,17 @@
 </head>
 <body>
 
+	<c:url value="/member/list.jsp" var="uri_mList">
+		<c:param name="pno">5</c:param>
+	</c:url>
+	
+	<h3>단순출력 : ${uri_mList}</h3>
+	<h3>링크 연동1 : <a href="${uri_mList}">회원 리스트1</a></h3>
+	<h3>링크 연동2 : <a href='<c:url value="/member/list.jsp" />'>회원 리스트2</a></h3>
+
+
+<hr>
+
 	<c:set value="test" var="msg" />
 	msg : ${msg} <br>
 	
