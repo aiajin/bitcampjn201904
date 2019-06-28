@@ -12,12 +12,39 @@
 </style>
 </head>
 <body>
+	
 	<h3>
+		<fmt:timeZone value="Hongkong" >
+		<c:set var="now" value="<%= new java.util.Date() %>"/>
+		
+		<fmt:formatDate value="${now}" type="date" dateStyle="full"/>
+		 / 
+		<fmt:formatDate value="${now}" type="date" dateStyle="short"/> <br>
+	
+		<fmt:formatDate value="${now}" type="time" timeStyle="full"/>
+		 / 
+		<fmt:formatDate value="${now}" type="time" timeStyle="short"/> <br>
+		
+		<fmt:formatDate value="${now}" type="both" /> <br>
+		<fmt:formatDate value="${now}" type="both" dateStyle="short"  timeStyle="short" /> <br>
+		<fmt:formatDate value="${now}" type="both" dateStyle="full"  timeStyle="full" /> <br>
+		
+		<fmt:formatDate value="${now}" pattern="yyyy.MM.dd. H:mm:ss" /> <br>
+		<fmt:formatDate value="${now}" pattern="yyyy-MM-dd H:mm" /> <br>
+		
+	
+	
+	</fmt:timeZone>
 	
 	
 	
-	
-	
+	</h3>
+
+
+
+	<hr>
+
+	<h3>
 		<c:set var="price" value="100000"  />
 		<c:set var="pi" value="0.141592"  />
 		
@@ -32,7 +59,9 @@
 		         
 	
 	
-	
+	<c:forEach var="id" items="<%= java.util.TimeZone.getAvailableIDs() %>">
+	${id}<br/>
+	</c:forEach>
 	
 	
 	
