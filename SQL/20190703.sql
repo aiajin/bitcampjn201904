@@ -87,6 +87,91 @@ select  count(DISTINCT deptno)
 from emp
 ;
 
+----------------------------------------------------
+-- 함수
+----------------------------------------------------
+
+-- TO_CHAR
+-- DATE -> STR
+select sysdate as 날짜, TO_CHAR(sysdate, 'YYYY.MM.DD. HH24:MI:SS') as 변환날짜
+from dual
+;
+
+select hiredate, TO_CHAR(hiredate,'YYYY.MM.DD') as "date"
+from emp
+;
+
+-- NUMBER -> STR : TO_CHAR(숫자타입, '패턴')
+select TO_CHAR(10000,'L999,999')
+from dual
+;
+select sal, TO_CHAR(sal, 'L999,999') as "월 급여", 
+
+    TO_CHAR(sal*12+nvl(comm,0),'L999,999') as "연봉"
+
+from emp
+;
+
+-- TO_DATE(원본, 'YYYYMMDD') -> DATE
+select ename, hiredate, TO_DATE('19810220', 'YYYYMMDD')
+from emp
+where hiredate = TO_DATE('1981-02-20', 'YYYY-MM-DD')
+;
+
+select sysdate, TO_DATE('2012/05/17', 'YYYY/MM/DD'), 
+
+    trunc(sysdate-TO_DATE('2012/05/17', 'YYYY/MM/DD'))
+    
+from dual
+;
+
+
+-- DECODE 함수 : switch case 형식 과 유사
+select ename, deptno, 
+        DECODE(deptno,
+                    10, 'ACCOUNTING',
+                    20, 'RESEARCH',
+                    30, 'SALES',
+                    40, 'OPERATION'
+                    ) AS DNAME
+from emp
+;
+
+select ename, job, sal,
+        DECODE(job,
+                'ANALYST', sal*1.05,
+                'SALESMAN', sal*1.1,
+                'MANAGER', sal*1.15,
+                'CLERK', sal*1.2
+        ) as upSal
+from emp
+;
+
+select DISTINCT job from emp;
+
+
+select ename, deptno,
+
+        case 
+            when deptno=10 then 'ACCOUNTING'
+            when deptno=20 then 'RESEARCH'
+            when deptno=30 then 'SALSE'
+            when deptno=40 then 'OPERATIOINS'
+            else 'no Name'
+        end as DNAME
+
+
+from emp
+;
+
+
+
+
+
+
+
+
+
 
 
 
