@@ -166,5 +166,20 @@ where o.custid = c.custid and o.bookid = b.bookid
 ;
 
 
+select *
+from salgrade
+;
+
+select ename, sal, s.grade
+from emp e, salgrade s
+where sal between s.losal and s.hisal
+ and ename='SCOTT'
+;
+
+
+
+
+
+
 
 
