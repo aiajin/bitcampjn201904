@@ -117,22 +117,34 @@ from emp
 group by job
 ;
 
+------------------------------------------------------------
 
 
 
 
+------------------------------------------------------------
+-- JOIN : 2개 이상의 테이블  옆으로 붙인다. -> 표현하는 컬럼이 늘어난다.
+------------------------------------------------------------
 
+-- 테이블을 붙인다. CROSS JOIN 
+select *
+from emp, dept
+where emp.deptno = dept.deptno
+;
 
+-- 이름이 'SCOTT'인  사원의 이름과 부서이름을 출력하자.
 
+select ename, dname, emp.deptno, dept.deptno
+from emp, dept
+where emp.deptno = dept.deptno and ename='SCOTT'
+;
 
-
-
-
-
-
-
-
-
+-- 주문테이블에서 회원의 이름과 주문 정보를 출력해보자. 박지성 고객
+-- orders, customer
+select orders.orderid, customer.name
+from orders, customer
+where orders.custid = customer.custid and customer.name='박지성'
+;
 
 
 
