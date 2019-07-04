@@ -44,6 +44,97 @@ select MAX(sal) as "최대 급여", MIN(sal) as "최소 급여"
 from emp
 ;
 
+--count(컬럼) : row 의 개수를 반환
+
+-- 회사에 소속된 사원의 수
+select count(*) as "전체 사원의 수"
+from emp
+;
+-- 10부서의 소속된 직원 수
+select count(*)
+from emp
+where deptno=10
+;
+
+-- 커미션을 받는 직원 수
+select count(comm)
+from emp
+;
+
+-- 부서의 수를 구하자.
+select count(*)
+from dept
+;
+
+-- 사원들이 소속된 부서의 수
+select deptno
+from emp
+;
+select distinct deptno
+from emp
+;
+
+SELECT count(distinct deptno)
+from emp
+;
+
+select job
+from emp
+;
+
+select *
+from emp
+order by deptno
+;
+
+
+-- group by 컬럼이름 : row를 그룹핑 해서 처리, 집합함수(sum, avg, count..)
+-- 컬럼이름 -> 그룹핑의 기준
+select deptno, sum(sal), round(avg(sal)), count(*), count(comm), max(sal), min(sal)
+from emp
+group by deptno
+;
+
+-- 부서의 평균 급여가 2000 이상인 부서만 출력
+select deptno, sum(sal), round(avg(sal)), count(*), count(comm), max(sal), min(sal)
+from emp
+group by deptno
+having avg(sal) >= 2000
+;
+
+-- 부서의 최대 급여 2900 이상인 부서를 출력
+select deptno, sum(sal), round(avg(sal)), count(*), count(comm), max(sal), min(sal)
+from emp
+group by deptno
+having max(sal) >= 2900
+;
+
+
+-- 직무별 지표를 출력 해보자.
+select job, count(*) as "직원의 수", TO_CHAR(sum(sal), '999,999') as "급여의 총합"
+            , round(avg(sal)) as "급여의 평균", Max(sal), min(sal)
+from emp
+group by job
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
