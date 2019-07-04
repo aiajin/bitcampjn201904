@@ -132,6 +132,11 @@ from emp, dept
 where emp.deptno = dept.deptno
 ;
 
+select *
+from emp e, dept d
+where e.deptno = d.deptno
+;
+
 -- 이름이 'SCOTT'인  사원의 이름과 부서이름을 출력하자.
 
 select ename, dname, emp.deptno, dept.deptno
@@ -141,12 +146,24 @@ where emp.deptno = dept.deptno and ename='SCOTT'
 
 -- 주문테이블에서 회원의 이름과 주문 정보를 출력해보자. 박지성 고객
 -- orders, customer
-select orders.orderid, customer.name
-from orders, customer
-where orders.custid = customer.custid and customer.name='박지성'
+select o.orderid, c.name
+from orders o, customer c
+where o.custid = c.custid and c.name='박지성'
+;
+
+-- customer , book, orders
+select *
+from orders o, customer c, book b
+where o.custid=c.custid and o.bookid=b.bookid
 ;
 
 
+-- 박지성 고객이 주문한 책의 이름을 출력.
+select b.bookname, b.publisher
+from orders o, customer c, book b
+where o.custid = c.custid and o.bookid = b.bookid
+    and c.name='박지성'
+;
 
 
 
