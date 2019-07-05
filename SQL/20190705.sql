@@ -232,11 +232,14 @@ create table emp07 (
 drop table memberinfo;
 
 create table memberinfo (
-    u_id varchar2(12),
-    u_pw varchar2(16),
-    u_name varchar2(20),
-    u_photo varchar2(30),
-    regdate date
+    idx number(7),
+    mId varchar2(12) constraint memberinfo_mId_nn not null,
+    mPw varchar2(16) constraint memberinfo_mPw_nn not null,
+    mName  varchar2(20) constraint memberinfo_mName_nn not null,
+    mPhoto  varchar2(30),
+    regDate date default sysdate,
+    constraint memberinfo_idx_pk PRIMARY KEY (idx),
+    constraint memberinfo_mId_uk UNIQUE (mId)
 );
 
 
