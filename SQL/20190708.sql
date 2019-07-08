@@ -262,6 +262,68 @@ set (dname, loc) = (
 where deptno=10
 ;
 
+-- 데이터 삭제 : DELETE FROM 테이블 이름 WHERE 조건
+-- 조건에 해당하는 행을 삭제
+
+SELECT * FROM DEPT01;
+-- 전체 행을 삭제
+DELETE FROM DEPT01;
+
+DROP TABLE DEPT01;
+CREATE TABLE DEPT01
+AS
+SELECT * FROM DEPT
+;
+
+-- 특정행을 삭제 한다. WHERE 절에서 특정행을 찾는 조건을 기술
+DELETE FROM DEPT01
+WHERE DEPTNO=30
+;
+
+
+
+-------------------------------------------------------
+-------------------------------------------------------
+DESC MEMBERINFO;
+-- IDX     NOT NULL NUMBER(7)    
+-- MID     NOT NULL VARCHAR2(12) 
+-- MPW     NOT NULL VARCHAR2(16) 
+-- MNAME   NOT NULL VARCHAR2(20) 
+-- MPHOTO           VARCHAR2(30) 
+-- REGDATE          DATE
+
+-- 회원가입 INSERT
+-- 1. 
+INSERT INTO MEMBERINFO (IDX, MID, MPW, MNAME, MPHOTO)
+VALUES (1, 'COOL', '1111', 'COOLname', 'COOLPHOTO.JPG');
+-- 2.
+INSERT INTO MEMBERINFO (IDX, MID, MPW, MNAME, MPHOTO)
+VALUES (2, 'HOT', '3333', 'HOTname', NULL);
+-- 3.
+INSERT INTO MEMBERINFO (IDX, MID, MPW, MNAME)
+VALUES (3, 'COOLINHOT', '3333', 'CinHname');
+
+-- 회원 데이터 수정 : PK를 조건으로 수정한다.
+-- 회원 이름만 수정
+UPDATE MEMBERINFO
+SET mname='쿨'
+WHERE IDX=1;
+-- 비밀번호만 수정
+UPDATE MEMBERINFO
+SET mpw='9999'
+WHERE IDX=2;
+-- 이름과 비밀번호 한번에 수정 
+UPDATE MEMBERINFO
+SET mname='쿨린', mpw='0000'
+WHERE IDX=3
+;
+
+-- 데이터 삭제 : PK 기준으로 삭제
+DELETE FROM MEMBERINFO WHERE IDX=3;
+
+
+
+
 
 
 
