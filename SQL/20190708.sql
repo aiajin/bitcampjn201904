@@ -195,6 +195,74 @@ as
 select * from emp
 ;
 
+-- where 절을 이용한 특정행의 데이터 변경
+-- 부서번호가 10번인 사원의 부서번호를 30번으로 수정
+update emp01
+set deptno=30
+where deptno=10
+;
+
+-- 급여가 3000이상인 사원만 급여를 10% 인상
+update emp01
+set sal = sal*1.1
+where sal >= 3000
+;
+
+
+-- 1987년에 입사한 사원의 입사일이 오늘로 수정합시다. 
+-- 사원의 입사일을 오늘로 수정한 후에 테이블 내용을 살펴봅시다.
+
+update emp01
+set hiredate = sysdate
+where substr(hiredate, 1,2)='87'
+;
+
+-- SCOTT 사원의 
+-- 부서번호는 20번으로, 직급은 MANAGER로 한꺼번에 수정하도록 합시다.
+
+update emp01
+set deptno=10, job='MANAGER'
+where ename='SCOTT'
+;
+
+select * from emp01;
+
+-- SCOTT 사원의 
+-- 입사일자는 오늘로, 급여를 50 으로 커미션을 4000 으로 수정합시다.
+
+update emp01
+set hiredate=sysdate, sal=50, comm=4000
+where ename='SCOTT'
+;
+
+select * from dept01;
+
+drop table dept01;
+create table dept01
+as
+select * from dept01
+;
+
+-- 20번 부서의 
+-- 지역명을 40번 부서의 지역명으로 변경하기 위해서 서브 쿼리문을 사용해 봅시다.
+
+update dept01
+set loc=(
+            select loc
+            from dept01
+            where deptno=40
+)
+where deptno=20
+;
+
+update dept01
+set (dname, loc) = (
+                        select dname, loc from dept where deptno=40
+)
+where deptno=10
+;
+
+
 
 
 
