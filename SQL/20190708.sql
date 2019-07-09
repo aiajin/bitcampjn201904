@@ -403,3 +403,16 @@ DESC DEPT01;
 SELECT * FROM DEPT01;
 INSERT INTO DEPT01 VALUES (TEST_SEQ.NEXTVAL, 'DESIGN', 'SEOUL');
 DELETE FROM DEPT01;
+
+
+
+
+select * from dept order by deptno;
+
+insert into dept values (60, 'Design', 'SEOUL');
+
+delete from dept where deptno=60;
+
+commit;
+
+
