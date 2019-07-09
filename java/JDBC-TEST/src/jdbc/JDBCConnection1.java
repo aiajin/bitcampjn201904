@@ -2,7 +2,9 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class JDBCConnection1 {
 
@@ -13,7 +15,7 @@ public class JDBCConnection1 {
 		
 		Connection conn=null;
 		// JDBC_URL : mysql
-		String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC&charaterEncoding=utf-8";
 		// USER 
 		String user = "bit";
 		// Password
@@ -30,7 +32,13 @@ public class JDBCConnection1 {
 			
 			System.out.println("데이터베이스 연결 성공.");
 			
-			//   데이터베이스 작업 
+			//   데이터베이스 작업
+			Statement stmt = conn.createStatement();
+			String sql = "select * from emp join dept on emp.deptno=dept.depno ";
+			
+			//ResultSet rs = stmt.executeUpdate(sql);
+			
+			
 			
 			// 3. 데이터베이스의 연결 종료 : 데이터베이스 작업 종료 후
 			conn.close();

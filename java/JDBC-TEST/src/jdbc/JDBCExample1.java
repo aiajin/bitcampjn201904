@@ -40,7 +40,7 @@ public class JDBCExample1 {
 			
 			Statement stmt = conn.createStatement();
 			
-			String sql1="select * from dept order by dname";
+			String sql1="select * from dept where dname=? order by dname";
 			
 			ResultSet rs = stmt.executeQuery(sql1);
 			
