@@ -37,6 +37,7 @@
 <body>
 
 	 <h1>EMP LIST</h1>
+	 <h3><a href="insertForm.jsp">사원입력</a></h3>
 	 <hr>
 	 <table>
 	 	<tr>
