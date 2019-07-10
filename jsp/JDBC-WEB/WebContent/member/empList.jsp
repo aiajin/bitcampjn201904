@@ -20,8 +20,11 @@
 	//Class.forName("oracle.jdbc.driver.OracleDriver");
 		
 	// 2. DB 연결 : 컨넥션
-	conn = DriverManager.getConnection(jdbcUrl, user, pw);
 	
+	String jdbcDriver = "jdbc:apache:commons:dbcp:pool";
+	
+	//conn = DriverManager.getConnection(jdbcUrl, user, pw);
+	conn = DriverManager.getConnection(jdbcDriver);
 
 %>
 <!DOCTYPE html>
