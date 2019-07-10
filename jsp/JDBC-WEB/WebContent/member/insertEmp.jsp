@@ -26,6 +26,7 @@
 		// 사용자 정보 업데이트를 위한 SQL 작성
 		String sql = "insert into emp (empno, ename, job) values (?,?,?)";
 		pstmt = conn.prepareStatement(sql);
+		
 		pstmt.setInt(1, member.getEmpno());
 		pstmt.setString(2, member.getEname());
 		pstmt.setString(3, member.getJob());

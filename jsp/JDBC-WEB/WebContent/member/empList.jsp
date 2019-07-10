@@ -17,7 +17,7 @@
 
 	try{
 	// 1. 드라이버 로드	
-	Class.forName("oracle.jdbc.driver.OracleDriver");
+	//Class.forName("oracle.jdbc.driver.OracleDriver");
 		
 	// 2. DB 연결 : 컨넥션
 	conn = DriverManager.getConnection(jdbcUrl, user, pw);
@@ -86,8 +86,6 @@
 </html>
 
 <%
-	} catch (ClassNotFoundException ce){
-		ce.printStackTrace();
 	} catch (SQLException se) {
 		se.printStackTrace();		
 	} finally {
