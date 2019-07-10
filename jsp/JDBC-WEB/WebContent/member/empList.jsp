@@ -68,7 +68,7 @@
 	 	%>
 	 	<tr>
 	 		<td><%= rs.getInt(1) %></td>
-	 		<td><%= rs.getString("ename") %></td>
+	 		<td><a href="viewEmp.jsp?empno=<%= rs.getInt("empno")%>"><%= rs.getString("ename") %></a></td>
 	 		<td><%= rs.getString("job") %></td>
 	 	</tr>
 	 	
