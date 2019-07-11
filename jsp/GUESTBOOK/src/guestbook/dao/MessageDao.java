@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import guestbook.model.Message;
 
@@ -88,6 +91,77 @@ public class MessageDao {
 		
 		return message;
 		
+	}
+
+	
+	
+	
+	public int selectCount(Connection conn) {
+		
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		int totalCnt = 0;
+		
+		String sql = "select count(*) from guestbook_message" ;
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			if( rs.next() ) {
+				totalCnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return totalCnt;
+	}
+
+	public List<Message> selectList(Connection conn, int firstRow, int endRow) {
+		
+		List<Message> list = new ArrayList<Message>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null ;
+		
+		String sql = "select message_id, guest_name, password, message from ( "
+		+ " select rownum rnum, message_id, guest_name, password, message from ( "
+		+ " select * from guestbook_message m order by m.message_id desc "
+		+ " ) where rownum <= ? " 
+		+ " ) where rnum >= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, firstRow);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Message msg = new Message();
+				msg.setId(rs.getInt(1));
+				msg.setGuestName(rs.getString(2));
+				msg.setPassword(rs.getString(3));
+				msg.setMessage(rs.getString(4));
+				
+				list.add(msg);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return list;
 	}
 	
 	
