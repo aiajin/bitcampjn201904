@@ -40,4 +40,15 @@ public class Message {
 		return hasPassword() && password.equals(pw);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

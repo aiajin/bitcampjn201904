@@ -25,7 +25,7 @@ public class MessageDao {
 		PreparedStatement pstmt = null;
 		
 		String sql = "INSERT INTO GUESTBOOK_MESSAGE "
-				+ " (MESSGE_ID, GUEST_NAME, PASSWORD, MESSAGE) "
+				+ " (MESSAGE_ID, GUEST_NAME, PASSWORD, MESSAGE) "
 				+ " values (GM_MID_SEQ.nextval,?,?,?)";
 		
 		try {
@@ -162,6 +162,14 @@ public class MessageDao {
 		
 		
 		return list;
+	}
+
+	
+	
+	
+	public void deleteMessage(Connection conn, int messageId) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
