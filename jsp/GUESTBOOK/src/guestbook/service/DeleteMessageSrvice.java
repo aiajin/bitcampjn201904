@@ -18,7 +18,7 @@ public class DeleteMessageSrvice {
 		return service;
 	}
 	
-	public int deleteMessage(int messageId, String password) {
+	public int deleteMessage(int messageId, String password) throws SQLException, MessageNotFoundException, InvalidMessagePasswordException {
 		
 		int resultCnt = 0;
 		
@@ -39,6 +39,7 @@ public class DeleteMessageSrvice {
 			// 2. 게시물이 존재 하지 않으면 예외 처리
 			if(message == null) {
 				throw new MessageNotFoundException("메시지가 존재하지 않습니다. : " + messageId);
+			
 			}			
 			
 			// 3. 게시물이 존재 하면 비밀번호 확인 -> 사용자가 입력한 비밀번호와 비교
@@ -53,31 +54,29 @@ public class DeleteMessageSrvice {
 				
 			// 5. 비밀번호가 일치하면 정상 처리(삭제) ->  commit
 			
-			dao.deleteMessage(conn, messageId);
-			
-			
-			
+			resultCnt = dao.deleteMessage(conn, messageId);
 			
 			// 정상 처리
 			conn.commit();
+			
 		} catch (SQLException e) {
 			// 트렌젝션의 롤백
 			JdbcUtil.rollback(conn);
 			e.printStackTrace();
+			throw e; 
+			
 		} catch (MessageNotFoundException e) {
 			// 트렌젝션의 롤백
 			JdbcUtil.rollback(conn);
 			e.printStackTrace();
+			throw e;
+			
 		} catch (InvalidMessagePasswordException e) {
 			// 트렌젝션의 롤백
 			JdbcUtil.rollback(conn);
 			e.printStackTrace();
+			throw e;
 		}
-		
-		
-		
-		
-		
 		
 		return resultCnt;
 		
