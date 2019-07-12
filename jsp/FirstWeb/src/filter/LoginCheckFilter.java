@@ -26,6 +26,8 @@ public class LoginCheckFilter implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		
+		System.out.println("loginchk : dofilter");
+		
 		HttpServletRequest req = (HttpServletRequest)request;
 		
 		HttpServletResponse resp = (HttpServletResponse)response;
@@ -39,8 +41,9 @@ public class LoginCheckFilter implements Filter {
 		}
 		
 		if(loginChk) {
-			// pass the request along the filter chain
+			
 			chain.doFilter(request, response);
+			
 		} else {
 			resp.sendRedirect(req.getContextPath()+"/session/member/loginForm.jsp");
 			/*

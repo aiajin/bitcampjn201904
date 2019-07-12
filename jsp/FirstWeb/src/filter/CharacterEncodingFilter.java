@@ -25,7 +25,7 @@ public class CharacterEncodingFilter implements Filter {
 
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		System.out.println("죽다!!");
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -34,6 +34,8 @@ public class CharacterEncodingFilter implements Filter {
 		
 		request.setCharacterEncoding(encoding);
 
+		
+		System.out.println("doFilter");
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}
@@ -43,6 +45,7 @@ public class CharacterEncodingFilter implements Filter {
 		if(encoding == null) {
 			encoding = "UTF-8";
 		}
+		System.out.println("init()");
 	}
 
 	
