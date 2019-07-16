@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax Basic</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function () {
+        	
+        	
+        	$('#btn').click(function(){
+        		
+
+                $.ajax({
+                    url: 'idcheck.jsp',
+                    type: 'GET',
+                    data: {
+                        name: $('#txt').val(),
+                        price: '1000'
+                    },
+                    success: function (data) {
+                    	alert(data);
+                    	if(data =='Y'){
+                    		alert("멋진 아이디 입니다.!!");
+                    	}
+                        //$('body').append(data);
+                    }
+                }); 
+        		
+        	});
+        	
+        	
+        	
+        	
+        });
+    </script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<input type="text" id="txt" value="milk"><br>
+
+
+</body>
+</html>
