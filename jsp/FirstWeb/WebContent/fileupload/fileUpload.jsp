@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
 <%@page import="java.util.List"%>
@@ -10,7 +11,10 @@
 	String name = "";
 	String sNum = ""; 
 	String fileName = "";
+	String saveFileName = "";
 	long fileSize = 0;
+	String uploadPath = "/upload";
+	String dir = request.getSession().getServletContext().getRealPath(uploadPath);
 
 	boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
@@ -45,6 +49,9 @@
 				// 파일 이름
 				fileName = item.getName();
 				fileSize = item.getSize();
+				//saveFileName = System.currentTimeMillis()+"_"+fileName;
+				saveFileName = System.nanoTime()+"_"+fileName;
+				item.write(new File(dir, saveFileName));
 			}
 		}
 		
@@ -73,7 +80,9 @@
 <h1>
 	이름 : <%= name %> <br>
 	학번 : <%= sNum %> <br>
-	리포트 파일 : <%= fileName %> ( <%= fileSize %> )
+	리포트 파일 : <%= fileName %> ( <%= fileSize %> ) <br>
+	저장 파일 이름 : <%= saveFileName %> <br>
+	저장 폴더 : <%= dir %>
 
 </h1>
 
