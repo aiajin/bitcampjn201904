@@ -150,7 +150,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="GUESTBOOK" path="/gb" reloadable="true" source="org.eclipse.jst.jee.server:GUESTBOOK"/><Context docBase="FirstWeb" path="/web" reloadable="true" source="org.eclipse.jst.jee.server:FirstWeb"/><Context docBase="ajax" path="/ajax" reloadable="true" source="org.eclipse.jst.jee.server:ajax"/></Host>
+      <Context docBase="MVCtest" path="/MVCtest" reloadable="true" source="org.eclipse.jst.jee.server:MVCtest"/></Host>
     
     
     

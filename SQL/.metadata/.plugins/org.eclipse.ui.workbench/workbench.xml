@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="8" version="2.0">
+<workbench progressCount="13" version="2.0">
 <workbenchAdvisor/>
-<window height="564" width="1024" x="-1019" y="0">
+<window height="564" maximized="true" width="1024" x="340" y="159">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -27,6 +27,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
@@ -34,8 +35,11 @@
 <editor id="com.tomato.exerd.editor.DiagramEditor" name="bookstore.exerd" partName="bookstore.exerd" path="C:/Users/1027/Documents/GitHub/bitcampjn201904/SQL/test/bookstore.exerd" title="bookstore.exerd" tooltip="test/bookstore.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/test/bookstore.exerd"/>
 </editor>
-<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="movie.exerd" partName="movie.exerd" path="C:/Users/1027/Documents/GitHub/bitcampjn201904/SQL/eXERD-Samples/movie.exerd" title="movie.exerd" tooltip="eXERD-Samples/movie.exerd" workbook="DefaultEditorWorkbook">
+<editor id="com.tomato.exerd.editor.DiagramEditor" name="movie.exerd" partName="movie.exerd" path="C:/Users/1027/Documents/GitHub/bitcampjn201904/SQL/eXERD-Samples/movie.exerd" title="movie.exerd" tooltip="eXERD-Samples/movie.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/eXERD-Samples/movie.exerd"/>
+</editor>
+<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="boolae0.3.exerd" partName="boolae0.3.exerd" title="boolae0.3.exerd" tooltip="C:\Users\1027\Downloads\boolae0.3.exerd" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/Users/1027/Downloads/boolae0.3.exerd"/>
 </editor>
 </editors>
 <views>
@@ -132,13 +136,13 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.10927835" ratioLeft="106" ratioRight="864" relationship="2" relative="leftFolder"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@132cd16" ratio="0.8697789" ratioLeft="708" ratioRight="106" relationship="2" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="com.tomato.exerd.ui.views.thumbnail" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="rightFolder" ratio="0.24884081" ratioLeft="161" ratioRight="486" relationship="4" relative="org.eclipse.ui.internal.ViewStack@132cd16">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="com.tomato.exerd.modelview3.ModelView3" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
@@ -177,6 +181,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/eXERD-Samples/test1.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/test/bookstore.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/eXERD-Samples/movie.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/1027/Downloads/boolae0.3.exerd"/>
 </editors>
 <item historyLabel="study.exerd" index="0"/>
 <item historyLabel="erd01.exerd" index="1"/>
@@ -185,7 +190,8 @@
 <item historyLabel="bookstore.exerd" index="3"/>
 <item historyLabel="erd01.exerd" index="1"/>
 <item historyLabel="bookstore.exerd" index="3"/>
-<item active="true" historyLabel="movie.exerd" index="4"/>
+<item historyLabel="movie.exerd" index="4"/>
+<item active="true" historyLabel="boolae0.3.exerd" index="5"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -207,6 +213,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="boolae0.3.exerd" tooltip="C:\Users\1027\Downloads\boolae0.3.exerd">
+<persistable uri="file:/C:/Users/1027/Downloads/boolae0.3.exerd"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="movie.exerd" tooltip="eXERD-Samples/movie.exerd">
 <persistable path="/eXERD-Samples/movie.exerd"/>
 </file>
