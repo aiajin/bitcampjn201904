@@ -1,0 +1,3 @@
+/=service.GreetingService
+/geeting=service.GreetingService
+/now/date=service.DateService

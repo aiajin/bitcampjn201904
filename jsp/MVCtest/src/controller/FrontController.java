@@ -1,11 +1,16 @@
-package conteroller;
+package controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,18 +22,61 @@ import service.GreetingService;
 import service.OtherService;
 import service.Service;
 
-@WebServlet("/")
 public class FrontController extends HttpServlet {
 	
 	Map<String, Service> commands = new HashMap<String, Service>();
 	
+		
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		String configFile = config.getInitParameter("config");
+		Properties prop = new Properties();
+		FileInputStream fis = null;
+		
+		String configFilePath = config.getServletContext().getRealPath(configFile);
+		try {
+			fis = new FileInputStream(configFilePath);
+			prop.load(fis);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServletException(e);
+		} finally {
+			if(fis!=null) {
+				try {
+					fis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		Iterator keyItr = prop.keySet().iterator();		
+		while(keyItr.hasNext()) {
+			String command = (String) keyItr.next();
+			String serviceClassName = prop.getProperty(command);
+			
+			try {
+				Class serviceClass = Class.forName(serviceClassName);
+				Service serviceInstance = (Service) serviceClass.newInstance();
+				commands.put(command, serviceInstance);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+
 	public FrontController() {
 		// /, /greeting, /now/date 
-		commands.put("/", new GreetingService());
-		commands.put("/greeting", new GreetingService());
-		commands.put("/now/date", new DateService());
-		commands.put("/board/list", new DateService());
-		commands.put("/board/write", new DateService());
+		/*
+		 * commands.put("/", new GreetingService()); commands.put("/greeting", new
+		 * GreetingService()); commands.put("/now/date", new DateService());
+		 * commands.put("/board/list", new DateService()); commands.put("/board/write",
+		 * new DateService());
+		 */
 	}
 	
 	
