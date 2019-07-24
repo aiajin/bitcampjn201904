@@ -1,6 +1,11 @@
 package guestbook.controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Properties;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -21,7 +26,32 @@ public class FrontController extends HttpServlet {
        
  
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		String configfile = config.getInitParameter("config");
+		Properties prop = new Properties();
+		FileInputStream fis = null;
+		String configFilePath = config.getServletContext().getRealPath(configfile);
+		
+		try {
+			fis = new FileInputStream(configFilePath);
+			prop.load(fis);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Iterator itr=  prop.keySet().iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+			
+		}
+				
+		
+		
+		
 	}
 
 	
