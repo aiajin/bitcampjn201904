@@ -1,0 +1,5 @@
+/guestWriteForm=WriteFormService
+/guestWrite=WriteMessageService
+/guestList=GetMessageListService
+/guestDelForm=DeleteFormService
+/guestDel=DeleteMessageService
