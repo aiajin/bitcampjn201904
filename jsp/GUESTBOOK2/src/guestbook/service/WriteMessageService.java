@@ -3,19 +3,22 @@ package guestbook.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import guestbook.dao.MessageDao;
 import guestbook.model.Message;
 import jdbc.ConnectionProvider;
 
-public class WriteMessageService {
+public class WriteMessageService implements GuestBookService {
 	
-	private static WriteMessageService service = new WriteMessageService();
+	//private static WriteMessageService service = new WriteMessageService();
 	
-	public static WriteMessageService getInstance() {
-		return service;
-	}
+	/*
+	 * public static WriteMessageService getInstance() { return service; }
+	 */
 	
-	private WriteMessageService() {}
+	//private WriteMessageService() {}
 	
 	
 	public int write(Message message) {
@@ -44,6 +47,12 @@ public class WriteMessageService {
 		
 		return rCnt;	
 		
+	}
+
+	@Override
+	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

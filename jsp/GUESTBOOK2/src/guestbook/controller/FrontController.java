@@ -3,7 +3,9 @@ package guestbook.controller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.ServletConfig;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import guestbook.service.GuestBookService;
+
 
 @WebServlet(
 		urlPatterns = { "/" }, 
@@ -22,7 +26,9 @@ import javax.servlet.http.HttpServletResponse;
 						value = "/WEB-INF/commandService.propertise")
 		})
 public class FrontController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
+	private Map<String , GuestBookService> commands = 
+			new HashMap<String, GuestBookService>();
        
  
 	public void init(ServletConfig config) throws ServletException {
@@ -45,7 +51,32 @@ public class FrontController extends HttpServlet {
 		Iterator itr=  prop.keySet().iterator();
 		
 		while(itr.hasNext()) {
-			System.out.println(itr.next());
+			
+			String command = (String) itr.next();   // 사용자 요청 URI
+			String serviceClassName = prop.getProperty(command);  // 서비스 클래스 이름
+			
+			// commands Map 에 저장 <String, GuestBookService>
+			
+			// prop 에 있는 클래스 이름으로 인스턴스 생성
+			
+			try {
+				Class serviceClass = Class.forName(serviceClassName);
+				// 객체 생성
+				GuestBookService service = (GuestBookService) serviceClass.newInstance();
+				
+				// commands Map 에 저장 <String, GuestBookService>
+				commands.put(command, service);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 				
