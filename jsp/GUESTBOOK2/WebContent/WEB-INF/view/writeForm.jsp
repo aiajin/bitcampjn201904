@@ -14,7 +14,7 @@
 
 	<h3>방명록 글쓰기</h3>
 	<hr>
-	<form action="writeMessage.jsp" method="post">
+	<form action="guestWrite" method="post">
 		<table>
 			<tr>
 				<td>이름</td>

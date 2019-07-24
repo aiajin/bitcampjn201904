@@ -15,10 +15,10 @@
 
 	<h1> ${resultCnt} </h1>
 	<h1>
-		<c:if test="${resultCnt==1}">
+		<c:if test="${resultCnt == 1}">
 			정상적으로 입력되었습니다.			
 		</c:if>
-		<c:if test="${!resultCnt==1}">
+		<c:if test="${!resultCnt == 1}">
 			입력 실패 !!			
 		</c:if>
 	</h1>

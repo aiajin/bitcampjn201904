@@ -6,6 +6,25 @@ public class Message {
 	private String guestName;
 	private String password;
 	private String message;
+	
+	
+	public Message() {}
+	
+	
+	
+	
+	
+	public Message(int id, String guestName, String password, String message) {		
+		this.id = id;
+		this.guestName = guestName;
+		this.password = password;
+		this.message = message;
+	}
+
+
+
+
+
 	public int getId() {
 		return id;
 	}

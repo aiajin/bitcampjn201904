@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -67,6 +68,7 @@ public class FrontController extends HttpServlet {
 				// commands Map 에 저장 <String, GuestBookService>
 				commands.put(command, service);
 				
+				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -95,10 +97,36 @@ public class FrontController extends HttpServlet {
 	}
 
 
-	private void process(HttpServletRequest request, HttpServletResponse response) {
+	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 사용자 요청 분석
+		
+		String commandUri = request.getRequestURI(); // /guest/guestWriteForm
+		
+		if(commandUri.indexOf(request.getContextPath()) == 0) {
+			commandUri = commandUri.substring(request.getContextPath().length());
+		}
+		
+		System.out.println(commandUri);
+		
 		// 2. 사용자 요청에 맞는 모델 실행 ( 서비스.메서드 실행 ) -> view 페이지 반환
+		
+		String viewPage = "/WEB-INF/view/null.jsp";
+		
+		GuestBookService service = commands.get(commandUri); // null 값을 반환하기도 한다.
+		if(service != null) {
+			viewPage = service.getViewName(request, response);
+		}
+		
+		
 		// 3. view 로 포워딩
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
+		
+		
+		
+		
+		
 	}
 
 	
