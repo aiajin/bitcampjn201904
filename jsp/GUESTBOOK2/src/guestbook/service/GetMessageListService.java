@@ -6,22 +6,24 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import guestbook.dao.MessageDao;
 import guestbook.model.Message;
 import guestbook.model.MessageListView;
 import jdbc.ConnectionProvider;
 
-public class GetMessageListService {
+public class GetMessageListService implements GuestBookService {
 	
 	// MessageListView 를 생성해서 결과로 반환
 	
-	private GetMessageListService() {}
+	//private GetMessageListService() {}
 	
-	private static GetMessageListService service = new GetMessageListService();
-	
-	public static GetMessageListService getInstance() {
-		return service;
-	}
+	//private static GetMessageListService service = new GetMessageListService();
+	/*
+	 * public static GetMessageListService getInstance() { return service; }
+	 */
 	
 	// 1. 한페이지에 보여줄 게시글의 개수
 	private static final int MESSAGE_COUNT_PER_PAGE = 3;
@@ -78,6 +80,28 @@ public class GetMessageListService {
 		
 		return view;
 		
+	}
+
+
+	@Override
+	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
+		
+		String viewName = "/WEB-INF/view/list_view.jsp";
+		
+		// 사용자의 요청 받기
+		int pageNumber = 1;
+		String pageNo = request.getParameter("page");
+		if(pageNo != null) {
+			pageNumber = Integer.parseInt(pageNo);
+		}
+		
+		MessageListView viewData = getMessageListView(pageNumber);
+		
+		request.setAttribute("viewData", viewData);
+		
+		
+		
+		return viewName;
 	}
 	
 	
