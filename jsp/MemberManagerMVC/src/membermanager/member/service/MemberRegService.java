@@ -1,5 +1,6 @@
 package membermanager.member.service;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -14,6 +15,13 @@ public class MemberRegService implements MemberService {
 	@Override
 	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
 		
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		String uId = request.getParameter("uId");
 		String uPW = request.getParameter("uPW");
