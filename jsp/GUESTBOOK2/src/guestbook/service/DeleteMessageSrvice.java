@@ -97,18 +97,44 @@ public class DeleteMessageSrvice implements GuestBookService {
 		int messageId = Integer.parseInt(request.getParameter("messageId"));
 		String password = request.getParameter("password");
 		
+		// 결과 : true/fale
+		// 처리개수 : resultCnt
+		// 메시지 : msg
+		
+		boolean chk = false;
+		int resultCnt = 0;
+		String msg = "";
+		
+		
+		// 핵심 처리 
 		try {
-			deleteMessage(messageId, password);
+			resultCnt = deleteMessage(messageId, password);
+			chk = true;			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			msg = e.getMessage();
+			
 		} catch (MessageNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			msg = e.getMessage();
+			
 		} catch (InvalidMessagePasswordException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			msg = e.getMessage();
 		}
+		
+		// 뷰 페이지와 결과 데이터를 공유(전달)
+		request.setAttribute("chk", chk);
+		request.setAttribute("resultCnt", resultCnt);
+		request.setAttribute("msg", msg);
+		
+		
 		
 		return viewpage;
 	}

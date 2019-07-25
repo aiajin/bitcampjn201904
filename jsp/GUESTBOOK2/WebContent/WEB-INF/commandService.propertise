@@ -3,4 +3,4 @@
 /guestList=guestbook.service.GetMessageListService
 /=guestbook.service.GetMessageListService
 /guestDelForm=guestbook.service.DeleteFormService
-/guestDel=guestbook.service.DeleteMessageService
+/guestDel=guestbook.service.DeleteMessageSrvice

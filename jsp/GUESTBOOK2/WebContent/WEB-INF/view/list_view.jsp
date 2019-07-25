@@ -24,6 +24,11 @@
 
 	</h4>
 	
+	<H1> 방명록 </H1>
+	
+	<DIV style="text-align: right;"> <a href="guestWriteForm">글쓰기</a></DIV>
+	
+	
 	<c:if test="${viewData.messageTotalCount>0}">
 	
 	<c:forEach items="${viewData.messageList}" var="message">
