@@ -31,7 +31,7 @@
 		메시지 번호 : ${message.id}<br> 
 		손님 이름 :${message.guestName}<br>
 		메시지 :${message.message}<br> 
-		<a href="confirmDeletion.jsp?messageId=${message.id}">삭제하기</a>
+		<a href="guestDelForm?messageId=${message.id}">삭제하기</a>
 		</div>
 	
 	

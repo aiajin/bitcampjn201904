@@ -3,20 +3,23 @@ package guestbook.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import guestbook.dao.MessageDao;
 import guestbook.model.Message;
 import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
 
-public class DeleteMessageSrvice {
+public class DeleteMessageSrvice implements GuestBookService {
 	
-	private DeleteMessageSrvice() {}
+	//private DeleteMessageSrvice() {}
 	
-	private static DeleteMessageSrvice service = new DeleteMessageSrvice();
+	//private static DeleteMessageSrvice service = new DeleteMessageSrvice();
 	
-	public static DeleteMessageSrvice getInstance() {
-		return service;
-	}
+	/*
+	 * public static DeleteMessageSrvice getInstance() { return service; }
+	 */
 	
 	public int deleteMessage(int messageId, String password) throws SQLException, MessageNotFoundException, InvalidMessagePasswordException {
 		
@@ -80,6 +83,34 @@ public class DeleteMessageSrvice {
 		
 		return resultCnt;
 		
+	}
+
+	
+	
+	
+	
+	@Override
+	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
+		
+		String viewpage = "/WEB-INF/view/delete.jsp";
+		
+		int messageId = Integer.parseInt(request.getParameter("messageId"));
+		String password = request.getParameter("password");
+		
+		try {
+			deleteMessage(messageId, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessageNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidMessagePasswordException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return viewpage;
 	}
 	
 	

@@ -56,6 +56,8 @@ public class FrontController extends HttpServlet {
 			String command = (String) itr.next();   // 사용자 요청 URI
 			String serviceClassName = prop.getProperty(command);  // 서비스 클래스 이름
 			
+			System.out.println(command);
+			
 			// commands Map 에 저장 <String, GuestBookService>
 			
 			// prop 에 있는 클래스 이름으로 인스턴스 생성
