@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <link href="/mm/css/default.css" rel="stylesheet" type="text/css">
-<style>
+<style>s
 
 </style>
 </head>

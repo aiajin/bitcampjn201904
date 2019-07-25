@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="member.Member"%>
+<%@page import="membermanager.member.model.Member"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

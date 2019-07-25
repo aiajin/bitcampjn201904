@@ -7,7 +7,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="member" class="member.Emp" />
+<jsp:useBean id="member" class="membermanager.member.model.Emp" />
 <jsp:setProperty property="*" name="member" />
 
 <%

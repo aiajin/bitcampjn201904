@@ -152,7 +152,7 @@
       
       
       
-      <Context docBase="GUESTBOOK2" path="/guest" reloadable="true" source="org.eclipse.jst.jee.server:GUESTBOOK2"/></Host>
+      <Context docBase="MemberManagerMVC" path="/mm-mvc" reloadable="true" source="org.eclipse.jst.jee.server:MemberManagerMVC"/></Host>
     
     
     
