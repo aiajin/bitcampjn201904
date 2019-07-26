@@ -26,7 +26,7 @@
 <div id="contents">
 	<h3>회원가입 페이지</h3>
 	<hr>
-	<form action="memberReg.do" method="post">
+	<form action="memberReg.do" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>아이디(이메일)</td>

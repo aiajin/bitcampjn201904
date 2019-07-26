@@ -16,18 +16,18 @@ public class MemberRegService implements MemberService {
 	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
 		
 		
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		/*
+		 * try { request.setCharacterEncoding("utf-8"); } catch
+		 * (UnsupportedEncodingException e1) { // TODO Auto-generated catch block
+		 * e1.printStackTrace(); }
+		 */
 		
 		String uId = request.getParameter("uId");
 		String uPW = request.getParameter("uPW");
 		String uName = request.getParameter("uName");
 		
-		RequestMemberInfor requestMemberInfor = new RequestMemberInfor(uId, uPW, uName, null);
+		RequestMemberInfor requestMemberInfor = 
+				new RequestMemberInfor(uId, uPW, uName, null);
 		
 		MemberDao dao = MemberDao.getInstance();
 		

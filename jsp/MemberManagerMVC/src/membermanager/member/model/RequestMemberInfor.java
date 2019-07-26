@@ -62,5 +62,18 @@ public class RequestMemberInfor {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

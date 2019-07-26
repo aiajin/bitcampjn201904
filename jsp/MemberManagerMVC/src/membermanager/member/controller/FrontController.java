@@ -111,6 +111,8 @@ public class FrontController extends HttpServlet {
 		
 		System.out.println(commandUri);
 		
+		request.setCharacterEncoding("utf-8");
+		
 		// 2. 사용자 요청에 맞는 모델 실행 ( 서비스.메서드 실행 ) -> view 페이지 반환
 		
 		String viewPage = "/WEB-INF/view/null.jsp";
