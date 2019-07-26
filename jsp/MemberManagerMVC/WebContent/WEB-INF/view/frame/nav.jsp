@@ -6,11 +6,11 @@
 		<li><a href="<c:url value='/' />">홈</a></li>
 		<li><a href="<c:url value='/member/loginForm.do' />">로그인 </a></li>
 		<li><a href="<c:url value='/member/memberRegForm.do' />">회원가입</a></li>
-		<li><a href="<c:url value='/member/myPage.jsp' />">MyPage1</a></li>
-		<li><a href="<c:url value='/member/myPage2.jsp' />">MyPage2</a></li>
+		<li><a href="<c:url value='/member/mypage/mypage.do' />">MyPage1</a></li>
+		<li><a href="<c:url value='/member/mypage/mypage.do' />">MyPage2</a></li>
 		<li><a href="<c:url value='/member/memberList.jsp' />">회원리스트1</a></li>
 		<li><a href="<c:url value='/member/memberList2.jsp' />">회원리스트2</a></li>
-		<li><a href="<c:url value='/member/logout.jsp' />">LOGOUT</a></li>
+		<li><a href="<c:url value='/member/logout.do' />">LOGOUT</a></li>
 	</ul>
 	<%-- <ul>
 		<li><a href="${pageContext.request.contextPath}">홈</a></li>

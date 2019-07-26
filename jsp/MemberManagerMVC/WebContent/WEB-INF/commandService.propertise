@@ -3,7 +3,7 @@
 ## 로그인 페이지
 /member/loginForm.do=membermanager.member.service.MemberLoginFormService
 /member/login.do=membermanager.member.service.MemberLoginService
-##/logout.do=
+/member/logout.do=membermanager.member.service.MemberLogoutService
 ## 회원관리
 /member/memberRegForm.do=membermanager.member.service.MemberRegFormService
 /member/memberReg.do=membermanager.member.service.MemberRegService
@@ -12,4 +12,4 @@
 ##/member/memberEdit.do=
 ##/member/memberDelete=
 ## 회원 전용 페이지
-##/member/mypage/mypage.do=
+/member/mypage/mypage.do=membermanager.member.service.MemberMyPageService
