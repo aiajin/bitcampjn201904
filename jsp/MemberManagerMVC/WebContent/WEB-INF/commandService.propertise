@@ -7,6 +7,8 @@
 ## 회원관리
 /member/memberRegForm.do=membermanager.member.service.MemberRegFormService
 /member/memberReg.do=membermanager.member.service.MemberRegService
+## 아이디 체크 
+/member/idCheck.do=membermanager.member.service.MemberIdCheckService
 ##/member/memberList.do=
 ##/member/memberEditForm.do=
 ##/member/memberEdit.do=
