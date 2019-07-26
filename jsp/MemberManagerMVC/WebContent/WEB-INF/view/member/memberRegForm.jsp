@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
 <div id="contents">
 	<h3>회원가입 페이지</h3>
 	<hr>
-	<form action="memberReg.do" method="post" enctype="multipart/form-data">
+	<form id="regform" action="memberReg.do" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>아이디(이메일)</td>
@@ -99,6 +100,16 @@
 					}
 					
 				}
+			});
+			
+			$('#regform').submit(function(){
+				
+				if(!$('#idcheck').prop('checked')){
+					alert('아이디 중복확인이 필요합니다.');
+					return false;
+				}
+				
+				
 			});
 			
 			
