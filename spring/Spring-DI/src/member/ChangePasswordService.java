@@ -1,15 +1,25 @@
 package member;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ChangePasswordService {
 	
 	//private MemberDao memberDao = new MemberDao();
 	
-	private MemberDao memberDao;
+	@Autowired(required = false)
+	//@Qualifier("sys")
+	//@Resource(name = "boardDao")
+	private Dao memberDao;
 	
 
-	public void setMemberDao(MemberDao memberDao) {
-		this.memberDao = memberDao;
-	}
+	/*
+	 * public void setMemberDao(MemberDao memberDao) { this.memberDao = memberDao; }
+	 */
 	
 	/*
 	 * public ChangePasswordService(MemberDao dao) { memberDao = dao; }

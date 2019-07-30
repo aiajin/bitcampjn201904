@@ -2,13 +2,23 @@ package member;
 
 import java.util.Date;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+@Service("registService")
 public class MemberRegisterService {
 	
-	private MemberDao memberDao;
+	@Autowired(required = false)
+	// @Qualifier("sys")
+	//@Resource(name = "memberDao1")
+	private Dao memberDao;
 	
-	public void setMemberDao(MemberDao memberDao) {
-		this.memberDao = memberDao;
-	}
+	/*
+	 * public void setMemberDao(MemberDao memberDao) { this.memberDao = memberDao; }
+	 */
 	
 	/*
 	 * public MemberRegisterService(MemberDao memberDao) { this.memberDao =

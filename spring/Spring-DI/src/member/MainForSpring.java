@@ -14,7 +14,7 @@ public class MainForSpring {
 	
 	// 스프링 컨테이너 생성 : 조립기 설정파일 appCtx1.xml 
 	private static ApplicationContext ctx = 			
-			new GenericXmlApplicationContext("classpath:appCtx4.xml");
+			new GenericXmlApplicationContext("classpath:appCtx8.xml");
 	
 	
 
@@ -95,7 +95,7 @@ public class MainForSpring {
 		
 		//ChangePasswordService service = assembler.getPwService();
 		ChangePasswordService service = 
-				ctx.getBean("changePwService", ChangePasswordService.class);
+				ctx.getBean("changePasswordService", ChangePasswordService.class);
 		
 		try {
 			service.changePassword(args[1], args[2], args[3]);

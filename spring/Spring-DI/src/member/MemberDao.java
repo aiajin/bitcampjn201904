@@ -4,7 +4,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemberDao {
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+@Repository("memberDao123")
+public class MemberDao implements Dao {
 	
 	private static long nextId=0;
 	private Map<String, Member> map = new HashMap<String, Member>();
