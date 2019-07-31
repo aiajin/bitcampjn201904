@@ -2,59 +2,38 @@ package member;
 
 import java.util.Date;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service("registService")
-public class MemberRegisterService {
-	
-	@Autowired(required = false)
-	// @Qualifier("sys")
-	//@Resource(name = "memberDao1")
+@Service("registerMemerService")
+public class MemberRegisterService2 {
+
+	@Autowired
 	private MemberDao memberDao;
 	
 	/*
 	 * public void setMemberDao(MemberDao memberDao) { this.memberDao = memberDao; }
 	 */
-	
+
 	/*
-	 * public MemberRegisterService(MemberDao memberDao) { this.memberDao =
+	 * public MemberRegisterService2(MemberDao memberDao) { this.memberDao =
 	 * memberDao; }
 	 */
-	
+
+
 	public void regist(RegisterRequest request) throws AleadyExistingMemberException {
-		
+
 		Member member = memberDao.selectByEmail(request.getEmail());
-		
-		if(member != null) {
+
+		if (member != null) {
 			throw new AleadyExistingMemberException();
 		}
-		
-		Member newMember = new Member(
-				request.getEmail(), 
-				request.getPassword(), 
-				request.getName(), 
-				new Date());
-		
+
+		Member newMember = new Member(request.getEmail(), request.getPassword(), request.getName(), new Date());
+
 		memberDao.insert(newMember);
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
