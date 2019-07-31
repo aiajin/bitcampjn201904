@@ -1,4 +1,4 @@
-package com.bitcamp.firstapp;
+package com.bitcamp.mvc;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -22,7 +22,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -33,18 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "member/index"; // /WEB-INF/views/ member/index .jsp
-		
-		//return "home";
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		return "home";
 	}
 	
 }
