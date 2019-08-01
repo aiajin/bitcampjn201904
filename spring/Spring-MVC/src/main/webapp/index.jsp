@@ -14,6 +14,7 @@
 	<li> <a href="/mvc/hello">/hello</a> </li>	
 	<li> <a href="member/login">/member/login</a> </li>	
 	<li> <a href="<c:url value="/member/memberLogin" />">/member/memberLogin</a> </li>
+	<li> <a href="<c:url value="/order/order" />">/order/order</a> </li>
 </ul>
 
 
