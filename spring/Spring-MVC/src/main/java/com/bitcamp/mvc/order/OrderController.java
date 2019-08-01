@@ -1,6 +1,7 @@
 package com.bitcamp.mvc.order;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,7 +18,7 @@ public class OrderController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String order(OrderCommand orders) {
+	public String order(@ModelAttribute("orders") OrderCommand orders) {
 		
 		System.out.println(orders.getAddress());
 		

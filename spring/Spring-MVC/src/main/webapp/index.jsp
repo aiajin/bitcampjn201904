@@ -15,6 +15,8 @@
 	<li> <a href="member/login">/member/login</a> </li>	
 	<li> <a href="<c:url value="/member/memberLogin" />">/member/memberLogin</a> </li>
 	<li> <a href="<c:url value="/order/order" />">/order/order</a> </li>
+	<li> <a href="<c:url value="/cookie/makeForm" />">/cookie/makeForm</a> </li>
+	<li> <a href="<c:url value="/cookie/viewCookie" />">/cookie/viewCookie</a> </li>
 </ul>
 
 
