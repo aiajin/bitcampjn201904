@@ -10,7 +10,9 @@
 <h1>Login Form</h1>
 <hr>
 
-<form action="loginProcess" method="post">
+<!-- <form action="loginProcess" method="post"> -->
+<!-- <form action="loginProc" method="get"> -->
+<form action="loginOk" method="post">
 
 아이디 :  <input type="text" name="uId"> <br>
 비밀번호 : <input type="password" name="uPw"> <br>

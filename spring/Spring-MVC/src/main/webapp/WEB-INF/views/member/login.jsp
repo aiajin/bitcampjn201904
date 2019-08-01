@@ -9,7 +9,7 @@
 <body>
 <h1>로그인 결과 페이지</h1>
 <h3>
-	id = ${id}, pw = ${pw}
+	id = ${id} / ${login.uId} / ${user.uId}, pw = ${pw} / ${login.uPw} / ${user.uPw}
 </h3>
 </body>
 </html>

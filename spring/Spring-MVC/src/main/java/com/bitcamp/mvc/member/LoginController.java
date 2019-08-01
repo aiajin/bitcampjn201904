@@ -3,9 +3,14 @@ package com.bitcamp.mvc.member;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.bitcamp.mvc.domain.Login;
 
 @Controller
 public class LoginController {
@@ -37,6 +42,39 @@ public class LoginController {
 		
 		return modelAndView;
 	}
+	
+	
+	
+	@RequestMapping("/member/loginProc")
+	public String loginproc(
+			@RequestParam(value = "uId", defaultValue = "cool") String id,
+			@RequestParam(value = "uPw", required = false) String pw,
+			Model model
+			) {
+		
+		System.out.println(id + " : " + pw);
+		
+		model.addAttribute("id", id);
+		model.addAttribute("pw", pw);
+		
+		
+		return "member/login";
+	}
+	
+	
+	@RequestMapping("/member/loginOk")
+	public String loginOk(@ModelAttribute("user") Login login) {
+		
+		System.out.println(login.getuId() + " : " + login.getuPw());
+		
+		login.setuId(login.getuId()+"-12345");
+		
+		return "member/login";
+	}
+	
+	
+	
+	
 	
 	
 	
