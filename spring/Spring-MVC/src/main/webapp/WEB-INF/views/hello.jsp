@@ -17,8 +17,5 @@
 
 <a href="<c:url value="/header/getHeader" />">/header/getHeader</a>
 
-
-
-
 </body>
 </html>
