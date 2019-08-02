@@ -18,6 +18,7 @@
 	<li> <a href="<c:url value="/cookie/makeForm" />">/cookie/makeForm</a> </li>
 	<li> <a href="<c:url value="/cookie/viewCookie" />">/cookie/viewCookie</a> </li>
 	<li> <a href="<c:url value="/header/getHeader" />">/header/getHeader</a> </li>
+	<li> <a href="<c:url value="/search/search" />">/search/search</a> </li>
 </ul>
 
 
