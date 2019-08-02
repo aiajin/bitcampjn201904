@@ -1,5 +1,10 @@
 package com.bitcamp.mvc.member;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +18,8 @@ import com.bitcamp.mvc.domain.Report;
 @Controller
 public class FileUploadController {
 	
+	String path = "/uploadfile";
+	
 	@RequestMapping("/fileupload/uploadForm")
 	public String getForm() {
 		return "fileupload/uploadForm";
@@ -22,12 +29,37 @@ public class FileUploadController {
 	public String upload1(
 			@RequestParam("sno") String sno,
 			@RequestParam("report") MultipartFile file,
-			Model model
+			Model model,
+			HttpServletRequest request
 			) {
 		
 		model.addAttribute("sno", sno);
 		model.addAttribute("fileName", file.getOriginalFilename());
 		model.addAttribute("fileSize", file.getSize());
+		
+		
+		// 파일 저장
+		String dir = request.getSession().getServletContext().getRealPath(path);
+		
+		try {
+			if(!file.isEmpty() && file.getSize()>0) {
+				file.transferTo(new File(dir, sno+"_"+file.getOriginalFilename()));
+			}
+			
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
 		
 		return "fileupload/upload";
 	}
