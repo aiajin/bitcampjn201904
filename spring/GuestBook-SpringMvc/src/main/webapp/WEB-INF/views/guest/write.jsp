@@ -23,7 +23,7 @@
 		</c:if>
 	</h1>
 	
-	<a href="<c:url value="/guestList" />">리스트</a>
+	<a href="<c:url value="/guest/list" />">리스트</a>
 
 
 
