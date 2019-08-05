@@ -12,5 +12,5 @@ Connection : ConnectionProvider.getConnection()
 리스트 : /list
 쓰기 폼 : /writeForm
 쓰기 : /write
-삭제 폼(비밀번호 입력) : /deletForm
+삭제 폼(비밀번호 입력) : /deleteForm
 삭제 : /delete
