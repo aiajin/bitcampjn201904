@@ -34,5 +34,24 @@ public class RequestGuestWrite {
 	public String toString() {
 		return "RequestGuestWrite [guestName=" + guestName + ", password=" + password + ", message=" + message + "]";
 	}
+	
+	public Message toMessage() {
+		
+		Message message = new Message(0, guestName, password, this.message);
+		return message;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
