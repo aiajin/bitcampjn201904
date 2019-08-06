@@ -5,8 +5,6 @@
 	<title>Home</title>
 </head>
 <body>
-
-<%@ include file="/WEB-INF/views/frame/top.jsp"  %>
 <h1>
 	Hello world!  
 </h1>
