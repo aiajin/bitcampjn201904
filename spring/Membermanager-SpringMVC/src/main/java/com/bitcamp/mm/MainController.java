@@ -1,5 +1,7 @@
 package com.bitcamp.mm;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	
 	@RequestMapping("/main")
-	public String getMainpage() {
+	public String getMainpage(HttpSession session ) {
+		
+		if(session != null) {
+			System.out.println(session.getAttribute("loginInfo"));
+		}
+		
 		return "main";
 	}
 	
