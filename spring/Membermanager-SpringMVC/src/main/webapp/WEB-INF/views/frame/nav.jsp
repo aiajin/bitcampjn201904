@@ -4,7 +4,7 @@
 <div id="nav">
 	<ul>
 		<li><a href="<c:url value='/' />">홈</a></li>
-		<li><a href="<c:url value='/member/loginForm.do' />">로그인 </a></li>
+		<li><a href="<c:url value='/member/login' />">로그인 </a></li>
 		<li><a href="<c:url value='/member/regist' />">회원가입</a></li>
 		<li><a href="<c:url value='/member/mypage/mypage.do' />">MyPage1</a></li>
 		<li><a href="<c:url value='/member/mypage/mypage.do' />">MyPage2</a></li>

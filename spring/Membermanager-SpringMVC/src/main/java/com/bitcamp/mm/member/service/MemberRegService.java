@@ -2,19 +2,11 @@ package com.bitcamp.mm.member.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,8 +61,13 @@ public class MemberRegService implements MemberService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("오류 확인 !!");
+			//new File(dir,newFileName).delete();
+			System.out.println("파일 삭제처리");
+		} catch (Exception e) {
+			System.out.println("오류");
+			new File(dir,newFileName).delete();
 		}
-		
 		
 		
 		return resultCnt;
