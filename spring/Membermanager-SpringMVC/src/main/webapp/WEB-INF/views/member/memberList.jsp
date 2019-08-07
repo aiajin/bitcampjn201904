@@ -99,7 +99,8 @@
 	<c:if test="${viewData.totalCount>0}">
 	<div id="pagingBox">
 		<c:forEach begin="1" end="${viewData.pageTotalCount}" var="num">
-			<div><a href="memberList?p=${num}">${num}</a> </div> 
+			<%-- <div><a href="memberList?p=${num}">${num}</a> </div> --%>
+			<div><a href="memberList?p=${num}&stype=${param.stype}&keyword=${param.keyword}">${num}</a> </div> 
 		</c:forEach>
 		
 	</div>

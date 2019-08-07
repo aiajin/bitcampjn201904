@@ -2,6 +2,7 @@ package com.bitcamp.mm.member.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.mm.jdbc.ConnectionProvider;
 import com.bitcamp.mm.member.dao.MemberDao;
 import com.bitcamp.mm.member.domain.ListViewData;
+import com.bitcamp.mm.member.domain.MemberInfo;
 import com.bitcamp.mm.member.domain.SearchParam;
 
 @Service("listServcie")
@@ -53,21 +55,42 @@ public class MemberListService implements MemberService {
 			// 1 -> 0 , 2 -> 3, 3 -> 6, 4 -> 9
 			int index = (currentPageNumber-1)*MEMBER_CNT_List;
 			// 회원 정보 리스트 
-			listData.setMemberList(dao.selectList(conn,index, MEMBER_CNT_List));
+			List<MemberInfo> memberList = null;
+//			
+//			if(searchParam != null) {
+//				switch (searchParam.getStype()) {
+//					case "both":
+//						memberList = dao.selectListByBoth(conn, index, MEMBER_CNT_List, searchParam);
+//					break;
+//					case "id":
+//						memberList = dao.selectListById(conn, index, MEMBER_CNT_List, searchParam);
+//					break;
+//					case "name":
+//						memberList = dao.selectListByName(conn, index, MEMBER_CNT_List, searchParam);
+//					break;
+//				}
+//			} else {
+//				memberList = dao.selectList(conn, index, MEMBER_CNT_List);
+//			}
+//			
+			if(searchParam == null) {
+				memberList = dao.selectList(conn, index, MEMBER_CNT_List);
+			} else if(searchParam.getStype().equals("both")) {
+				memberList = dao.selectListByBoth(conn, index, MEMBER_CNT_List, searchParam);
+			} else if(searchParam.getStype().equals("id")) {
+				memberList = dao.selectListById(conn, index, MEMBER_CNT_List, searchParam);
+			} else if(searchParam.getStype().equals("name")) {
+				memberList = dao.selectListByName(conn, index, MEMBER_CNT_List, searchParam);
+			}
+			
+			
+			listData.setMemberList(memberList);
 			
 			// 1 -> 9-0 =9, 2 -> 9-3=6
 			int no = totalCnt - index;
 			listData.setNo(no);
 			
 			listData.setTotalCount(totalCnt);
-			
-			
-			
-			
-			
-			
-			
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

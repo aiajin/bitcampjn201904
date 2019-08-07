@@ -159,6 +159,106 @@ public class MemberDao { // memberDao
 		
 		return totalCnt;
 	}
+
+	public List<MemberInfo> selectListById(Connection conn, int index, int count, SearchParam searchParam) {
+
+		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM member where uid like ?  limit ?, ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchParam.getKeyword()+"%");
+			pstmt.setInt(2, index);
+			pstmt.setInt(3, count);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				memberList.add(new MemberInfo(
+						rs.getInt("idx"), 
+						rs.getString("uid"), 
+						rs.getString("upw"), 
+						rs.getString("uname"), 
+						rs.getString("uphoto"), 
+						new Date(rs.getDate("regdate").getTime())));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return memberList;
+	}
+
+	public List<MemberInfo> selectListByName(Connection conn, int index, int count, SearchParam searchParam) {
+
+		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM member where uname like ?  limit ?, ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchParam.getKeyword()+"%");
+			pstmt.setInt(2, index);
+			pstmt.setInt(3, count);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				memberList.add(new MemberInfo(
+						rs.getInt("idx"), 
+						rs.getString("uid"), 
+						rs.getString("upw"), 
+						rs.getString("uname"), 
+						rs.getString("uphoto"), 
+						new Date(rs.getDate("regdate").getTime())));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return memberList;
+	}
+
+	public List<MemberInfo> selectListByBoth(Connection conn, int index, int count, SearchParam searchParam) {
+
+		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM member where uid like ? or  uname like ?  limit ?, ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchParam.getKeyword()+"%");
+			pstmt.setString(2, "%"+searchParam.getKeyword()+"%");
+			pstmt.setInt(3, index);
+			pstmt.setInt(4, count);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				memberList.add(new MemberInfo(
+						rs.getInt("idx"), 
+						rs.getString("uid"), 
+						rs.getString("upw"), 
+						rs.getString("uname"), 
+						rs.getString("uphoto"), 
+						new Date(rs.getDate("regdate").getTime())));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return memberList;
+	}
 	
 	
 	
