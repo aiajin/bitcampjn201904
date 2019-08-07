@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -77,6 +80,65 @@ public class MemberDao { // memberDao
 		
 		return rCnt;
 		
+	}
+
+	public List<MemberInfo> selectList(Connection conn) {
+		
+		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM member";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				memberList.add(new MemberInfo(
+						rs.getInt("idx"), 
+						rs.getString("uid"), 
+						rs.getString("upw"), 
+						rs.getString("uname"), 
+						rs.getString("uphoto"), 
+						new Date(rs.getDate("regdate").getTime())));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return memberList;
+	}
+
+	
+	
+	public int selectTotalCount(Connection conn) {
+		
+		int totalCnt = 0;
+		
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select count(*) from member";
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				totalCnt = rs.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return totalCnt;
 	}
 	
 	

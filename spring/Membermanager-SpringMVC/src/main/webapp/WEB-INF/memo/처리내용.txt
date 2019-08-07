@@ -1,0 +1,45 @@
+회원가입
+- controller ( form, regist-파일업로드 )
+- view ( form, 결과 페이지 )
+- service ( 가입 처리 - 파일업로드 )
+- dao ( insert )
+
+로그인
+- controller 
+	( form , Login 처리 - session )
+- view 
+	( 로그인 정상 처리 - main으로 redirect, 로그인 실패 로그인 폼으로 script 로 이동) 
+- service 
+	( get: 로그인 폼 -> 세션 확인 후 메인페잊 혹은 로그인 폼 페이지, 
+ post : id / pw 확인 로그인 처리 )
+dao 
+	: id 로 검색한 결과
+
+회원 리스트
+- controller
+  - list
+    - 검색폼
+- view 
+   - 회원의 데이터 리스트
+   - 페이징 
+   - 검색
+- service
+  - 회원 데이터 리스트 객체
+    : 검색 키워드에 따라 결과를 생성
+  - 페이징에 필요한 데이터
+- dao
+  - 검색
+
+
+
+LIST 화면
+   - 회원 정보 리스트 형태로 출력 : LIST<MemberInfo>
+   - 현재 페이지 정보 : CurrentPageNumber
+
+   - 페이징 데이터 : totalPageCount
+
+
+
+
+
+
