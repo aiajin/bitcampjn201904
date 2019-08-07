@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.mm.jdbc.ConnectionProvider;
 import com.bitcamp.mm.member.dao.MemberDao;
 import com.bitcamp.mm.member.domain.ListViewData;
+import com.bitcamp.mm.member.domain.SearchParam;
 
 @Service("listServcie")
 public class MemberListService implements MemberService {
@@ -18,7 +19,9 @@ public class MemberListService implements MemberService {
 	
 	final int MEMBER_CNT_List = 3;
 	
-	public ListViewData getListData(int currentPageNumber) {
+	public ListViewData getListData(
+			int currentPageNumber, 
+			SearchParam searchParam) {
 		
 		ListViewData listData = new ListViewData();
 		
@@ -33,7 +36,7 @@ public class MemberListService implements MemberService {
 			listData.setCurrentPageNumber(currentPageNumber);
 			
 			// 전체 게시물의 개수
-			int totalCnt = dao.selectTotalCount(conn);
+			int totalCnt = dao.selectTotalCount(conn,searchParam);
 			
 			int totalPageCnt = 0;
 			// 전체 페이지 개수

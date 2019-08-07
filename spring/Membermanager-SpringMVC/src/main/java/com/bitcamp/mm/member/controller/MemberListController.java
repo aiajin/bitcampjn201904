@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.mm.member.domain.ListViewData;
 import com.bitcamp.mm.member.domain.MemberInfo;
+import com.bitcamp.mm.member.domain.SearchParam;
 import com.bitcamp.mm.member.service.MemberListService;
 
 @Controller
@@ -20,10 +21,24 @@ public class MemberListController {
 	@RequestMapping("/member/memberList")
 	public String memberList(
 			Model model,
-			@RequestParam(value = "p", defaultValue = "1") int pageNumber
+			@RequestParam(value = "p", defaultValue = "1") int pageNumber,
+			@RequestParam(value = "stype", required = false) String stype,
+			@RequestParam(value = "keyword", required = false) String keyword
 			) {
 		
-		ListViewData listdata = listService.getListData(pageNumber);
+		
+		SearchParam searchParam = null; 
+		
+		if(stype!=null && keyword!=null) {
+			searchParam = new SearchParam();
+			searchParam.setStype(stype);
+			searchParam.setKeyword(keyword);
+		}
+		
+		
+		
+		
+		ListViewData listdata = listService.getListData(pageNumber, searchParam);
 		
 		System.out.println("전체 회원의 수 : "+ listdata.getTotalCount());
 		/*

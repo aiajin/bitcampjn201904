@@ -18,6 +18,31 @@
 		padding : 3px 10px;		
 		border: 1px solid #999;	
 	}
+	
+	div#pagingBox {	
+		overflow: hidden;
+		margin-top:15px;
+	}
+	div#pagingBox>div {
+		float: left;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		border : 1px solid #333;
+		
+		border-radius:30px;
+		
+		margin: 0 5px;
+	}
+	
+	div.searchBox {
+		margin : 15px 0;
+		width : 500px;
+		padding : 15px;
+		border : 1px solid #333;
+	}
+	
 </style>
 </head>
 <body>
@@ -34,6 +59,19 @@
 <div id="contents">
 	<h3>회원 리스트</h3>
 	<hr>
+	<div class="searchBox">
+	
+		<form>
+			검색<br>
+			<select name="stype">
+				<option value="both">아이디+이름</option>
+				<option value="id">아이디</option>
+				<option value="name">이름</option>
+			</select>
+			<input type="text" name="keyword"> <input type="submit" value="검색">
+		</form>
+		
+	</div>
 	<table>
 		<tr>
 			<td>no</td>
@@ -60,10 +98,10 @@
 	</table>
 	<c:if test="${viewData.totalCount>0}">
 	<div id="pagingBox">
-		<div><c:forEach begin="1" end="${viewData.pageTotalCount}" var="num">
-			<a href="memberList?p=${num}">${num}</a>  
+		<c:forEach begin="1" end="${viewData.pageTotalCount}" var="num">
+			<div><a href="memberList?p=${num}">${num}</a> </div> 
 		</c:forEach>
-		</div>
+		
 	</div>
 	</c:if>
 	

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bitcamp.mm.jdbc.JdbcUtil;
 import com.bitcamp.mm.member.domain.MemberInfo;
+import com.bitcamp.mm.member.domain.SearchParam;
 
 
 @Repository("dao")
@@ -116,7 +117,9 @@ public class MemberDao { // memberDao
 
 	
 	
-	public int selectTotalCount(Connection conn) {
+	public int selectTotalCount(
+			Connection conn, 
+			SearchParam searchParam) {
 		
 		int totalCnt = 0;
 		
@@ -124,6 +127,19 @@ public class MemberDao { // memberDao
 		ResultSet rs = null;
 		
 		String sql = "select count(*) from member";
+		
+		if(searchParam != null) {
+			sql = "select count(*) from member where ";
+			if(searchParam.getStype().equals("both")) {
+				sql += " uid like '%"+searchParam.getKeyword()+"%' or uname  like '%"+searchParam.getKeyword()+"%' ";
+			}
+			if(searchParam.getStype().equals("id")) {
+				sql += " uid  like '%"+searchParam.getKeyword()+ "%'";
+			}
+			if(searchParam.getStype().equals("name")) {
+				sql += " uname  like '%"+searchParam.getKeyword()+"%' ";
+			}
+		}
 		
 		try {
 			stmt = conn.createStatement();
