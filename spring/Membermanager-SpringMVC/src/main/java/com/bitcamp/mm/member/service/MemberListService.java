@@ -54,8 +54,14 @@ public class MemberListService implements MemberService {
 			// 구간 검색을 위한 index
 			// 1 -> 0 , 2 -> 3, 3 -> 6, 4 -> 9
 			int index = (currentPageNumber-1)*MEMBER_CNT_List;
+			
+			
 			// 회원 정보 리스트 
 			List<MemberInfo> memberList = null;
+			// 1. 검색 조건이 없는경우  selectList -> 전체 회원의 리스트
+			// 2. id 로 검색 : where  like uid '%?%'
+			// 3. name 으로 검색 : where like uname '%?%'
+			// 4. id 또는 name :  where like uname '%?%' or like uid '%?%'
 //			
 //			if(searchParam != null) {
 //				switch (searchParam.getStype()) {
@@ -74,12 +80,19 @@ public class MemberListService implements MemberService {
 //			}
 //			
 			if(searchParam == null) {
+				
 				memberList = dao.selectList(conn, index, MEMBER_CNT_List);
+			
 			} else if(searchParam.getStype().equals("both")) {
+				
 				memberList = dao.selectListByBoth(conn, index, MEMBER_CNT_List, searchParam);
+			
 			} else if(searchParam.getStype().equals("id")) {
+				
 				memberList = dao.selectListById(conn, index, MEMBER_CNT_List, searchParam);
+			
 			} else if(searchParam.getStype().equals("name")) {
+				
 				memberList = dao.selectListByName(conn, index, MEMBER_CNT_List, searchParam);
 			}
 			

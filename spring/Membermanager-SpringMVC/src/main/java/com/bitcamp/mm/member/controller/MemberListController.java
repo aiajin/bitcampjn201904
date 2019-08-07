@@ -29,7 +29,10 @@ public class MemberListController {
 		
 		SearchParam searchParam = null; 
 		
-		if(stype!=null && keyword!=null) {
+		if(	stype!=null 
+				&& keyword!=null 
+				&& !stype.isEmpty() 
+				&& !keyword.isEmpty()) {
 			searchParam = new SearchParam();
 			searchParam.setStype(stype);
 			searchParam.setKeyword(keyword);
@@ -40,7 +43,6 @@ public class MemberListController {
 		
 		ListViewData listdata = listService.getListData(pageNumber, searchParam);
 		
-		System.out.println("전체 회원의 수 : "+ listdata.getTotalCount());
 		/*
 		 * for(MemberInfo m : listdata.getMemberList()) { 
 		 * System.out.println(m); }
