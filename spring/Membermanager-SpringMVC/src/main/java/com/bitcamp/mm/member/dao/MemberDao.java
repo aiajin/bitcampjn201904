@@ -259,6 +259,65 @@ public class MemberDao { // memberDao
 		
 		return memberList;
 	}
+
+	public MemberInfo selectMemberByIdx(Connection conn, int id) {
+
+		MemberInfo memberInfo = null;
+		
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		System.out.println("dao : memberId -> " + id);
+		
+		String sql = "select * from member where idx=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1,id);
+			rs = pstmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				System.out.println("check ::::::::::::::::::::::::");
+				memberInfo = new MemberInfo(
+					rs.getInt("idx"), 
+					rs.getString("uid"), 
+					rs.getString("upw"), 
+					rs.getString("uname"), 
+					rs.getString("uphoto"), 
+					new Date(rs.getTimestamp("regdate").getTime()));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		return memberInfo;
+	}
+
+	public int memberUpdate(Connection conn, MemberInfo memberInfo) {
+		
+		System.out.println(">>>>>>>>>>>> "+memberInfo);
+		int rCnt = 0;
+		PreparedStatement pstmt = null;
+		String sql = "update member set uname=?, upw=?, uphoto=? where idx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberInfo.getuName());
+			pstmt.setString(2, memberInfo.getuPW());
+			pstmt.setString(3, memberInfo.getuPhoto());
+			pstmt.setInt(4, memberInfo.getIdx());
+			rCnt = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		return rCnt;
+	}
 	
 	
 	

@@ -80,6 +80,7 @@
 			<td>이름</td>
 			<td>사진</td>
 			<td>가입일</td>
+			<td>관리</td>
 		</tr>
 		
 		<c:forEach items="${viewData.memberList}" var="memberInfo" varStatus="stat" >
@@ -91,6 +92,10 @@
 			<td><img src="<c:url value='/uploadfile/userphoto/${memberInfo.uPhoto}'/>" height="30">  </td>
 			<td>
 				<fmt:formatDate value="${memberInfo.regDate}" pattern="yyyy.MM.dd"/>
+			</td>
+			<td>	
+				<a href="memberEdit?memberId=${memberInfo.idx}">수정</a> 
+				<a href="memberDelete?memberId=${memberInfo.idx}">삭제</a>
 			</td>
 		</tr>
 		</c:forEach>

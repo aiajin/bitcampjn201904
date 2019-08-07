@@ -34,15 +34,17 @@
 
 <!-- 컨텐츠 시작 -->
 <div id="contents">
-	<h3>회원 수정 페이지</h3>
+	<h3>회원가입 페이지</h3>
 	<hr>
 	<form id="regform" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>아이디(이메일)</td>
 				<td>
+				<input type="hidden" name="idx" value="${editData.idx}">
 				<input type="checkbox" id="idcheck">
-				<input type="email" id="uId" name="uId" required value="${editData.uId}"> <span id="idcheckmsg"></span> </td>
+				<input type="email" id="uId" name="uId" readonly value="${editData.uId}"> id는 수정 불가합니다. <span id="idcheckmsg"></span> </td>
+				
 			</tr>
 			<tr>
 				<td>비밀번호</td>
@@ -54,13 +56,14 @@
 			</tr>
 			<tr>
 				<td>사진</td>
-				<td> 
-					<input type="file" name="uPhoto">
-				 </td>
+				<td>저장된 파일 :  ${editData.uPhoto} [삭제는 aJax로 삭제 처리]<br>
+					<input type="text" name="oldFile" value="${editData.uPhoto}" readonly> name="oldFile" 신규 파일이 없다면 이전 파일 이름을 저장합니다.<br>
+					<input type="file" name="uPhoto"> 신규 파일을 업로드하면 기존 파일을 덮어씁니다.
+				</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="회원 수정"> </td>
+				<td><input type="submit" value="회원가입"> </td>
 			</tr>
 		</table>
 	</form>
