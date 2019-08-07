@@ -44,9 +44,9 @@
 			<td>가입일</td>
 		</tr>
 		
-		<c:forEach items="${viewData.memberList}" var="memberInfo" >
+		<c:forEach items="${viewData.memberList}" var="memberInfo" varStatus="stat" >
 		<tr>
-			<td>${memberInfo.idx}</td>
+			<td><%-- ${memberInfo.idx} / ${stat.index} / ${stat.count} / ${viewData.totalCount} /  --%>${viewData.no-stat.index}</td>
 			<td>${memberInfo.uId}</td>
 			<td>${memberInfo.uPW}</td>
 			<td>${memberInfo.uName}</td>
@@ -58,6 +58,14 @@
 		</c:forEach>
 		
 	</table>
+	<c:if test="${viewData.totalCount>0}">
+	<div id="pagingBox">
+		<div><c:forEach begin="1" end="${viewData.pageTotalCount}" var="num">
+			<a href="memberList?p=${num}">${num}</a>  
+		</c:forEach>
+		</div>
+	</div>
+	</c:if>
 	
 </div>
 <!-- 컨텐츠 끝 -->

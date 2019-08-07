@@ -82,17 +82,20 @@ public class MemberDao { // memberDao
 		
 	}
 
-	public List<MemberInfo> selectList(Connection conn) {
+	public List<MemberInfo> selectList(Connection conn, int index, int count) {
 		
 		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM member";
+		String sql = "SELECT * FROM member limit ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, index);
+			pstmt.setInt(2, count);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				memberList.add(new MemberInfo(

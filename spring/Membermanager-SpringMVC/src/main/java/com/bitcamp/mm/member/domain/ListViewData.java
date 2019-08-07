@@ -8,6 +8,7 @@ public class ListViewData {
 	private int totalCount ;
 	private int no;
 	private int currentPageNumber;
+	private int pageTotalCount;
 
 	public List<MemberInfo> getMemberList() {
 		return memberList;
@@ -24,6 +25,34 @@ public class ListViewData {
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getCurrentPageNumber() {
+		return currentPageNumber;
+	}
+
+	public void setCurrentPageNumber(int currentPageNumber) {
+		this.currentPageNumber = currentPageNumber;
+	}
+
+	public int getPageTotalCount() {
+		return pageTotalCount;
+	}
+
+	public void setPageTotalCount(int pageTotalCount) {
+		this.pageTotalCount = pageTotalCount;
+	}
+	
+	
+	
+	
 	
 	
 	
