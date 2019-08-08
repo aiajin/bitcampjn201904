@@ -38,7 +38,7 @@ public class DBCPInit extends HttpServlet {
 		
 		try {
 			
-			String jdbcDriver = "jdbc:oracle:thin:localhost:1521:orcl";
+			String jdbcDriver = "jdbc:oracle:thin:@localhost:1521:orcl";
 			String username = "scott";
 			String pw = "tiger";
 			
