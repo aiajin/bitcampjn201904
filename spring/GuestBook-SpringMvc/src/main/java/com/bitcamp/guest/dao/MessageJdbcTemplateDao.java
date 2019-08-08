@@ -70,6 +70,16 @@ public class MessageJdbcTemplateDao { // messageDao
 	}
 	
 	
+	public Message select(int messageId) {
+		
+		String sql = "select * from guestbook_message where message_id=?";
+		
+		return template.queryForObject(
+				sql, 
+				new MessageRowMapper(), 
+				messageId);
+	}
+	
 	
 
 	public Message select(Connection conn, int messageId) {
@@ -199,6 +209,14 @@ public class MessageJdbcTemplateDao { // messageDao
 		return list;
 	}
 
+	
+	public int deleteMessage(int messageId) {
+		
+		String sql = "delete from guestbook_message where message_id=?";
+		return template.update(sql, messageId);
+		
+	}
+	
 	public int deleteMessage(Connection conn, int messageId) throws SQLException {
 
 		int resultCnt = 0;
