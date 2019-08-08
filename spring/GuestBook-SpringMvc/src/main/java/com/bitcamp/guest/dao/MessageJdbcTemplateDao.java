@@ -105,6 +105,15 @@ public class MessageJdbcTemplateDao { // messageDao
 
 	}
 
+	
+	
+	public int selectCount() {
+		return template.queryForObject(
+				"select count(*) from guestbook_message", 
+				Integer.class);		
+	}
+	
+	
 	public int selectCount(Connection conn) {
 
 		Statement stmt = null;
@@ -131,6 +140,26 @@ public class MessageJdbcTemplateDao { // messageDao
 		return totalCnt;
 	}
 
+	
+	
+	public List<Message> selectList(int firstRow, int endRow) {
+		
+		String sql = "select message_id, guest_name, password, message from ( "
+				+ " select rownum rnum, message_id, guest_name, password, message from ( "
+				+ " select * from guestbook_message m order by m.message_id desc " + " ) where rownum <= ? "
+				+ " ) where rnum >= ?";
+		
+		return template.query(
+				sql,
+				new MessageRowMapper(),
+				endRow,
+				firstRow
+				) ;
+	
+	}
+	
+	
+	
 	public List<Message> selectList(Connection conn, int firstRow, int endRow) {
 
 		List<Message> list = new ArrayList<Message>();
