@@ -57,7 +57,7 @@
 			<tr>
 				<td>사진</td>
 				<td>저장된 파일 :  ${editData.uPhoto} [삭제는 aJax로 삭제 처리]<br>
-					<input type="text" name="oldFile" value="${editData.uPhoto}" readonly> name="oldFile" 신규 파일이 없다면 이전 파일 이름을 저장합니다.<br>
+					<input type="hidden" name="oldFile" value="${editData.uPhoto}" readonly> name="oldFile" 신규 파일이 없다면 이전 파일 이름을 저장합니다.<br>
 					<input type="file" name="uPhoto"> 신규 파일을 업로드하면 기존 파일을 덮어씁니다.
 				</td>
 			</tr>

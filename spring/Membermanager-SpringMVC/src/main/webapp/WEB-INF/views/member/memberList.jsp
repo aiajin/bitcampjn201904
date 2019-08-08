@@ -95,7 +95,7 @@
 			</td>
 			<td>	
 				<a href="memberEdit?memberId=${memberInfo.idx}">수정</a> 
-				<a href="memberDelete?memberId=${memberInfo.idx}">삭제</a>
+				<a href="#" onclick="delMember(${memberInfo.idx})">삭제</a>
 			</td>
 		</tr>
 		</c:forEach>
@@ -118,6 +118,29 @@
 <!-- 푸터 시작 -->
 <%@ include file="/WEB-INF/views/frame/footer.jsp" %>
 <!-- 푸터 끝 -->
+
+
+
+
+<script>
+
+	function delMember(idx) {
+		
+		if(confirm("삭제하시겠습니까?")){
+			location.href = 'memberDelete?memberId='+idx;
+		}
+		
+	}
+
+
+
+
+</script>
+
+
+
+
+
 
 
 

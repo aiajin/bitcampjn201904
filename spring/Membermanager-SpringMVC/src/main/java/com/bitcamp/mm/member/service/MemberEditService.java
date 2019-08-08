@@ -57,7 +57,7 @@ public class MemberEditService implements MemberService {
 			String newFileName = edit.getuId()+"_"+edit.getuPhoto().getOriginalFilename();
 			
 			try {
-				// 신구파일 저장 
+				// 신규파일 저장 
 				edit.getuPhoto().transferTo(new File(dir, newFileName));
 				// 데이터 베이스 저장을 위한 새로운 파일 이름
 				memberInfo.setuPhoto(newFileName);
