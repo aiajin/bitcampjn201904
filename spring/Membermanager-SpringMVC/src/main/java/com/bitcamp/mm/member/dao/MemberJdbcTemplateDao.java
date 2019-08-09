@@ -24,44 +24,6 @@ public class MemberJdbcTemplateDao { // memberDao
 	@Autowired
 	JdbcTemplate template;
 	
-
-	public MemberInfo selectMemberById(Connection conn, String userId) {
-		
-		MemberInfo memberInfo = null;
-		
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		
-		System.out.println("dao : memberId -> " + userId);
-		
-		String sql = "select * from member where uid=?";
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1,userId);
-			rs = pstmt.executeQuery();
-			if(rs!=null && rs.next()) {
-				System.out.println("check ::::::::::::::::::::::::");
-				memberInfo = new MemberInfo(
-					rs.getInt("idx"), 
-					rs.getString("uid"), 
-					rs.getString("upw"), 
-					rs.getString("uname"), 
-					rs.getString("uphoto"), 
-					new Date(rs.getTimestamp("regdate").getTime()));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-		}
-		
-		
-		return memberInfo;
-	}
-
 	public MemberInfo selectMemberById(String userId) {
 		
 		String sql = "select * from member where uid=?";
@@ -78,31 +40,23 @@ public class MemberJdbcTemplateDao { // memberDao
 	}
 	
 	
-	public int insertMember(Connection conn, MemberInfo memberInfo) {
+	public int insertMember(MemberInfo memberInfo) {
 		
-		PreparedStatement pstmt = null;
+		String sql = "insert into member "
+				+ " (uid, uname, upw, uphoto) "
+				+ " values (?,?,?,?) ";
 		
-		int rCnt = 0;
-		
-		String sql = "insert into member (uid, uname, upw, uphoto) values (?,?,?,?) ";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberInfo.getuId());
-			pstmt.setString(2, memberInfo.getuName());
-			pstmt.setString(3, memberInfo.getuPW());
-			pstmt.setString(4, memberInfo.getuPhoto());
-			rCnt = pstmt.executeUpdate();
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return rCnt;
+		return template.update(
+				sql, 
+				memberInfo.getuId(),
+				memberInfo.getuName(),
+				memberInfo.getuPW(),
+				memberInfo.getuPhoto()
+				);
 		
 	}
+	
+	
 
 	public List<MemberInfo> selectList(Connection conn, int index, int count) {
 		

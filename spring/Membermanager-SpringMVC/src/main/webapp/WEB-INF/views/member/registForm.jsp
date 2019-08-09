@@ -73,7 +73,7 @@
 <!-- 푸터 끝 -->
 
 <script>
-	/* 
+	
 	$(document).ready(function(){
 		
 		$('#uId').focusout(function(){
@@ -81,7 +81,7 @@
 			// aJax 비동기 통신 id 전송 사용 유무에 대한 결과 값을 반환
 			
 			$.ajax({
-				url: 'idCheck.do',
+				url: 'idCheck2',
 				type: 'get',
 				data: {id: $(this).val() },
 				success: function(data){
@@ -129,7 +129,7 @@
 		
 	});
 
- */
+
 </script>
 
 
