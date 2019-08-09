@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bitcamp.mm.jdbc.ConnectionProvider;
 import com.bitcamp.mm.member.dao.MemberDao;
+import com.bitcamp.mm.member.dao.MemberJdbcTemplateDao;
 import com.bitcamp.mm.member.domain.ListViewData;
 import com.bitcamp.mm.member.domain.MemberInfo;
 import com.bitcamp.mm.member.domain.SearchParam;
@@ -16,8 +17,11 @@ import com.bitcamp.mm.member.domain.SearchParam;
 @Service("listServcie")
 public class MemberListService implements MemberService {
 
+	//@Autowired
+	//private MemberDao dao;
+	
 	@Autowired
-	private MemberDao dao;
+	private MemberJdbcTemplateDao dao;
 	
 	final int MEMBER_CNT_List = 3;
 	
@@ -27,18 +31,12 @@ public class MemberListService implements MemberService {
 		
 		ListViewData listData = new ListViewData();
 		
-		Connection conn = null;		 
-		
-		
-		
-		try {
-			conn = ConnectionProvider.getConnection();
-			
+
 			// 현재 페이지 번호
 			listData.setCurrentPageNumber(currentPageNumber);
 			
 			// 전체 게시물의 개수
-			int totalCnt = dao.selectTotalCount(conn,searchParam);
+			int totalCnt = dao.selectTotalCount(searchParam);
 			
 			int totalPageCnt = 0;
 			// 전체 페이지 개수
@@ -81,19 +79,19 @@ public class MemberListService implements MemberService {
 //			
 			if(searchParam == null) {
 				
-				memberList = dao.selectList(conn, index, MEMBER_CNT_List);
+				memberList = dao.selectList(index, MEMBER_CNT_List);
 			
 			} else if(searchParam.getStype().equals("both")) {
 				
-				memberList = dao.selectListByBoth(conn, index, MEMBER_CNT_List, searchParam);
+				memberList = dao.selectListByBoth(index, MEMBER_CNT_List, searchParam);
 			
 			} else if(searchParam.getStype().equals("id")) {
 				
-				memberList = dao.selectListById(conn, index, MEMBER_CNT_List, searchParam);
+				memberList = dao.selectListById(index, MEMBER_CNT_List, searchParam);
 			
 			} else if(searchParam.getStype().equals("name")) {
 				
-				memberList = dao.selectListByName(conn, index, MEMBER_CNT_List, searchParam);
+				memberList = dao.selectListByName(index, MEMBER_CNT_List, searchParam);
 			}
 			
 			
@@ -105,10 +103,7 @@ public class MemberListService implements MemberService {
 			
 			listData.setTotalCount(totalCnt);
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		
 		return listData;
 		
