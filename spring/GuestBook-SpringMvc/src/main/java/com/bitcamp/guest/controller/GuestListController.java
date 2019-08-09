@@ -44,8 +44,6 @@ public class GuestListController {
 		MessageListView listView = 
 				listService.getMessageListView(pageNumber);
 		
-		model.addAttribute("viewData", listView);
-		
 		return listView;
 	}
 

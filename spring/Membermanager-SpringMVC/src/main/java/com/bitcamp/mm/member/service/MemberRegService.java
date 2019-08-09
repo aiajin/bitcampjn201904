@@ -78,7 +78,7 @@ public class MemberRegService implements MemberService {
 	
 	public String idCheck1(String id) {
 		
-		String chk = dao.selectMemberById(id)==null ? "Y" : "N" ;
+		String chk = dao.selectMemberById2(id)==null ? "Y" : "N" ;
 		
 		return chk;
 	}
