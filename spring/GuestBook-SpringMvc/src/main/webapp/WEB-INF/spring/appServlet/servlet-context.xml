@@ -31,7 +31,8 @@
 	<beans:bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource"
 		p:driverClassName="oracle.jdbc.driver.OracleDriver"
-		p:url="jdbc:oracle:thin:@localhost:1521:orcl" p:username="scott"
+		p:url="jdbc:oracle:thin:@localhost:1521:orcl" 
+		p:username="scott"
 		p:password="tiger" />
 
 	<beans:bean id="jdbcTemplate"

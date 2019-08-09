@@ -10,14 +10,15 @@ import org.springframework.stereotype.Service;
 
 import com.bitcamp.mm.jdbc.ConnectionProvider;
 import com.bitcamp.mm.member.dao.MemberDao;
+import com.bitcamp.mm.member.dao.MemberJdbcTemplateDao;
 import com.bitcamp.mm.member.domain.MemberInfo;
 
 
 @Service("loginService")
 public class MemberLoginService implements MemberService {
-	
+
 	@Autowired
-	private MemberDao dao; 
+	private MemberJdbcTemplateDao dao;
 	
 	public boolean login(
 			String id, 
@@ -27,13 +28,8 @@ public class MemberLoginService implements MemberService {
 		boolean loginChk = false;
 		
 		MemberInfo memberInfo = null;
-		
-		Connection conn = null;
-		
-		try {
-			conn = ConnectionProvider.getConnection();
-			
-			memberInfo = dao.selectMemberById(conn, id);
+
+			memberInfo = dao.selectMemberById(id);
 			
 			if(memberInfo!=null && memberInfo.pwChk(pw)) {
 				// 세션에 저장
@@ -41,15 +37,7 @@ public class MemberLoginService implements MemberService {
 				request.getSession(true).setAttribute("loginInfo", memberInfo.toLoginInfo());
 				loginChk = true;
 			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		
+
 		return loginChk;
 		
 	}
