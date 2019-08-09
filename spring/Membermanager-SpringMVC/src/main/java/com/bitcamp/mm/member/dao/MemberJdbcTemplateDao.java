@@ -57,50 +57,10 @@ public class MemberJdbcTemplateDao { // memberDao
 	}
 	
 	
-
-	public List<MemberInfo> selectList(Connection conn, int index, int count) {
-		
-		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "SELECT * FROM member limit ?, ?";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, index);
-			pstmt.setInt(2, count);
-			
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				memberList.add(new MemberInfo(
-						rs.getInt("idx"), 
-						rs.getString("uid"), 
-						rs.getString("upw"), 
-						rs.getString("uname"), 
-						rs.getString("uphoto"), 
-						new Date(rs.getDate("regdate").getTime())));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return memberList;
-	}
-
-	public int selectTotalCount(
-			Connection conn, 
-			SearchParam searchParam) {
-		
-		int totalCnt = 0;
-		
-		Statement stmt = null;
-		ResultSet rs = null;
+	public int selectTotalCount(SearchParam searchParam) {
 		
 		String sql = "select count(*) from member";
-		
+
 		if(searchParam != null) {
 			sql = "select count(*) from member where ";
 			if(searchParam.getStype().equals("both")) {
@@ -114,161 +74,87 @@ public class MemberJdbcTemplateDao { // memberDao
 			}
 		}
 		
-		try {
-			stmt = conn.createStatement();
-			
-			rs = stmt.executeQuery(sql);
-			
-			if(rs.next()) {
-				totalCnt = rs.getInt(1);
-			}
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return template.queryForObject(sql, Integer.class);
 		
-		
-		return totalCnt;
 	}
 
-	public List<MemberInfo> selectListById(Connection conn, int index, int count, SearchParam searchParam) {
-
-		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+	public List<MemberInfo> selectList(int index, int count) {
+		String sql = "SELECT * FROM member limit ?, ?";		
+		return template.query(
+				sql, 
+				new MemberInfoRowMapper() , 
+				index, 
+				count);
+	}
+	
+	public List<MemberInfo> selectListById(int index, int count, SearchParam searchParam) {
 		
 		String sql = "SELECT * FROM member where uid like ?  limit ?, ?";
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+searchParam.getKeyword()+"%");
-			pstmt.setInt(2, index);
-			pstmt.setInt(3, count);
-			
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				memberList.add(new MemberInfo(
-						rs.getInt("idx"), 
-						rs.getString("uid"), 
-						rs.getString("upw"), 
-						rs.getString("uname"), 
-						rs.getString("uphoto"), 
-						new Date(rs.getDate("regdate").getTime())));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return memberList;
+		return template.query(
+				sql, 
+				new MemberInfoRowMapper(), 
+				"%"+searchParam.getKeyword()+"%",
+				index, 
+				count
+				);
 	}
-
-	public List<MemberInfo> selectListByName(Connection conn, int index, int count, SearchParam searchParam) {
-
-		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+	
+	public List<MemberInfo> selectListByName(int index, int count, SearchParam searchParam) {
 		
 		String sql = "SELECT * FROM member where uname like ?  limit ?, ?";
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+searchParam.getKeyword()+"%");
-			pstmt.setInt(2, index);
-			pstmt.setInt(3, count);
-			
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				memberList.add(new MemberInfo(
-						rs.getInt("idx"), 
-						rs.getString("uid"), 
-						rs.getString("upw"), 
-						rs.getString("uname"), 
-						rs.getString("uphoto"), 
-						new Date(rs.getDate("regdate").getTime())));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return memberList;
+		return template.query(
+				sql, 
+				new MemberInfoRowMapper(), 
+				"%"+searchParam.getKeyword()+"%",
+				index, 
+				count
+				);
 	}
 
-	public List<MemberInfo> selectListByBoth(Connection conn, int index, int count, SearchParam searchParam) {
-
-		List<MemberInfo> memberList = new ArrayList<MemberInfo>();
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+	
+	public List<MemberInfo> selectListByBoth(int index, int count, SearchParam searchParam) {
 		
 		String sql = "SELECT * FROM member where uid like ? or  uname like ?  limit ?, ?";
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+searchParam.getKeyword()+"%");
-			pstmt.setString(2, "%"+searchParam.getKeyword()+"%");
-			pstmt.setInt(3, index);
-			pstmt.setInt(4, count);
-			
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				memberList.add(new MemberInfo(
-						rs.getInt("idx"), 
-						rs.getString("uid"), 
-						rs.getString("upw"), 
-						rs.getString("uname"), 
-						rs.getString("uphoto"), 
-						new Date(rs.getDate("regdate").getTime())));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return template.query(
+				sql, 
+				new MemberInfoRowMapper(), 
+				"%"+searchParam.getKeyword()+"%", 
+				"%"+searchParam.getKeyword()+"%",
+				index,
+				count
+				);
 		
-		return memberList;
 	}
+	
 
-	public MemberInfo selectMemberByIdx(Connection conn, int id) {
-
-		MemberInfo memberInfo = null;
-		
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		
-		System.out.println("dao : memberId -> " + id);
+	public MemberInfo selectMemberByIdx(int id) {
 		
 		String sql = "select * from member where idx=?";
 		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1,id);
-			rs = pstmt.executeQuery();
-			if(rs!=null && rs.next()) {
-				System.out.println("check ::::::::::::::::::::::::");
-				memberInfo = new MemberInfo(
-					rs.getInt("idx"), 
-					rs.getString("uid"), 
-					rs.getString("upw"), 
-					rs.getString("uname"), 
-					rs.getString("uphoto"), 
-					new Date(rs.getTimestamp("regdate").getTime()));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-		}
-		
-		
-		return memberInfo;
+		return template.queryForObject(
+				sql, 
+				new MemberInfoRowMapper(), 
+				id
+				);
 	}
+	
+	
+	public int memberUpdate(MemberInfo memberInfo) {
+		String sql = "update member set uname=?, upw=?, uphoto=? where idx=?";
+		
+		return template.update(
+				sql, 
+				memberInfo.getuName(), 
+				memberInfo.getuPW(), 
+				memberInfo.getuPhoto(), 
+				memberInfo.getIdx()
+				);
+		
+	}
+	
 
 	public int memberUpdate(Connection conn, MemberInfo memberInfo) {
 		
@@ -293,6 +179,8 @@ public class MemberJdbcTemplateDao { // memberDao
 		return rCnt;
 	}
 
+	
+	
 	public int memberDelete(Connection conn, int id) {
 		
 		int rCnt = 0;
