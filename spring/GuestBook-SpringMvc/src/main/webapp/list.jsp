@@ -11,6 +11,10 @@
 		border : 2px solid #666;
 		width : 200px;
 	}
+	
+	a {
+		cusor:pointer;
+	}
 </style>
 </head>
 <body>
@@ -22,9 +26,9 @@
 	<article id="list">
 	
 	</article>
-	<div id="paging">
+	<article id="paging">
 	
-	</div>
+	</article>
 	
 		
 	
@@ -36,10 +40,19 @@
 
 	$(document).ready(function(){
 		
+		
+		page(1);
+		
+	});
+	
+	function page(num){
+		
+		//alert(num);
+		
 		$.ajax({
 			url : 'guest/listJson',
 			type : 'get',
-			data : {page:1},
+			data : {page:num},
 			success : function(data){
 				//alert(data);
 				//console.log(data);
@@ -55,7 +68,6 @@
 					var guestName = list[i].guestName;
 					var message = list[i].message;
 					
-					
 					output += '<div>\n';
 					output += '메시지 번호 : '+id+' <br>\n';
 					output += '손님 이름 : '+guestName+' <br>\n';
@@ -63,18 +75,23 @@
 					output += '</div>\n';
 				}
 				
+				
+				var paging = '';
+				
+				for(var j=1 ; j<data.pageTotalCount+1 ; j++){
+					paging += '<span class="paging"><a onclick="page('+j+')" >'+j+'</a></span> ';
+				}
+				
+				
 				//alert(output);
 				
 				$('#list').html(output);
+				$('#paging').html(paging);
 				
 				
 			}
 		});
-		
-		
-		
-		
-	});
+	}
 	
 
 </script>
