@@ -19,10 +19,8 @@ public class MessageSessionTemplateDao { // messageDao
 	private String nameSpace = "com.bitcamp.guest.mapper.mybatis.guestMapper";
 
 	public int insert(Message message) {
-		// com.bitcamp.guest.mapper.mybatis.guestMapper.insertMessage
-		int rCnt = template.update(nameSpace + ".insertMessage", message);
-		return rCnt;
-
+		// com.bitcamp.guest.mapper.mybatis.guestMapper.insertMessage		
+		return template.update(nameSpace + ".insertMessage", message);
 	}
 
 	public int selectCount() {

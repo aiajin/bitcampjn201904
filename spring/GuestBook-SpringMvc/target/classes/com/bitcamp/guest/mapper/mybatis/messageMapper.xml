@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namepsace 는 필수 속성이다. : dao 식별하기위한 이름 -->
-<mapper namespace="com.bitcamp.guest.mapper.mybatis.guestMapper">
+<mapper namespace="com.bitcamp.guest.dao.MessageSessionDao">
 
-	<insert id="insertMessage"
+	<insert id="insert"
 		parameterType="com.bitcamp.guest.domain.Message">
 		INSERT INTO GUESTBOOK_MESSAGE
 		(MESSAGE_ID, GUEST_NAME,

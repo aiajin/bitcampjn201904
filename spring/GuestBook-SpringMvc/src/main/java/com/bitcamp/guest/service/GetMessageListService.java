@@ -5,10 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.guest.dao.MessageSessionTemplateDao;
+import com.bitcamp.guest.dao.MessageSessionDao;
 import com.bitcamp.guest.domain.Message;
 import com.bitcamp.guest.domain.MessageListView;
 
@@ -21,8 +22,13 @@ public class GetMessageListService implements GuestBookService {
 	//@Autowired
 	//private MessageJdbcTemplateDao dao;
 	
+	//@Autowired
+	//private MessageSessionTemplateDao dao;
+	
 	@Autowired
-	private MessageSessionTemplateDao dao;
+	private SqlSessionTemplate template;
+	
+	private MessageSessionDao dao; 
 
 	
 	// 1. 한페이지에 보여줄 게시글의 개수
@@ -30,6 +36,10 @@ public class GetMessageListService implements GuestBookService {
 	
 	
 	public MessageListView getMessageListView(int pageNumber) {
+		
+		// dao 생성
+		dao = template.getMapper(MessageSessionDao.class);
+		
 		
 		// 2. 현재 페이지 번호
 		int currentPageNumber = pageNumber;

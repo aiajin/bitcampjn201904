@@ -19,6 +19,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCount" resultType="int">
 		select count(*) from guestbook_message
 	</select>
+	
+	
+	<resultMap id="messageResultmap"
+			   type="com.bitcamp.guest.domain.Message" >
+		<id property="id" column="message_id"/>
+		<result property="guestName" column="guest_name"/>
+		<result property="password" column="password"/>
+		<result property="message" column="message"/>
+	</resultMap>
+	
 
 	<select id="selectList"
 			parameterType="map"
@@ -49,14 +59,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from guestbook_message where message_id=#{id}
 	</delete>
 	
-	
-	<resultMap id="messageResultmap"
-			   type="com.bitcamp.guest.domain.Message" >
-		<id property="id" column="message_id"/>
-		<result property="guestName" column="guest_name"/>
-		<result property="password" column="password"/>
-		<result property="message" column="message"/>
-	</resultMap>
 	
 	
 
