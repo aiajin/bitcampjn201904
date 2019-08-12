@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectList"
 			parameterType="map"
-			resultType="com.bitcamp.guest.domain.Message" >
+			resultMap="messageResultmap" >
 	
 		<![CDATA[
 		select message_id, guest_name, password, message from
@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 
 	<select id="select"
-			resultType="com.bitcamp.guest.domain.Message" >
+			resultMap="messageResultmap" >
 		select * from guestbook_message where message_id=#{id}
 	</select>
 	
@@ -48,6 +48,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteMessage">		
 		delete from guestbook_message where message_id=#{id}
 	</delete>
+	
+	
+	<resultMap id="messageResultmap"
+			   type="com.bitcamp.guest.domain.Message" >
+		<id property="id" column="message_id"/>
+		<result property="guestName" column="guest_name"/>
+		<result property="password" column="password"/>
+		<result property="message" column="message"/>
+	</resultMap>
+	
+	
 
 
 
