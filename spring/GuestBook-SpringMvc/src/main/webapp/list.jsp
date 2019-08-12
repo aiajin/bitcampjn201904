@@ -13,7 +13,26 @@
 	}
 	
 	a {
-		cusor:pointer;
+		display : block;
+		cursor:pointer;
+	}
+	
+	#paging {
+		overflow: hidden;
+		margin-top: 10px;
+	}
+	
+	#paging>span {
+		width : 20px;
+		height : 20px;
+		display : block;
+		float : left;
+		margin : 0 2px;		
+		border : 1px solid #333;
+		text-align: center;
+		line-height: 20px;
+		font-size: 12px;
+		border-radius: 50%;
 	}
 </style>
 </head>

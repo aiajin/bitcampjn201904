@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namepsace 는 필수 속성이다. : dao 식별하기위한 이름 -->
+<mapper namespace="com.bitcamp.guest.mapper.mybatis.guestMapper">
+
+	<insert id="insertMessage">
+		insert into 
+	</insert>
+	
+	<select id="selectList" >
+		select * from 
+	</select>
+	
+	<delete id="deleteMessage">
+		delete from 
+	</delete>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

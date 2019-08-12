@@ -38,6 +38,28 @@
 	<beans:bean id="jdbcTemplate"
 		class="org.springframework.jdbc.core.JdbcTemplate"
 		p:dataSource-ref="dataSource" />
+		
+	
+	<!-- Mybatis 설정 : datasource, mapper 경로 -->
+	<beans:bean
+		id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+	>
+		<beans:property name="configLocation"  value=""/>
+		<beans:property name="dataSource" ref="dataSource"/>
+		<beans:property name="mapperLocations"
+			value="classpath:com/bitcamp/guest/mapper/mybatis/*.xml"
+		/>
+	</beans:bean>
+	
+	<beans:bean 
+		id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		>
+		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
+	</beans:bean>
+		
+		
 
 
 	<!-- PlatformTransactionManager 빈 설정 -->
