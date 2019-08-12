@@ -7,16 +7,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- namepsace 는 필수 속성이다. : dao 식별하기위한 이름 -->
 <mapper namespace="com.bitcamp.guest.mapper.mybatis.guestMapper">
 
-	<insert id="insertMessage">
-		insert into 
+	<insert id="insertMessage"
+		parameterType="com.bitcamp.guest.domain.Message">
+		INSERT INTO GUESTBOOK_MESSAGE
+		(MESSAGE_ID, GUEST_NAME,
+		PASSWORD, MESSAGE)
+		values
+		(GM_MID_SEQ.nextval,#{guestName},#{password},#{message})
 	</insert>
+
+	<select id="selectCount" resultType="int">
+		select count(*) from guestbook_message
+	</select>
+
+	<select id="selectList"
+			parameterType="map"
+			resultType="com.bitcamp.guest.domain.Message" >
 	
-	<select id="selectList" >
-		select * from 
+		<![CDATA[
+		select message_id, guest_name, password, message from
+		( 
+		select rownum rnum, message_id, guest_name, password, message from ( 
+		select * from guestbook_message m order by m.message_id desc  )
+		where rownum <= #{endRow}
+		) where rnum >= #{firstRow}
+		]]>
+		
+		
 	</select>
 	
-	<delete id="deleteMessage">
-		delete from 
+	
+
+	<select id="select"
+			resultType="com.bitcamp.guest.domain.Message" >
+		select * from guestbook_message where message_id=#{id}
+	</select>
+	
+	
+
+	<delete id="deleteMessage">		
+		delete from guestbook_message where message_id=#{id}
 	</delete>
 
 

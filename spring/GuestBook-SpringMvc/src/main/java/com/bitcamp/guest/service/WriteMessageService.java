@@ -1,15 +1,10 @@
 package com.bitcamp.guest.service;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.guest.dao.MessageDao;
-import com.bitcamp.guest.dao.MessageJdbcTemplateDao;
+import com.bitcamp.guest.dao.MessageSessionTemplateDao;
 import com.bitcamp.guest.domain.Message;
-import com.bitcamp.guest.jdbc.ConnectionProvider;
 
 @Service("writeService")
 public class WriteMessageService implements GuestBookService {
@@ -18,8 +13,13 @@ public class WriteMessageService implements GuestBookService {
 	//@Autowired private MessageDao dao;
 
 	
+	//@Autowired
+	//private MessageJdbcTemplateDao templateDao;
+	
 	@Autowired
-	private MessageJdbcTemplateDao templateDao;
+	private MessageSessionTemplateDao templateDao;
+	
+	
 	
 	public int write(Message message) {
 		
