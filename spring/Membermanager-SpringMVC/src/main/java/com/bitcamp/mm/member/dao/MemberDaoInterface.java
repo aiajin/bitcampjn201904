@@ -1,6 +1,7 @@
 package com.bitcamp.mm.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bitcamp.mm.member.domain.MemberInfo;
 import com.bitcamp.mm.member.domain.SearchParam;
@@ -24,6 +25,7 @@ public interface MemberDaoInterface {
 	// 게시물의 개수 : 동적 쿼리로 검색의 결과 까지 처리
 	public int selectTotalCount(SearchParam searchParam);
 	// 게시물의 LIST :  동적 쿼리로 검색의 결과 까지 처리
-	public List<MemberInfo> selectList(int index, int count);
+	//public List<MemberInfo> selectList(int index, int count);
+	public List<MemberInfo> selectList(Map<String, Object> params);
 
 }

@@ -4,6 +4,8 @@ public class SearchParam {
 	
 	private String stype;
 	private String keyword;
+	
+	
 	public String getStype() {
 		return stype;
 	}
