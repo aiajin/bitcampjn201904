@@ -48,7 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 회원정보 삭제 -->
-	<delete id="memberDelete"></delete>
+	<delete id="memberDelete">
+		delete from member where idx=#{idx}
+	</delete>
 	
 	<!-- 회원 리스트의 개수 : 검색을 위해 동적쿼리 적용 -->
 	<select id="selectTotalCount"></select>
