@@ -55,6 +55,18 @@
 		class="org.springframework.jdbc.core.JdbcTemplate"
 		p:dataSource-ref="dataSource"
 	/>
+	
+	<!-- sqlSessionFactory 설정 : mapper 위치 변경-서버 실행시 기준의 경로  -->
+	<beans:bean id="sqlSessionFactory"
+				class="org.mybatis.spring.SqlSessionFactoryBean"
+				p:dataSource-ref="dataSource"
+				p:mapperLocations="/WEB-INF/mappers/*.xml"			
+	/>
+	
+	<beans:bean id="sqlSession"
+				class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
+	</beans:bean>
 
 
 
