@@ -8,107 +8,116 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.bitcamp.mm.member.dao.MemberDaoInterface">
 
 	<!-- select 결과 메핑을 위한 resultMap 설정 -->
-	<resultMap id="resultMemberInfo" type="com.bitcamp.mm.member.domain.MemberInfo">
-		<id property="idx" column="idx"/>
-		<result property="uId" column="uid"/>
-		<result property="uPW" column="upw"/>
-		<result property="uName" column="uname"/>
-		<result property="uPhoto" column="uphoto"/>
-		<result property="regDate" column="date"/>
+	<resultMap id="resultMemberInfo"
+		type="com.bitcamp.mm.member.domain.MemberInfo">
+		<id property="idx" column="idx" />
+		<result property="uId" column="uid" />
+		<result property="uPW" column="upw" />
+		<result property="uName" column="uname" />
+		<result property="uPhoto" column="uphoto" />
+		<result property="regDate" column="date" />
 	</resultMap>
-	
+
 	<!-- 회원로그인 -->
-	<select id="selectMemberById" 
-			resultMap="resultMemberInfo">
-		select * from member where uid=#{id}
+	<select id="selectMemberById" resultMap="resultMemberInfo">
+		select * from member
+		where uid=#{id}
 	</select>
-	
+
 	<!-- 아이디 중복체크 -->
-	<select id="selectMemberById2" 
-			resultMap="resultMemberInfo">
-		select * from member where uid=#{id}
+	<select id="selectMemberById2" resultMap="resultMemberInfo">
+		select * from member
+		where uid=#{id}
 	</select>
-	
+
 	<!-- 회원가입 -->
-	<insert id="insertMember" 
-			parameterType="com.bitcamp.mm.member.domain.MemberInfo">
-			insert into member  (uid, uname, upw, uphoto)  values (#{uId},#{uName},#{uPW},#{uPhoto}) 
+	<insert id="insertMember"
+		parameterType="com.bitcamp.mm.member.domain.MemberInfo">
+		insert into member (uid, uname, upw, uphoto) values
+		(#{uId},#{uName},#{uPW},#{uPhoto})
 	</insert>
-	
+
 	<!-- 회원 정보 수정을 위한 정보 획득 -->
-	<select id="selectMemberByIdx"
-			resultMap="resultMemberInfo">
-		select * from member where idx=#{idx}
+	<select id="selectMemberByIdx" resultMap="resultMemberInfo">
+		select * from member
+		where idx=#{idx}
 	</select>
-	
+
 	<!-- 회원정보수정 -->
 	<update id="memberUpdate"
-			parameterType="com.bitcamp.mm.member.domain.MemberInfo">
-		update member set uname=#{uName}, upw=#{uPW}, uphoto=#{uPhoto} where idx=#{idx}
+		parameterType="com.bitcamp.mm.member.domain.MemberInfo">
+		update member set uname=#{uName}, upw=#{uPW},
+		uphoto=#{uPhoto} where idx=#{idx}
 	</update>
-	
+
 	<!-- 회원정보 삭제 -->
 	<delete id="memberDelete">
 		delete from member where idx=#{idx}
 	</delete>
-	
+
 	<!-- 회원 리스트의 개수 : 검색을 위해 동적쿼리 적용 -->
 	<select id="selectTotalCount"
-			parameterType="com.bitcamp.mm.member.domain.SearchParam" 
-			resultType="int">
+		parameterType="com.bitcamp.mm.member.domain.SearchParam"
+		resultType="int">
 		select count(*) from member
-		
+
 		<where>
-		
+
 			<if test="stype != null">
 				<if test="stype == 'both'">
-					uid LIKE CONCAT('%', #{keyword}, '%') or uname LIKE CONCAT('%', #{keyword}, '%') 
+					uid LIKE CONCAT('%', #{keyword}, '%') or uname LIKE
+					CONCAT('%', #{keyword}, '%')
 				</if>
 				<if test="stype == 'id'">
-					uid LIKE CONCAT('%', #{keyword}, '%') 
+					uid LIKE CONCAT('%', #{keyword}, '%')
 				</if>
 				<if test="stype == 'name'">
-					uname LIKE CONCAT('%', #{keyword}, '%') 
+					uname LIKE CONCAT('%', #{keyword}, '%')
 				</if>
-				
+
 			</if>
-		
-		
+
+
 		</where>
-		
+
 	</select>
-	
-	
+
+
 	<!-- 회원 리스트 : 검색을 위해 동적쿼리 적용 -->
-	<select id="selectList"
-			parameterType="map"
-			resultMap="resultMemberInfo">
+	<select id="selectList" parameterType="map"
+		resultMap="resultMemberInfo">
 		SELECT * FROM member
-		
-		
 		<where>
-		
 			<if test="search != null">
 				<if test="search.stype == 'both'">
-					uid LIKE CONCAT('%', #{search.keyword}, '%') or uname LIKE CONCAT('%', #{search.keyword}, '%') 
+					<include refid="whereId"/>
+					<include refid="whereName"/>
+					<!-- uid LIKE CONCAT('%', #{search.keyword}, '%') or uname LIKE CONCAT('%', #{search.keyword}, '%') -->
 				</if>
-				<if test="search.stype == 'id'">
-					uid LIKE CONCAT('%', #{search.keyword}, '%') 
+				<if test="search.stype == 'id'">				
+					<include refid="whereId"/>
+					<!-- uid LIKE CONCAT('%', #{search.keyword}, '%') -->
 				</if>
 				<if test="search.stype == 'name'">
-					uname LIKE CONCAT('%', #{search.keyword}, '%') 
+					<include refid="whereName"/>
+					<!-- uname LIKE CONCAT('%', #{search.keyword}, '%') -->
 				</if>
-				
 			</if>
-		
-		
 		</where>
-		
-		 <!-- limit #{param1}, #{param2} -->
-		 limit #{index}, #{count}
+		<!-- limit #{param1}, #{param2} -->
+		limit #{index}, #{count}
 	</select>
+		
+	<sql id="whereId">
+		or uid LIKE CONCAT('%', #{search.keyword}, '%')
+	</sql>
+		
+	<sql id="whereName">
+		or uid LIKE CONCAT('%', #{search.keyword}, '%')
+	</sql>
 	
-	
+
+
 </mapper>
 
 
