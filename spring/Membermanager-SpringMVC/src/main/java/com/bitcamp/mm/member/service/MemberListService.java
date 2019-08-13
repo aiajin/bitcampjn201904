@@ -114,6 +114,7 @@ public class MemberListService implements MemberService {
 			params.put("index", index);
 			params.put("count", MEMBER_CNT_List);
 			
+			//memberList = dao.selectList(index, MEMBER_CNT_List);
 			memberList = dao.selectList(params);
 			System.out.println("사이즈 : : : : " + totalCnt);
 			System.out.println("리스트 사이즈 : : : : " + memberList.size());

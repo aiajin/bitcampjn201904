@@ -28,4 +28,16 @@ public interface MemberDaoInterface {
 	//public List<MemberInfo> selectList(int index, int count);
 	public List<MemberInfo> selectList(Map<String, Object> params);
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

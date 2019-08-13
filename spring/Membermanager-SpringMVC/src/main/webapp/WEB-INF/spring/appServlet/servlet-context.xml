@@ -56,7 +56,8 @@
 		p:dataSource-ref="dataSource"
 	/>
 	
-	<!-- sqlSessionFactory 설정 : mapper 위치 변경-서버 실행시 기준의 경로  -->
+	<!-- sqlSessionFactory 설정 
+	     : mapper 위치 변경-서버 실행시 기준의 경로  -->
 	<beans:bean id="sqlSessionFactory"
 				class="org.mybatis.spring.SqlSessionFactoryBean"
 				p:dataSource-ref="dataSource"
