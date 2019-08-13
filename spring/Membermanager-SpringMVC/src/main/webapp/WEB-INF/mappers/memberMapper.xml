@@ -36,10 +36,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- 회원 정보 수정을 위한 정보 획득 -->
-	<select id="selectMemberByIdx"></select>
+	<select id="selectMemberByIdx"
+			resultMap="resultMemberInfo">
+		select * from member where idx=#{idx}
+	</select>
 	
 	<!-- 회원정보수정 -->
-	<update id="memberUpdate"></update>
+	<update id="memberUpdate"
+			parameterType="com.bitcamp.mm.member.domain.MemberInfo">
+		update member set uname=#{uName}, upw=#{uPW}, uphoto=#{uPhoto} where idx=#{idx}
+	</update>
 	
 	<!-- 회원정보 삭제 -->
 	<delete id="memberDelete"></delete>
