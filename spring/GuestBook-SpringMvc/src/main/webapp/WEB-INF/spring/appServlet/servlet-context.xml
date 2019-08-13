@@ -42,7 +42,7 @@
 	
 	<!-- Mybatis 설정 : datasource, mapper 경로 -->
 	<beans:bean
-		id="sqlSessionFactory"
+		id="	"
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 	>		
 		<beans:property name="dataSource" ref="dataSource"/>
