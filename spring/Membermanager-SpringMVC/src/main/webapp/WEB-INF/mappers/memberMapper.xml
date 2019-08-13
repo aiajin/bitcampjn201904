@@ -18,15 +18,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<!-- 회원로그인 -->
-	<select id="selectMemberById" resultMap="resultMemberInfo">
+	<select id="selectMemberById" 
+			resultMap="resultMemberInfo">
 		select * from member where uid=#{id}
 	</select>
 	
 	<!-- 아이디 중복체크 -->
-	<select id="selectMemberById2"></select>
+	<select id="selectMemberById2" 
+			resultMap="resultMemberInfo">
+		select * from member where uid=#{id}
+	</select>
 	
 	<!-- 회원가입 -->
-	<insert id="insertMember"></insert>
+	<insert id="insertMember" 
+			parameterType="com.bitcamp.mm.member.domain.MemberInfo">
+			insert into member  (uid, uname, upw, uphoto)  values (#{uId},#{uName},#{uPW},#{uPhoto}) 
+	</insert>
 	
 	<!-- 회원 정보 수정을 위한 정보 획득 -->
 	<select id="selectMemberByIdx"></select>
