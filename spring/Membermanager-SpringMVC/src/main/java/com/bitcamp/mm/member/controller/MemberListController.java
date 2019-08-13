@@ -1,5 +1,7 @@
 package com.bitcamp.mm.member.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import com.bitcamp.mm.member.domain.ListViewData;
 import com.bitcamp.mm.member.domain.MemberInfo;
@@ -66,8 +69,13 @@ public class MemberListController {
 			Model model,
 			@RequestParam(value = "p", defaultValue = "1") int pageNumber,
 			@RequestParam(value = "stype", required = false) String stype,
-			@RequestParam(value = "keyword", required = false) String keyword
+			@RequestParam(value = "keyword", required = false) String keyword,
+			HttpServletResponse response
 			) {
+		
+		
+		//response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		response.setStatus(HttpServletResponse.SC_OK);
 		
 		
 		SearchParam searchParam = null; 
@@ -139,7 +147,30 @@ public class MemberListController {
 	}
 
 	
-	
+
+	@RequestMapping("/member/memberList2")
+	public String memberList(
+			Model model
+			) {
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		
+		
+		
+		
+		ListViewData listdata = restTemplate.getForObject("http://localhost:8080/mm/member/memberList.json", ListViewData.class);
+		
+		/*
+		 * for(MemberInfo m : listdata.getMemberList()) { 
+		 * System.out.println(m); }
+		 */
+		
+		model.addAttribute("viewData", listdata);
+		
+		
+		return "member/memberList";
+	}
 	
 	
 	
