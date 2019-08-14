@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.mm.member.domain.MemberInfo;
+import com.bitcamp.mm.member.domain.MemberRestapiRegRequest;
 import com.bitcamp.mm.member.service.MemberListService;
 
 // /rest-api/members      GET     -> 전체 리스트, 페이징 처리된 리스트
@@ -31,8 +33,20 @@ public class MemberRestApiController {
 	public List<MemberInfo> getAllList(){		
 		return listService.getAllList();
 	}
-
 	
+	@CrossOrigin
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST)
+	public String regMember(
+			
+			@RequestBody MemberRestapiRegRequest regRequest
+			
+			) {
+		
+			System.out.println(regRequest);
+		
+		return "success";
+	}
 	
 	
 	
