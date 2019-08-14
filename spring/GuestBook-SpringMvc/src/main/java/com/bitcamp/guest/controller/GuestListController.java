@@ -1,5 +1,7 @@
 package com.bitcamp.guest.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,11 +40,14 @@ public class GuestListController {
 			@RequestParam(
 					value = "page", 
 					defaultValue = "1") int pageNumber,
-			Model model
+			Model model,
+			HttpServletResponse response
 			) {
 		
 		MessageListView listView = 
 				listService.getMessageListView(pageNumber);
+		
+		
 		
 		return listView;
 	}

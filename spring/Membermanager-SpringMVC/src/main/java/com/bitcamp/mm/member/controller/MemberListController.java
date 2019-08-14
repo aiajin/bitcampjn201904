@@ -59,6 +59,39 @@ public class MemberListController {
 		
 		return "member/memberList";
 	}
+	
+	
+	@RequestMapping("/member/memberListJson")	
+	public @ResponseBody ListViewData memberListJson(
+			@RequestParam(value = "p", defaultValue = "1") int pageNumber,
+			@RequestParam(value = "stype", required = false) String stype,
+			@RequestParam(value = "keyword", required = false) String keyword,
+			HttpServletResponse response
+			) {
+		
+		
+		SearchParam searchParam = null; 
+		
+		if(	stype!=null 
+				&& keyword!=null 
+				&& !stype.isEmpty() 
+				&& !keyword.isEmpty()) {
+			searchParam = new SearchParam();
+			searchParam.setStype(stype);
+			searchParam.setKeyword(keyword);
+		}
+		
+		ListViewData listdata = listService.getListData(pageNumber, searchParam);
+		
+		
+		//response.setStatus(HttpServletResponse.SC_OK);
+		//response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		
+		
+		
+		return listdata;
+	}
 
 	
 	
