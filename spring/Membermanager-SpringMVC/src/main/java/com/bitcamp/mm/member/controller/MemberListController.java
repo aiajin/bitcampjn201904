@@ -84,14 +84,50 @@ public class MemberListController {
 		ListViewData listdata = listService.getListData(pageNumber, searchParam);
 		
 		
-		//response.setStatus(HttpServletResponse.SC_OK);
+		response.setStatus(HttpServletResponse.SC_OK);
 		//response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		//response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		
 		
 		
 		return listdata;
 	}
+	
+	
+	// 반환 타입이 ResponseEntity<T> : SPring 4.2 이상
+	// 반환 하는 Body, statusCode, HttpHeader
+	@RequestMapping("/member/memberListJson2")
+	@ResponseBody
+	public ResponseEntity<ListViewData> memberListJson2(
+			@RequestParam(value = "p", defaultValue = "1") int pageNumber,
+			@RequestParam(value = "stype", required = false) String stype,
+			@RequestParam(value = "keyword", required = false) String keyword
+			) {
+		
+		
+		SearchParam searchParam = null; 
+		
+		if(	stype!=null 
+				&& keyword!=null 
+				&& !stype.isEmpty() 
+				&& !keyword.isEmpty()) {
+			searchParam = new SearchParam();
+			searchParam.setStype(stype);
+			searchParam.setKeyword(keyword);
+		}
+		
+		ListViewData listdata = listService.getListData(pageNumber, searchParam);
+		
+		
+		ResponseEntity<ListViewData> entity = 
+				new ResponseEntity<ListViewData>(
+						listdata, HttpStatus.OK);
+		
+		
+		return entity;
+	}
+
+
 
 	
 	

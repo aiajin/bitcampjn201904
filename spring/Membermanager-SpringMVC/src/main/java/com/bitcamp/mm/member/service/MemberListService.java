@@ -138,7 +138,15 @@ public class MemberListService implements MemberService {
 	
 	
 	
-	
+	public List<MemberInfo> getAllList(){
+		
+		dao = template.getMapper(MemberDaoInterface.class);
+		
+		List<MemberInfo> list = dao.selectAllList();
+		
+		return list;
+		
+	}
 	
 	
 	
