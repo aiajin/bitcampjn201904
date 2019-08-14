@@ -19,9 +19,9 @@
 	<h1>회원 가입</h1>
 	<hr>
 	<form id="form">
-        아이디 <input type="text" name="uId"> <br>
-        비밀번호 <input type="text" name="uPW"> <br>
-        이름 <input type="text" name="uName"><br>
+        아이디 <input type="text" name="uId" id="uId"> <br>
+        비밀번호 <input type="text" name="uPW" id="uPW"> <br>
+        이름 <input type="text" name="uName" id="uName"><br>
         <input type="submit" value="회원가입">
         
     </form>
@@ -34,19 +34,19 @@
 
 	$(document).ready(function(){
          
-        var list = {
-            uId : 'CoolinHot',
-            uPW : 'pass',
-            uName : '홍길동'
-        };
-
+  
         
         $('#form').submit(function(){
-           
+                 
+
             $.ajax({
                 url : 'http://localhost:8080/mm/rest-api/members',
                 type : 'POST',
-                data : JSON.stringify(list),
+                data : JSON.stringify({
+                    uId : $('#uId').val(),
+                    uPW : $('#uPW').val(),
+                    uName : $('#uName').val()
+                }),
                 contentType : 'application/json; charset=utf-8',
                 dataType : 'json',
                 success : function(data){

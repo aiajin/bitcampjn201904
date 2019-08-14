@@ -53,20 +53,22 @@ public class MemberRegService implements MemberService {
 		
 		MemberInfo memberInfo = regist.toMemberInfo();
 		
-		// 새로운 파일 이름 생성
-		//String newFileName = memberInfo.getuId()+System.nanoTime();
-		String newFileName = memberInfo.getuId()+"_"+regist.getuPhoto().getOriginalFilename();
 		
-		
+
 		int resultCnt = 0;
 		
+		String newFileName = "";
+		
 		try {
-			
-			// 파일을 서버의 지정 경로에 저장
-			regist.getuPhoto().transferTo(new File(dir, newFileName));
-			
-			// 데이터베이스 저장을 하기위한 파일 이름 set
-			memberInfo.setuPhoto(newFileName);
+			if(regist.getuPhoto()!= null) {
+				// 새로운 파일 이름 생성
+				//String newFileName = memberInfo.getuId()+System.nanoTime();				
+				newFileName = memberInfo.getuId()+"_"+regist.getuPhoto().getOriginalFilename();
+				// 파일을 서버의 지정 경로에 저장
+				regist.getuPhoto().transferTo(new File(dir, newFileName));
+				// 데이터베이스 저장을 하기위한 파일 이름 set
+				memberInfo.setuPhoto(newFileName);
+			}
 			
 			resultCnt = dao.insertMember(memberInfo);
 			
@@ -79,7 +81,9 @@ public class MemberRegService implements MemberService {
 			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("오류");
-			new File(dir,newFileName).delete();
+			if(regist.getuPhoto()!= null) {
+				new File(dir,newFileName).delete();
+			}
 		}
 		
 		
