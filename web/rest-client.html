@@ -34,7 +34,7 @@
         
         if(confirm('삭제하시겠습니까?')){
            $.ajax({
-                url : 'http://localhost:8080/mm/rest-api/members/'+idx,
+                url : 'http://localhost:8080/mm/rest/members/'+idx,
                 type : 'DELETE',
                 success : function(data){
                     //alert(JSON.stringify(data));
@@ -56,7 +56,7 @@
     function list(){
         
 		$.ajax({
-			url : 'http://localhost:8080/mm/rest-api/members',
+			url : 'http://localhost:8080/mm/rest/members',
 			type : 'GET',
 			success : function(data){
 				//alert(JSON.stringify(data));
