@@ -65,7 +65,10 @@
             $.ajax({
                 url : 'http://localhost:8080/mm/rest/members/'+$('#idx').val(),
                 type : 'PUT',
-                data : JSON.stringify({uId : $('#uId').val(), uPW : $('#uPW').val(), uName : $('#uName').val()}),
+                data : JSON.stringify({
+                    uId : $('#uId').val(), 
+                    uPW : $('#uPW').val(), 
+                    uName : $('#uName').val()}),
                 contentType : 'application/json; charset=utf-8',                
                 success : function(data){
                     alert(data);
