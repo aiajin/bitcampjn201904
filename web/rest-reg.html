@@ -55,7 +55,7 @@
 
             });*/
             
-            $.ajax({
+            /*$.ajax({
                 url : 'http://localhost:8080/mm/rest/members',
                 type : 'POST',
                 data : { // uId=abc&uPw=123&uName=cool
@@ -63,6 +63,18 @@
                     uPW : $('#uPW').val(),
                     uName : $('#uName').val()
                 },
+                success : function(data){
+                    alert(data);
+                }
+
+            });*/
+            
+            alert($('#form').serialize());
+            
+            $.ajax({
+                url : 'http://localhost:8080/mm/rest/members',
+                type : 'POST',
+                data : $('#form').serialize(),
                 success : function(data){
                     alert(data);
                 }
