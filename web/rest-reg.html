@@ -39,7 +39,7 @@
         $('#form').submit(function(){
                  
 
-            $.ajax({
+            /*$.ajax({
                 url : 'http://localhost:8080/mm/rest-api/members',
                 type : 'POST',
                 data : JSON.stringify({
@@ -49,6 +49,20 @@
                 }),
                 contentType : 'application/json; charset=utf-8',
                 dataType : 'json',
+                success : function(data){
+                    alert(data);
+                }
+
+            });*/
+            
+            $.ajax({
+                url : 'http://localhost:8080/mm/rest/members',
+                type : 'POST',
+                data : { // uId=abc&uPw=123&uName=cool
+                    uId : $('#uId').val(),
+                    uPW : $('#uPW').val(),
+                    uName : $('#uName').val()
+                },
                 success : function(data){
                     alert(data);
                 }

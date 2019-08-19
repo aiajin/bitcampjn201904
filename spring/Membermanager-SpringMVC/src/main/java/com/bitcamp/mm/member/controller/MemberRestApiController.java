@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitcamp.mm.member.domain.MemberInfo;
@@ -51,11 +52,12 @@ public class MemberRestApiController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String regMember(
 			
-			@RequestBody RequestMemberRegist regRequest,
+			RequestMemberRegist regRequest,
 			HttpServletRequest request
 			) {
 		
-			//System.out.println(regRequest);
+			//System.out.println("check : " + regRequest);
+			//System.out.println("check : " + request.getParameter("uName"));
 		int result = regService.memberInsert(request, regRequest);
 		
 		return result>0?"success":"fail";
