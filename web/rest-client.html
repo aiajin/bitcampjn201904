@@ -19,6 +19,20 @@
 	<h1>회원 리스트</h1>
 	<hr>
 	<div id="memberlist"></div>
+    
+    <div id="editFrame" style="display: none">
+        
+        <h1>회원 가입</h1>
+        <hr>
+        <form id="editForm">
+            <input type="hidden" name="idx" id="idx">
+            아이디 <input type="text" name="uId" id="uId" readonly> <br>
+            비밀번호 <input type="text" name="uPW" id="uPW" required> <br>
+            이름 <input type="text" name="uName" id="uName" required><br>
+            <input type="submit" value="회원수정">
+
+        </form>
+    </div>
 
 
 
@@ -28,6 +42,34 @@
 
 	$(document).ready(function(){
 		list();		
+        
+        $('#editForm').submit(function(){
+            
+            
+            //alert($('#editForm').serialize());
+            
+            $.ajax({
+                url : 'http://localhost:8080/mm/rest/members/'+$('#idx').val(),
+                type : 'PUT',
+                data : JSON.stringify({uId : $('#uId').val(), uPW : $('#uPW').val(), uName : $('#uName').val()}),
+                contentType : 'application/json; charset=utf-8',                
+                success : function(data){
+                    alert(data);
+                    if(data == 'success') {
+                        alert('수정되었습니다.');
+                        $('#editFrame').css('display', 'none');
+                        list();
+                    }
+                },
+                error : function(e){
+                    alert('error');
+                }
+
+            });
+            
+            
+            return false;
+        });
 	});
     
     function del(idx){
@@ -70,6 +112,7 @@
                     html += 'uName : ' + data[i].uName +' <br>\n';
                     html += 'uPhoto : ' + data[i].uuPhoto +'<br>\n';
                     html += '<button onclick="del('+ data[i].idx +')">삭제하기</button><br>\n';
+                    html += '<button onclick="editPreSet('+ data[i].idx +')">수정하기</button><br>\n';
                     html += '</div>\n';
                 }
                 
@@ -77,6 +120,26 @@
 			}
 			
 		});
+		
+    }
+    
+    function editPreSet(idx){
+        
+        $('#editFrame').css('display', 'block');
+        
+           $.ajax({
+                url : 'http://localhost:8080/mm/rest/members/'+idx,
+                type : 'GET',
+                success : function(data){
+                    $('#idx').val(idx);
+                    $('#uId').val(data.uId);
+                    $('#uName').val(data.uName);
+                }
+
+            });
+           
+           
+           
 		
     }
 

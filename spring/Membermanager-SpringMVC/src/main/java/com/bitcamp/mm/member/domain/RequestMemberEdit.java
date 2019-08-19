@@ -58,8 +58,11 @@ public class RequestMemberEdit {
 	public void setOldFile(String oldFile) {
 		this.oldFile = oldFile;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "RequestMemberEdit [idx=" + idx + ", uId=" + uId + ", uPW=" + uPW + ", uName=" + uName + "]";
+	}
 
 	public MemberInfo toMemberInfo() {
 

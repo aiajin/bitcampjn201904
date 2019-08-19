@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitcamp.mm.member.domain.MemberInfo;
+import com.bitcamp.mm.member.domain.RequestMemberEdit;
 import com.bitcamp.mm.member.domain.RequestMemberRegist;
 import com.bitcamp.mm.member.service.MemberDeleteService;
+import com.bitcamp.mm.member.service.MemberEditService;
 import com.bitcamp.mm.member.service.MemberListService;
 import com.bitcamp.mm.member.service.MemberRegService;
 
@@ -34,6 +37,9 @@ public class MemberRestFulController {
 	
 	@Autowired
 	private MemberRegService regService;
+	
+	@Autowired 
+	private MemberEditService editService;
 	
 	
 	
@@ -89,6 +95,34 @@ public class MemberRestFulController {
 	}
 	
 	
+	@CrossOrigin
+	@GetMapping("/{id}")
+	public ResponseEntity<MemberInfo> getMemberInfo(
+			@PathVariable("id") int idx
+			){
+		
+		MemberInfo info = editService.getEditFormData(idx);
+		
+		return new ResponseEntity<MemberInfo>(info, HttpStatus.OK);
+		
+	}
+	
+	@CrossOrigin
+	@PutMapping("/{id}")
+	public ResponseEntity<String> editMember(
+			@PathVariable("id") int id,
+			@RequestBody RequestMemberEdit editRequest,
+			HttpServletRequest request
+			){
+		
+		editRequest.setIdx(id);
+		
+		System.out.println(editRequest);
+		
+		int cnt = editService.edit(editRequest, null, request);
+		
+		return new ResponseEntity<String>(cnt>0?"success":"fail" , HttpStatus.OK);
+	}
 	
 	
 	
