@@ -45,7 +45,7 @@ public class MemberRestFulController {
 	
 	//@RequestMapping(method = RequestMethod.GET)
 	//@ResponseBody
-	@CrossOrigin
+	//@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<MemberInfo>> getAllList(){
 		
