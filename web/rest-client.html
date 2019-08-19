@@ -18,11 +18,12 @@
 <body>
 	<h1>회원 리스트</h1>
 	<hr>
+    <div style="text-align: right"><button id="regBtn">회원가입</button></div>
 	<div id="memberlist"></div>
     
     <div id="editFrame" style="display: none">
         
-        <h1>회원 가입</h1>
+        <h3>회원정보 수정</h3>
         <hr>
         <form id="editForm">
             <input type="hidden" name="idx" id="idx">
@@ -30,6 +31,19 @@
             비밀번호 <input type="text" name="uPW" id="uPW" required> <br>
             이름 <input type="text" name="uName" id="uName" required><br>
             <input type="submit" value="회원수정">
+
+        </form>
+    </div>
+    
+    <div id="regFrame" style="display: none">
+        
+        <h3>회원 가입</h3>
+        <hr>
+        <form id="form">            
+            아이디 <input type="text" name="uId" id="uId" required> <br>
+            비밀번호 <input type="text" name="uPW" id="uPW" required> <br>
+            이름 <input type="text" name="uName" id="uName" required><br>
+            <input type="submit" value="회원가입">
 
         </form>
     </div>
@@ -70,6 +84,72 @@
             
             return false;
         });
+        
+        
+        $('#regBtn').click(function(){
+            disNone();
+            $('#regFrame').css('display', 'block');
+        });
+        
+        
+        $('#form').submit(function(){
+                 
+
+            /*$.ajax({
+                url : 'http://localhost:8080/mm/rest-api/members',
+                type : 'POST',
+                data : JSON.stringify({
+                    uId : $('#uId').val(),
+                    uPW : $('#uPW').val(),
+                    uName : $('#uName').val()
+                }),
+                contentType : 'application/json; charset=utf-8',
+                dataType : 'json',
+                success : function(data){
+                    alert(data);
+                }
+
+            });*/
+            
+            /*$.ajax({
+                url : 'http://localhost:8080/mm/rest/members',
+                type : 'POST',
+                data : { // uId=abc&uPw=123&uName=cool
+                    uId : $('#uId').val(),
+                    uPW : $('#uPW').val(),
+                    uName : $('#uName').val()
+                },
+                success : function(data){
+                    alert(data);
+                }
+
+            });*/
+            
+            alert($('#form').serialize());
+            
+            $.ajax({
+                url : 'http://localhost:8080/mm/rest/members',
+                type : 'POST',
+                data : $('#form').serialize(),
+                success : function(data){
+                    alert(data);
+                    disNone();
+                    list();
+                }
+
+            });
+            
+            return false;
+        });
+        
+        
+        
+        
+        
+        
+		
+        
+        
 	});
     
     function del(idx){
@@ -125,6 +205,8 @@
     
     function editPreSet(idx){
         
+        disNone();
+        
         $('#editFrame').css('display', 'block');
         
            $.ajax({
@@ -144,6 +226,10 @@
     }
 
 
+    function disNone() {
+        $('#regFrame').css('display', 'none');
+        $('#editFrame').css('display', 'none');
+    }
 </script>
 
 
