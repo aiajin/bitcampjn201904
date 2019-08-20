@@ -112,6 +112,8 @@ public class MailSendController {
 			// MimeMessageHelper 파일 객체를 추가
 			messageHelper.addAttachment(MimeUtility.encodeText("자리.xlsx", "UTF-8", "B"), dataSource);
 			
+			messageHelper.addInline("abc", new FileDataSource("C:\\Users\\1027\\Pictures\\droid.jpg"));
+			
 			
 			javaMailSender.send(message);
 			
