@@ -70,8 +70,18 @@
 	</beans:bean>
 
 
-
-
+	<!-- 여러개의 인터셉터를 등록 -->
+	<interceptors>
+	
+		<!-- 인터셉터 생성 : 로그인 체크 -->
+		<interceptor>
+			<mapping path="/member/mypage/**"/>
+			<!-- <exclude-mapping path="/member/mypage/help/**"/> -->
+			<beans:bean 
+			class="com.bitcamp.mm.interceptor.AuthCheckInterceptor"/>
+		</interceptor>
+	
+	</interceptors>
 
 
 
