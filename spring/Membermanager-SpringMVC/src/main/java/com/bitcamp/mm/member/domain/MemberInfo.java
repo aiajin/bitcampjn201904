@@ -1,9 +1,16 @@
 package com.bitcamp.mm.member.domain;
 
 import java.util.Date;
+import java.util.Random;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/*
+	2019.08.20
+	verify 컬럼 추가, 	code 추가
+	verify : 인증 여부 코드
+	code : 난수 코드
+*/
 // usebean Class
 public class MemberInfo {
 
@@ -16,18 +23,23 @@ public class MemberInfo {
 	private String uPhoto;
 	private Date regDate;
 
+	private char verify;
+	@JsonIgnore
+	private String code;
+
 	// default 생성자 필수
 	public MemberInfo() {
 		this.regDate = new Date();
+		getRandomSting();
 	}
 
-	public MemberInfo(String uId, String uPW, String uName, String uPhoto) {
-		super();
+	public MemberInfo(String uId, String uPW, String uName, String uPhoto) {		
 		this.uId = uId;
 		this.uPW = uPW;
 		this.uName = uName;
 		this.uPhoto = uPhoto;
 		this.regDate = new Date();
+		getRandomSting();
 	}
 
 	public MemberInfo(int idx, String uId, String uPW, String uName, String uPhoto, Date regDate) {
@@ -38,6 +50,7 @@ public class MemberInfo {
 		this.uName = uName;
 		this.uPhoto = uPhoto;
 		this.regDate = regDate;
+		getRandomSting();
 	}
 
 	// 변수들의 Getter/Setter 시작
@@ -90,13 +103,29 @@ public class MemberInfo {
 		this.regDate = regDate;
 	}
 
+	// 2019.08.20 추가
+	public char getVerify() {
+		return verify;
+	}	
+	// 2019.08.20 추가
+	public void setVerify(char verify) {
+		this.verify = verify;
+	}
+	// 2019.08.20 추가
+	public String getCode() {
+		return code;
+	}
+	// 2019.08.20 추가
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	// 데이터 확인을 위한 toString 오버라이딩
 	@Override
 	public String toString() {
 		return "MemberInfo [idx=" + idx + ", uId=" + uId + ", uPW=" + uPW + ", uName=" + uName + ", uPhoto=" + uPhoto
-				+ ", regDate=" + regDate + "]";
+				+ ", regDate=" + regDate + ", verify=" + verify + ", code=" + code + "]";
 	}
-	
 
 	// 화면 결과 출력을 위한 HTML 코드 반환
 	public String makeHtmlDiv() {
@@ -120,24 +149,33 @@ public class MemberInfo {
 		return new LoginInfo(uId, uName, uPhoto, regDate);
 
 	}
-	
+
 	// 비밀번호 체크 확인
 	// 2017.07.25 메서드 추가
 	public boolean pwChk(String pw) {
-		return uPW != null && uPW.trim().length()>0 && uPW.equals(pw);
+		return uPW != null && uPW.trim().length() > 0 && uPW.equals(pw);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 2019.08.20 추가
+	// 영문 + 숫자 난수 발생
+	private void getRandomSting() {
+		
+		Random r = new Random(System.nanoTime());
+		StringBuffer sb = new StringBuffer();
+		
+		for(int i=0 ; i<20 ; i++ ) {
+			if(r.nextBoolean()) {
+				sb.append(r.nextInt(10));
+			} else {
+				sb.append((char)(r.nextInt(26)+97));
+			}
+		}
+		
+		System.out.println("난수 코드 생성 : " + sb) ;
+		
+		setCode(sb.toString());
+		
+		//return  sb.toString();		
+	}
 
 }
