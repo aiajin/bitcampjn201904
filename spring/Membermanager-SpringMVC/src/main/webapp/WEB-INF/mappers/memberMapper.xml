@@ -32,12 +32,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 회원가입 -->
+	<!-- 2019.08.20 컬럼 추가 입력 -->
 	<insert id="insertMember"
 		parameterType="com.bitcamp.mm.member.domain.MemberInfo">
 		
-		insert into member (uid, uname, upw, uphoto) 
+		insert into member (uid, uname, upw, uphoto, code) 
 		  values
-		(#{uId},#{uName},#{uPW},#{uPhoto})
+		(#{uId},#{uName},#{uPW},#{uPhoto},#{code})
 		
 	</insert>
 
