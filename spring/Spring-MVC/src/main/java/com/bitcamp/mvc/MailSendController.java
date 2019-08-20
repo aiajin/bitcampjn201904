@@ -2,15 +2,19 @@ package com.bitcamp.mvc;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
+import javax.mail.internet.MimeUtility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -79,9 +83,57 @@ public class MailSendController {
 		return "send ok";
 	}
 
-	
-	
-	
+	@ResponseBody
+	@RequestMapping("/mail/send3")
+	public String sendFileAttach() {
+		
+		MimeMessage message = javaMailSender.createMimeMessage();
+		
+		
+		try {
+			
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			
+			// 제목
+			messageHelper.setSubject("[안내] 파일 첨부합니다.");
+			
+			// 내용 html
+			String htmlStr = "<h1>파일첨부, 파일을 다운받으세요.</h1>";
+			
+			// 내용 설정
+			messageHelper.setText(htmlStr, true);
+			
+			// To 설정
+			messageHelper.setTo(new InternetAddress(
+					"ryuyj76@naver.com", "유영진 님", "UTF-8"));
+			
+			// 첨부할 파일 객체 생성
+			DataSource dataSource = new FileDataSource("C:\\Users\\1027\\Documents\\자리.xlsx");
+			// MimeMessageHelper 파일 객체를 추가
+			messageHelper.addAttachment(MimeUtility.encodeText("자리.xlsx", "UTF-8", "B"), dataSource);
+			
+			
+			javaMailSender.send(message);
+			
+			
+			
+			
+			
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		
+		
+		
+		return "send ok";
+		
+		
+	}
 	
 	
 	
