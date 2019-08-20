@@ -16,8 +16,8 @@
 		<li><a href="<c:url value='/member/mypage/mypage' />">MyPage1</a></li>
 		<li><a href="<c:url value='/member/mypage/mypage' />">MyPage2</a></li>
 		<li><a href="<c:url value='/member/memberList' />">회원리스트1</a></li>
-		<li><a href="<c:url value='/member/memberListJson' />">회원리스트JSON</a></li>
-		<li><a href="<c:url value='/member/memberListJson2' />">회원리스트JSON2</a></li>		<li><a href="<c:url value='/member/logout.do' />">LOGOUT</a></li>
+		<li><a href="<c:url value='/member/json/memberListJson' />">회원리스트JSON</a></li>
+		<li><a href="<c:url value='/member/json/memberListJson2' />">회원리스트JSON2</a></li>		<li><a href="<c:url value='/member/logout.do' />">LOGOUT</a></li>
 	</ul>
 	<%-- <ul>
 		<li><a href="${pageContext.request.contextPath}">홈</a></li>

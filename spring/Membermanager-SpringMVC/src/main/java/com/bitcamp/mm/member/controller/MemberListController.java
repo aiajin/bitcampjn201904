@@ -61,7 +61,7 @@ public class MemberListController {
 	}
 	
 	
-	@RequestMapping("/member/memberListJson")	
+	@RequestMapping("/member/json/memberListJson")	
 	public @ResponseBody ListViewData memberListJson(
 			@RequestParam(value = "p", defaultValue = "1") int pageNumber,
 			@RequestParam(value = "stype", required = false) String stype,
@@ -96,7 +96,7 @@ public class MemberListController {
 	
 	// 반환 타입이 ResponseEntity<T> : SPring 4.2 이상
 	// 반환 하는 Body, statusCode, HttpHeader
-	@RequestMapping("/member/memberListJson2")
+	@RequestMapping("/member/json/memberListJson2")
 	@ResponseBody
 	public ResponseEntity<ListViewData> memberListJson2(
 			@RequestParam(value = "p", defaultValue = "1") int pageNumber,
@@ -132,7 +132,7 @@ public class MemberListController {
 	
 	
 
-	@RequestMapping("/member/memberList.json")
+	@RequestMapping("/member/json/memberList.json")
 	@ResponseBody
 	public ListViewData memberList2(
 			Model model,
@@ -178,7 +178,7 @@ public class MemberListController {
 	
 
 
-	@RequestMapping("/member/memberList2.json")
+	@RequestMapping("/member/json/memberList2.json")
 	@ResponseBody
 	public ResponseEntity<ListViewData> memberList3(
 			Model model,
