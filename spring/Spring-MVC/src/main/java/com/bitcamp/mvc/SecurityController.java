@@ -1,5 +1,9 @@
 package com.bitcamp.mvc;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,9 @@ public class SecurityController {
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
+	@Autowired
+	private AES256Util aesUtil;
 	
 	@ResponseBody
 	@RequestMapping("/encodepassword")
@@ -41,6 +48,22 @@ public class SecurityController {
 				+ "encodingStr = pw ==> " + result ;
 		
 	}
+
+	
+
+	@ResponseBody
+	@RequestMapping("/encodepassword2")
+	public String bcript2() throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+		
+		String str = "password";		
+		String encodingStr = aesUtil.encrypt(str);
+		String decodingStr = aesUtil.decrypt(encodingStr);
+		
+		
+		return str + " : " + encodingStr + " : "  + decodingStr ;
+		
+	}
+	
 	
 	
 	
