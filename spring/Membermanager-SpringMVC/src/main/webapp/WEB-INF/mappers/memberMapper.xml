@@ -16,6 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="uName" column="uname" />
 		<result property="uPhoto" column="uphoto" />
 		<result property="regDate" column="date" />
+		<!-- verify, code 추가 -->
+		<result property="verify" column="verify" />
+		<result property="code" column="code" />
 	</resultMap>
 
 	<!-- 회원로그인 -->
@@ -136,6 +139,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member order by uname
 		
 	</select>
+	
+	<update id="verify">
+		update member set verify='Y' 
+		where uid=#{param1} and code=#{param2} 
+	</update>
 	
 
 

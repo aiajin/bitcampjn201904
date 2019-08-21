@@ -75,6 +75,35 @@ public class MailSenderService {
 		
 	}
 	
+public void reSend(String getuId, String code) {
+
+		
+		MimeMessage message = sender.createMimeMessage();
+		
+		try {
+			
+			message.setSubject("[인증안내] 이메일 인증을 해주세요.", "UTF-8" );
+			String htmlMsg = "<h1>이메일 인증을 해주세요.</h1>";
+			
+			htmlMsg += "<h3>인증을 위해 아래 링크를 클랙해주세요.</h3>";
+			htmlMsg += "<h3><a href=\"http://localhost:8080/mm/member/verify?id="+getuId+"&code="+code+"\" >인증하기</a></h3>";
+			
+			message.setText(htmlMsg, "UTF-8", "html");
+			message.setFrom(new InternetAddress("ryuyj@nate.com"));
+			message.addRecipient(RecipientType.TO, 
+					new InternetAddress(getuId, "고객님", "utf-8"));
+			
+			sender.send(message);
+			
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	}
 	
 	
 	

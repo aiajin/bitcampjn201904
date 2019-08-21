@@ -29,6 +29,8 @@ public interface MemberDaoInterface {
 	public List<MemberInfo> selectList(Map<String, Object> params);
 	// 회원의 전체 리스트 
 	public List<MemberInfo> selectAllList();
+	// 회원 이메일 인증 처리
+	public int verify(String id, String code);
 	
 	
 	
