@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.mm.member.dao.MemberDaoInterface;
 import com.bitcamp.mm.member.domain.MemberInfo;
@@ -57,8 +58,10 @@ public class MemberRegService implements MemberService {
 		
 		String newFileName = "";
 		
+		MultipartFile file = regist.getuPhoto();
+		
 		try {
-			if(regist.getuPhoto()!= null) {
+			if(file != null && !file.isEmpty() && file.getSize()>0 ) {
 				// 새로운 파일 이름 생성
 				//String newFileName = memberInfo.getuId()+System.nanoTime();				
 				newFileName = memberInfo.getuId()+"_"+regist.getuPhoto().getOriginalFilename();
@@ -66,6 +69,8 @@ public class MemberRegService implements MemberService {
 				regist.getuPhoto().transferTo(new File(dir, newFileName));
 				// 데이터베이스 저장을 하기위한 파일 이름 set
 				memberInfo.setuPhoto(newFileName);
+			} else {
+				memberInfo.setuPhoto("default.png");
 			}
 			
 			resultCnt = dao.insertMember(memberInfo);

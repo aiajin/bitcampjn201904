@@ -60,7 +60,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="회원 수정"> </td>
+				<td><input type="submit" value="회원가입"> </td>
 			</tr>
 		</table>
 	</form>

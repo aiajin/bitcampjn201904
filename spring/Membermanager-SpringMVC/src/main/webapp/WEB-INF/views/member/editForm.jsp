@@ -63,7 +63,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="회원가입"> </td>
+				<td><input type="submit" value="회원수정"> </td>
 			</tr>
 		</table>
 	</form>
