@@ -1,7 +1,6 @@
 SELECT * FROM project.member;
 commit;
 
-
 -- 암호화 함수
 select 
 	password(upw) as password, 
