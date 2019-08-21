@@ -75,7 +75,8 @@ public class MailSenderService {
 		
 	}
 	
-public void reSend(String getuId, String code) {
+	
+	public void reSend(String getuId, String code) {
 
 		
 		MimeMessage message = sender.createMimeMessage();
