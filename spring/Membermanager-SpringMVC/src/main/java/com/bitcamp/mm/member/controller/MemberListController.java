@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.bitcamp.mm.member.domain.ListViewData;
-import com.bitcamp.mm.member.domain.MemberInfo;
+import com.bitcamp.mm.member.domain.ListViewDataXml;
 import com.bitcamp.mm.member.domain.SearchParam;
 import com.bitcamp.mm.member.service.MemberListService;
 
@@ -212,10 +212,52 @@ public class MemberListController {
 		model.addAttribute("viewData", listdata);
 		
 		
-		return new ResponseEntity<ListViewData>(listdata, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<ListViewData>(listdata, HttpStatus.OK);
+	}
+
+
+
+
+	@RequestMapping("/member/xml/memberList.xml")
+	@ResponseBody
+	public ResponseEntity<ListViewDataXml> memberListXml(
+			Model model,
+			@RequestParam(value = "p", defaultValue = "1") int pageNumber,
+			@RequestParam(value = "stype", required = false) String stype,
+			@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value = "cnt", defaultValue = "10") int cnt
+			) {
+		
+		
+		SearchParam searchParam = null; 
+		
+		if(	stype!=null 
+				&& keyword!=null 
+				&& !stype.isEmpty() 
+				&& !keyword.isEmpty()) {
+			searchParam = new SearchParam();
+			searchParam.setStype(stype);
+			searchParam.setKeyword(keyword);
+		}
+		
+		
+		
+		
+		ListViewDataXml listdata = listService.getListDataXml(pageNumber, cnt,searchParam);
+		
+		/*
+		 * for(MemberInfo m : listdata.getMemberList()) { 
+		 * System.out.println(m); }
+		 */
+		
+		model.addAttribute("viewData", listdata);
+		
+		
+		return new ResponseEntity<ListViewDataXml>(listdata, HttpStatus.OK);
 	}
 
 	
+
 
 	@RequestMapping("/member/memberList2")
 	public String memberList(

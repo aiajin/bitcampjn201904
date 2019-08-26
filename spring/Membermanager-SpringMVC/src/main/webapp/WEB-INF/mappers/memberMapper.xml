@@ -20,6 +20,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="verify" column="verify" />
 		<result property="code" column="code" />
 	</resultMap>
+	
+	<resultMap id="resultMemberInfoXml"
+		type="com.bitcamp.mm.member.domain.MemberInfoXml">
+		<id property="idx" column="idx" />
+		<result property="uId" column="uid" />
+		<result property="uName" column="uname" />
+		<result property="uPhoto" column="uphoto" />
+		<result property="regDate" column="date" />
+	</resultMap>
 
 	<!-- 회원로그인 -->
 	<select id="selectMemberById" resultMap="resultMemberInfo">
@@ -122,6 +131,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- limit #{param1}, #{param2} -->
 		limit #{index}, #{count}
 	</select>
+	
+	
+	<!-- 회원 리스트 Xml용 리스트 저장 -->
+	<select id="selectListXml" parameterType="map"
+		resultMap="resultMemberInfoXml">
+		
+		SELECT * FROM member
+		
+		<where>
+		
+			<if test="search != null">
+				<if test="search.stype == 'both'">
+					<include refid="whereId"/>
+					<include refid="whereName"/>
+					<!-- uid LIKE CONCAT('%', #{search.keyword}, '%')
+					 or uname LIKE CONCAT('%', #{search.keyword}, '%') -->
+				</if>
+				<if test="search.stype == 'id'">				
+					<include refid="whereId"/>
+					<!-- uid LIKE CONCAT('%', #{search.keyword}, '%') -->
+				</if>
+				<if test="search.stype == 'name'">
+					<include refid="whereName"/>
+					<!-- uname LIKE CONCAT('%', #{search.keyword}, '%') -->
+				</if>
+			</if>
+			
+		</where>
+		
+		<!-- limit #{param1}, #{param2} -->
+		limit #{index}, #{count}
+	</select>
 		
 	<sql id="whereId">
 		or uid LIKE CONCAT('%', #{search.keyword}, '%')
@@ -130,6 +171,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="whereName">
 		or uname LIKE CONCAT('%', #{search.keyword}, '%')
 	</sql>
+	
 	
 	
 	<!-- 전체 회원 리스트 구하기 -->

@@ -57,7 +57,31 @@ public class RestfulClientController {
 		
 	}
 
+
 	
+	@RequestMapping("/member/xml/list")
+	@ResponseBody
+	public ListViewDataXml getMememberXml() {
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		ListViewDataXml data = restTemplate.getForObject(
+				"http://localhost:8080/mm/member/xml/memberList.xml", 
+				ListViewDataXml.class);
+		
+		System.out.println(data.getTotalCount());
+		System.out.println(data.getCurrentPageNumber());
+		
+		for(MemberInfoXml m : data.getMemberList()) {
+			System.out.println(m);
+		}
+		
+		
+		
+		
+		return data;
+		
+	}
 	
 	
 	

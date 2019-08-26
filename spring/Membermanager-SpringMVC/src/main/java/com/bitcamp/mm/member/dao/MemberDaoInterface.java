@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bitcamp.mm.member.domain.MemberInfo;
+import com.bitcamp.mm.member.domain.MemberInfoXml;
 import com.bitcamp.mm.member.domain.SearchParam;
 
 public interface MemberDaoInterface {
@@ -31,6 +32,8 @@ public interface MemberDaoInterface {
 	public List<MemberInfo> selectAllList();
 	// 회원 이메일 인증 처리
 	public int verify(String id, String code);
+	//회원 리스트 XML 출력
+	public List<MemberInfoXml> selectListXml(Map<String, Object> params);
 	
 	
 	
