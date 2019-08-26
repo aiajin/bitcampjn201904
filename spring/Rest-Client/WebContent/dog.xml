@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+	<header>
+		<resultCode>00</resultCode>
+		<resultMsg>NORMAL SERVICE.</resultMsg>
+	</header>
+	<body>
+		<items>
+			<item>
+				<age>2-3년(년생)</age>
+				<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+				<careNm>광주 동물보호소</careNm>
+				<careTel>062-571-2808</careTel>
+				<chargeNm>북구</chargeNm>
+				<colorCd>황/흰색</colorCd>
+				<desertionNo>429362201400243</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/06/201406231106389_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>북구 중흥동 </happenPlace>
+				<kindCd>[개] 믹스견</kindCd>
+				<neuterYn>N</neuterYn>
+				<noticeEdt>20140703</noticeEdt>
+				<noticeNo>광주-북구-2014-00241</noticeNo>
+				<noticeSdt>20140623</noticeSdt>
+				<officetel>062-410-6557</officetel>
+				<orgNm>광주광역시 북구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/06/201406231106389.jpg
+				</popfile>
+				<processState>종료(안락사)</processState>
+				<sexCd>M</sexCd>
+				<specialMark>최근미용, 마이크로칩</specialMark>
+				<weight>7.40(Kg)</weight>
+			</item>
+			<item>
+				<age>5년추정(년생)</age>
+				<careAddr>울산광역시 남구 대학로 112 (무거동) </careAddr>
+				<careNm>스마일동물병원</careNm>
+				<careTel>052-277-0075</careTel>
+				<chargeNm>방효빈</chargeNm>
+				<colorCd>흰색</colorCd>
+				<desertionNo>431370201400365</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/04/201405021605820_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>무거동울산과학대앞</happenPlace>
+				<kindCd>[개] 진도견</kindCd>
+				<neuterYn>N</neuterYn>
+				<noticeEdt>20140620</noticeEdt>
+				<noticeNo>울산-남구-2014-00633</noticeNo>
+				<noticeSdt>20140610</noticeSdt>
+				<officetel>052-226-5663</officetel>
+				<orgNm>울산광역시 남구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/04/201405021605820.jpg
+				</popfile>
+				<processState>종료(입양)</processState>
+				<sexCd>M</sexCd>
+				<specialMark>빨간목줄착용</specialMark>
+				<weight>25(Kg)</weight>
+			</item>
+			<item>
+				<age>50일 추정(년생)</age>
+				<careAddr>대전광역시 유성구 갑동로15번길 20-39 (갑동) </careAddr>
+				<careNm>대전동물보호센터</careNm>
+				<careTel>042-825-1118</careTel>
+				<chargeNm>대덕구</chargeNm>
+				<colorCd>백</colorCd>
+				<desertionNo>430368201400097</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/05/201405091705254_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace> 대전로 1215 대전병원(대화동) 후문 주변</happenPlace>
+				<kindCd>[개] 진도견</kindCd>
+				<neuterYn>N</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>대전-대덕-2014-00094</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>042-608-6951</officetel>
+				<orgNm>대전광역시 대덕구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/05/201405091705254.jpg
+				</popfile>
+				<processState>종료(자연사)</processState>
+				<sexCd>F</sexCd>
+				<specialMark>교통사고</specialMark>
+				<weight>3(Kg)</weight>
+			</item>
+			<item>
+				<age>4살추정(년생)</age>
+				<careAddr>대전광역시 유성구 갑동로15번길 20-39 (갑동) </careAddr>
+				<careNm>대전동물보호센터</careNm>
+				<careTel>042-825-1118</careTel>
+				<chargeNm>대덕구</chargeNm>
+				<colorCd>백</colorCd>
+				<desertionNo>430368201400096</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/05/20140509170506_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>대청로82번길 147 보훈병원 근처(신탄진동)</happenPlace>
+				<kindCd>[개] 믹스견</kindCd>
+				<neuterYn>U</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>대전-대덕-2014-00093</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>042-608-6951</officetel>
+				<orgNm>대전광역시 대덕구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/05/20140509170506.jpg
+				</popfile>
+				<processState>종료(입양)</processState>
+				<sexCd>M</sexCd>
+				<specialMark>옷착용</specialMark>
+				<weight>5(Kg)</weight>
+			</item>
+			<item>
+				<age>약 5-6년(년생)</age>
+				<careAddr>인천광역시 부평구 부평동 431-15</careAddr>
+				<careNm>백마동물병원</careNm>
+				<careTel>032-528-1359</careTel>
+				<chargeNm>장상규</chargeNm>
+				<colorCd>흰색, 갈색</colorCd>
+				<desertionNo>428354201400158</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/04/201405031605482_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>부평구청당직실</happenPlace>
+				<kindCd>[개] 포메라니안</kindCd>
+				<neuterYn>U</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>인천-부평-2014-00180</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>032-509-6553</officetel>
+				<orgNm>인천광역시 부평구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/04/201405031605482.jpg
+				</popfile>
+				<processState>종료(반환)</processState>
+				<sexCd>F</sexCd>
+				<specialMark>털이 풍성한편, RFID 410100004009195</specialMark>
+				<weight>3(Kg)</weight>
+			</item>
+			<item>
+				<age>약 3-4년(년생)</age>
+				<careAddr>인천광역시 부평구 부평동 431-15</careAddr>
+				<careNm>백마동물병원</careNm>
+				<careTel>032-528-1359</careTel>
+				<chargeNm>장상규</chargeNm>
+				<colorCd>갈색</colorCd>
+				<desertionNo>428354201400157</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/04/201405031605559_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>부개동 271-33</happenPlace>
+				<kindCd>[개] 푸들</kindCd>
+				<neuterYn>U</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>인천-부평-2014-00179</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>032-509-6553</officetel>
+				<orgNm>인천광역시 부평구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/04/201405031605559.jpg
+				</popfile>
+				<processState>종료(안락사)</processState>
+				<sexCd>F</sexCd>
+				<specialMark>친화적, 잘 짖는 편</specialMark>
+				<weight>4(Kg)</weight>
+			</item>
+			<item>
+				<age>약 10년(년생)</age>
+				<careAddr>인천광역시 부평구 부평동 431-15</careAddr>
+				<careNm>백마동물병원</careNm>
+				<careTel>032-528-1359</careTel>
+				<chargeNm>장상규</chargeNm>
+				<colorCd>흰색</colorCd>
+				<desertionNo>428354201400156</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/04/201405031605283_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>동수동물병원</happenPlace>
+				<kindCd>[개] 말티즈</kindCd>
+				<neuterYn>U</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>인천-부평-2014-00178</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>032-509-6553</officetel>
+				<orgNm>인천광역시 부평구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/04/201405031605283.jpg
+				</popfile>
+				<processState>종료(반환)</processState>
+				<sexCd>M</sexCd>
+				<specialMark>백내장, 중성화수술</specialMark>
+				<weight>4(Kg)</weight>
+			</item>
+			<item>
+				<age>약 4-5년(년생)</age>
+				<careAddr>인천광역시 부평구 부평동 431-15</careAddr>
+				<careNm>백마동물병원</careNm>
+				<careTel>032-528-1359</careTel>
+				<chargeNm>장상규</chargeNm>
+				<colorCd>흰색</colorCd>
+				<desertionNo>428354201400155</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/04/201405031605752_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>산곡동 한화아파트</happenPlace>
+				<kindCd>[개] 말티즈</kindCd>
+				<neuterYn>U</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>인천-부평-2014-00177</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>032-509-6553</officetel>
+				<orgNm>인천광역시 부평구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/04/201405031605752.jpg
+				</popfile>
+				<processState>종료(안락사)</processState>
+				<sexCd>M</sexCd>
+				<specialMark>친화적, 중성화수술, 파란색 목줄</specialMark>
+				<weight>3.5(Kg)</weight>
+			</item>
+			<item>
+				<age>약 2-3개월(년생)</age>
+				<careAddr>인천광역시 부평구 부평동 431-15</careAddr>
+				<careNm>백마동물병원</careNm>
+				<careTel>032-528-1359</careTel>
+				<chargeNm>장상규</chargeNm>
+				<colorCd>갈색, 흰색</colorCd>
+				<desertionNo>428354201400154</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/04/201405031605606_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>청천동 175-42</happenPlace>
+				<kindCd>[개] 믹스견</kindCd>
+				<neuterYn>U</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>인천-부평-2014-00176</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>032-509-6553</officetel>
+				<orgNm>인천광역시 부평구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/04/201405031605606.jpg
+				</popfile>
+				<processState>종료(안락사)</processState>
+				<sexCd>M</sexCd>
+				<specialMark>허약자견</specialMark>
+				<weight>2(Kg)</weight>
+			</item>
+			<item>
+				<age>약 3-4개월(년생)</age>
+				<careAddr>인천광역시 부평구 부평동 431-15</careAddr>
+				<careNm>백마동물병원</careNm>
+				<careTel>032-528-1359</careTel>
+				<chargeNm>장상규</chargeNm>
+				<colorCd>갈색, 흰색</colorCd>
+				<desertionNo>428354201400153</desertionNo>
+				<filename>http://www.animal.go.kr/files/shelter/2014/04/201405031605376_s.jpg
+				</filename>
+				<happenDt>20140430</happenDt>
+				<happenPlace>부흥초등학교</happenPlace>
+				<kindCd>[개] 믹스견</kindCd>
+				<neuterYn>U</neuterYn>
+				<noticeEdt>20140519</noticeEdt>
+				<noticeNo>인천-부평-2014-00175</noticeNo>
+				<noticeSdt>20140509</noticeSdt>
+				<officetel>032-509-6553</officetel>
+				<orgNm>인천광역시 부평구</orgNm>
+				<popfile>http://www.animal.go.kr/files/shelter/2014/04/201405031605376.jpg
+				</popfile>
+				<processState>종료(자연사)</processState>
+				<sexCd>M</sexCd>
+				<specialMark>친화적, 귀꼬리털 긴 편, 미용상태</specialMark>
+				<weight>2(Kg)</weight>
+			</item>
+		</items>
+		<numOfRows>10</numOfRows>
+		<pageNo>1</pageNo>
+		<totalCount>9529</totalCount>
+	</body>
+</response>

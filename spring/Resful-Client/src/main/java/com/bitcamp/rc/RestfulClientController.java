@@ -83,7 +83,32 @@ public class RestfulClientController {
 		
 	}
 	
+
 	
+	@RequestMapping("/dog/xml/list")
+	@ResponseBody
+	public DogRestResponse getDogXml() {
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		DogRestResponse data = restTemplate.getForObject(
+				"http://localhost:8080/client/dog.xml", 
+				DogRestResponse.class);
+		
+		//System.out.println(data.getHeader().getResultCode());
+		//System.out.println(data.getHeader().getResultMsg());
+		System.out.println(data.getBody().getTotalCount());
+		
+		for(Item i : data.getBody().getItems()) {
+			System.out.println(i);
+		}
+		
+		
+		
+		
+		return data;
+		
+	}
 	
 	
 	
