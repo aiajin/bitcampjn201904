@@ -86,7 +86,9 @@ public class MemberRestFulController {
 		
 		System.out.println("check : " + regRequest);
 		
-		int cnt = regService.memberInsert(request, regRequest);
+		System.out.println("파일확인 : " + regRequest.getuPhoto().getOriginalFilename());
+		
+		int cnt = 1;//regService.memberInsert(request, regRequest);
 				
 		return new ResponseEntity<String>(
 				cnt>0 ? "SUCCESS" : "FAIL" ,
@@ -112,9 +114,16 @@ public class MemberRestFulController {
 	@PutMapping("/{id}")
 	public ResponseEntity<String> editMember(
 			@PathVariable("id") int id,
-			@RequestBody RequestMemberEdit editRequest,
+			RequestMemberEdit editRequest,
 			MultipartHttpServletRequest request
 			){
+		
+		
+	
+		
+		System.out.println("check : " + editRequest);
+		
+		System.out.println("파일확인 : " + editRequest.getuPhoto().getOriginalFilename());
 		
 		
 		System.out.println("idx : " + id);
