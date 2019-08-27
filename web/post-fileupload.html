@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        div#memberlist {
+            overflow: hidden;
+        }
+
+        div.card {
+            float: left;
+            width: 33%;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="editFrame">
+
+        <h3>회원정보 수정</h3>
+        <hr>
+        <form id="editForm" onsubmit="return false;" method="post" enctype="multipart/form-data">
+            <input type="text" name="idx" id="idx">
+            아이디 <input type="text" name="uId" id="euId" required> <br>
+            비밀번호 <input type="text" name="uPW" id="euPW" required> <br>
+            이름 <input type="text" name="uName" id="euName" required><br>
+            파일 <input type="file" name="uPhoto" id="euPhoto"><br>
+            <input type="submit" value="회원수정" onclick="editSubmit();">
+
+        </form>
+    </div>
+
+    <div id="regFrame">
+
+        <h3>회원 가입</h3>
+        <hr>
+        <form id="form" onsubmit="return false;" method="post" enctype="multipart/form-data">
+            아이디 <input type="text" name="uId" id="uId" required> <br>
+            비밀번호 <input type="text" name="uPW" id="uPW" required> <br>
+            이름 <input type="text" name="uName" id="uName" required><br>
+            파일 <input type="file" name="uPhoto" id="uPhoto"><br>
+            <input type="submit" value="회원가입" onclick="formSubmit();">
+
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+
+        });
+
+        function editSubmit() {
+
+            var editData = new FormData();
+            editData.append('uId', $('#euId').val());
+            editData.append('uPW', $('#euPW').val());
+            editData.append('uName', $('#euName').val());
+            editData.append('uPhoto', $('#euPhoto')[0].files[0]);
+            
+            
+            $.ajax({
+                url: 'http://localhost:8080/mm/rest/members/'+$('#idx').val(),
+                type: 'put',
+                processData: false,  // file전송시 필수
+                contentType: false,  // multipart/form-data
+                data: editData,
+                success : function(data){
+                       alert(data);
+                }
+            });
+
+        }
+
+        function formSubmit() {
+
+            var formData = new FormData();
+            formData.append('uId', $('#uId').val());
+            formData.append('uPW', $('#uPW').val());
+            formData.append('uName', $('#uName').val());
+            formData.append('uPhoto', $('#uPhoto')[0].files[0]);
+            
+            
+            $.ajax({
+                url: 'http://localhost:8080/mm/rest/members',
+                type: 'post',
+                processData: false,  // file전송시 필수
+                contentType: false,  // multipart/form-data
+                data: formData,
+                success : function(data){
+                       alert(data);
+                }
+            });
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
