@@ -25,12 +25,13 @@
         
         <h3>회원정보 수정</h3>
         <hr>
-        <form id="editForm">
+        <form id="editForm" onsubmit="return false;" method="post" enctype="multipart/form-data">
             <input type="hidden" name="idx" id="idx">
-            아이디 <input type="text" name="uId" id="uId" readonly> <br>
-            비밀번호 <input type="text" name="uPW" id="uPW" required> <br>
-            이름 <input type="text" name="uName" id="uName" required><br>
-            <input type="submit" value="회원수정">
+            아이디 <input type="text" name="uId" id="euId" readonly> <br>
+            비밀번호 <input type="text" name="uPW" id="euPW" required> <br>
+            이름 <input type="text" name="uName" id="euName" required><br>
+            파일 <input type="file" name="uPhoto" id="euPhoto" ><br>
+            <input type="submit" value="회원수정" onclick="editSubmit();">
 
         </form>
     </div>
@@ -39,11 +40,12 @@
         
         <h3>회원 가입</h3>
         <hr>
-        <form id="form">            
+        <form id="form"  onsubmit="return false;" method="post" enctype="multipart/form-data">
             아이디 <input type="text" name="uId" id="uId" required> <br>
             비밀번호 <input type="text" name="uPW" id="uPW" required> <br>
             이름 <input type="text" name="uName" id="uName" required><br>
-            <input type="submit" value="회원가입">
+            파일 <input type="file" name="uPhoto" id="uPhoto" ><br>
+            <input type="submit" value="회원가입" onclick="formSubmit();">
 
         </form>
     </div>
@@ -57,37 +59,6 @@
 	$(document).ready(function(){
 		list();		
         
-        $('#editForm').submit(function(){
-            
-            
-            //alert($('#editForm').serialize());
-            
-            $.ajax({
-                url : 'http://localhost:8080/mm/rest/members/'+$('#idx').val(),
-                type : 'PUT',
-                data : JSON.stringify({
-                    uId : $('#uId').val(), 
-                    uPW : $('#uPW').val(), 
-                    uName : $('#uName').val()}),
-                contentType : 'application/json; charset=utf-8',                
-                success : function(data){
-                    alert(data);
-                    if(data == 'success') {
-                        alert('수정되었습니다.');
-                        $('#editFrame').css('display', 'none');
-                        list();
-                    }
-                },
-                error : function(e){
-                    alert('error');
-                }
-
-            });
-            
-            
-            return false;
-        });
-        
         
         $('#regBtn').click(function(){
             disNone();
@@ -95,7 +66,7 @@
         });
         
         
-        $('#form').submit(function(){
+        //$('#form').submit(function(){
                  
 
             /*$.ajax({
@@ -128,7 +99,7 @@
 
             });*/
             
-            alert($('#form').serialize());
+    /*        alert($('#form').serialize());
             
             $.ajax({
                 url : 'http://localhost:8080/mm/rest/members',
@@ -144,7 +115,7 @@
             
             return false;
         });
-        
+        */
         
         
         
@@ -154,6 +125,76 @@
         
         
 	});
+    
+    
+
+    
+    function formSubmit(){
+        
+        var formData = new FormData($('#form'));
+//        formData.append('uId',$('#uId').val());
+//        formData.append('uPW',$('#uPW').val());
+//        formData.append('uName',$('#uName').val());
+//        formData.append("uPhoto", $("#uPhpto")[0].files[0]);
+        
+        
+        
+        
+        $.ajax({
+                url : 'http://localhost:8080/mm/rest/members',               
+                data : formData,                
+                processData: false,
+                contentType: false,
+                success : function(data){
+                    alert(data);
+                    disNone();
+                    list();
+                }
+
+            });
+    }
+    
+    
+    function editSubmit(){
+        
+       
+            
+            
+            //alert($('#editForm').serialize());
+            var editFormData = new FormData();
+            editFormData.append('uId',$('#euId').val());
+            editFormData.append('uPW',$('#euPW').val());
+            editFormData.append('uName',$('#euName').val());
+            //editFormData.append("uPhoto", $("#euPhpto").files);
+        
+      
+            alert('수정중');
+            
+            $.ajax({
+                url : 'http://localhost:8080/mm/rest/members/'+$('#idx').val(),
+                type : 'PUT',
+                data : editFormData,   
+                success : function(data){
+                    alert(data);
+                    if(data == 'success') {
+                        alert('수정되었습니다.');
+                        $('#editFrame').css('display', 'none');
+                        //list();
+                    }
+                },
+                error : function(e){
+                    alert('error');
+                }
+
+            });
+            
+            
+            return false;
+        
+        
+    }
+    
+    
     
     function del(idx){
         
@@ -216,9 +257,9 @@
                 url : 'http://localhost:8080/mm/rest/members/'+idx,
                 type : 'GET',
                 success : function(data){
-                    $('#idx').val(idx);
-                    $('#uId').val(data.uId);
-                    $('#uName').val(data.uName);
+                    $('#eidx').val(idx);
+                    $('#euId').val(data.uId);
+                    $('#euName').val(data.uName);
                 }
 
             });
@@ -233,6 +274,8 @@
         $('#regFrame').css('display', 'none');
         $('#editFrame').css('display', 'none');
     }
+  
+    
 </script>
 
 

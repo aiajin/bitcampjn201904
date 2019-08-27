@@ -2,8 +2,6 @@ package com.bitcamp.mm.member.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.bitcamp.mm.member.domain.MemberInfo;
 import com.bitcamp.mm.member.domain.RequestMemberEdit;
@@ -45,7 +44,7 @@ public class MemberRestFulController {
 	
 	//@RequestMapping(method = RequestMethod.GET)
 	//@ResponseBody
-	//@CrossOrigin
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<MemberInfo>> getAllList(){
 		
@@ -80,8 +79,10 @@ public class MemberRestFulController {
 	@PostMapping	
 	public ResponseEntity<String> regMember(
 			RequestMemberRegist regRequest,
-			HttpServletRequest request
+			MultipartHttpServletRequest  request
 			) {
+		
+		
 		
 		System.out.println("check : " + regRequest);
 		
@@ -112,12 +113,17 @@ public class MemberRestFulController {
 	public ResponseEntity<String> editMember(
 			@PathVariable("id") int id,
 			@RequestBody RequestMemberEdit editRequest,
-			HttpServletRequest request
+			MultipartHttpServletRequest request
 			){
+		
+		
+		System.out.println("idx : " + id);
 		
 		editRequest.setIdx(id);
 		
-		System.out.println(editRequest);
+		System.out.println("파일 이름" + request.getFile("uPhoto").getOriginalFilename());
+		
+		System.out.println("파일 이름" + editRequest);
 		
 		int cnt = editService.edit(editRequest, null, request);
 		

@@ -15,11 +15,11 @@ public class DogResponseBody {
 	@XmlElementWrapper(name="items")
 	@XmlElement(name = "item")
 	private List<Item> items;
-	@XmlElement(name = "numOfRows")
-	private String numOfRows;
-	@XmlElement(name = "pageNo")
-	private String pageNo;
-	@XmlElement(name = "totalCount")
+//	@XmlElement(name = "numOfRows")
+//	private String numOfRows;
+//	@XmlElement(name = "pageNo")
+//	private String pageNo;
+//	@XmlElement(name = "totalCount")
 	private String totalCount;
 
 	public List<Item> getItems() {
@@ -30,21 +30,21 @@ public class DogResponseBody {
 		this.items = items;
 	}
 
-	public String getNumOfRows() {
-		return numOfRows;
-	}
+//	public String getNumOfRows() {
+//		return numOfRows;
+//	}
 
-	public void setNumOfRows(String numOfRows) {
-		this.numOfRows = numOfRows;
-	}
-
-	public String getPageNo() {
-		return pageNo;
-	}
-
-	public void setPageNo(String pageNo) {
-		this.pageNo = pageNo;
-	}
+//	public void setNumOfRows(String numOfRows) {
+//		this.numOfRows = numOfRows;
+//	}
+//
+//	public String getPageNo() {
+//		return pageNo;
+//	}
+//
+//	public void setPageNo(String pageNo) {
+//		this.pageNo = pageNo;
+//	}
 
 	public String getTotalCount() {
 		return totalCount;
