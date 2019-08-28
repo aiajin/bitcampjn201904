@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+    <title>Login Demo - Firebase Google Login JavaScript SDK</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+
+    <h1>
+        <a href="ouath_google.html">other page</a>
+    </h1>
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDk6YNv2JZr2pWitqJjXh0SbZdyFfHQFVo",
+            authDomain: "test-app-bec64.firebaseapp.com",
+            databaseURL: "https://test-app-bec64.firebaseio.com",
+            projectId: "test-app-bec64",
+            storageBucket: "test-app-bec64.appspot.com",
+            messagingSenderId: "221726363019",
+            appId: "1:221726363019:web:a4df0a03cf44285c"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var provider = new firebase.auth.GoogleAuthProvider();
+        //firebase.auth().languageCode = 'pt';
+        // To apply the default browser preference instead of explicitly setting it.
+        firebase.auth().useDeviceLanguage();
+
+        provider.setCustomParameters({
+            'login_hint': 'user@example.com'
+        });
+
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                var displayName = user.displayName;
+                var email = user.email;
+                var emailVerified = user.emailVerified;
+                var photoURL = user.photoURL;
+                var isAnonymous = user.isAnonymous;
+                var uid = user.uid;
+                var providerData = user.providerData;
+                alert(email);
+            } else {
+                
+                alert('로그인이 필요합니다.');
+                location.href='ouath_google.html';
+                // User is signed out.
+                // ...
+            }
+        });
+    </script>
+</body>
+
+</html>
