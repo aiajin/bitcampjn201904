@@ -59,7 +59,7 @@
             'login_hint': 'user@example.com'
         });
 
-
+        // 로그인 여부를 확인
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 // User is signed in.
@@ -70,7 +70,13 @@
                 var isAnonymous = user.isAnonymous;
                 var uid = user.uid;
                 var providerData = user.providerData;
-                alert(email);
+                    alert(displayName);
+                    alert(email);
+                    alert(emailVerified);
+                    alert(photoURL);
+                    alert(isAnonymous);
+                    alert(JSON.stringify(providerData));
+                    console.log(providerData);
             } else {
                 
                 alert('로그인이 필요합니다.');
