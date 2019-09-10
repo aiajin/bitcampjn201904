@@ -1,10 +1,9 @@
 package com.weovercome.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import sun.misc.Contended;
 
 @Controller
 public class IndexController {
@@ -13,6 +12,13 @@ public class IndexController {
 	@ResponseBody
 	public String index() {
 		return "index";
+	}
+	
+	@RequestMapping("/hello")
+	public void hello(Model model) {
+		
+		model.addAttribute("msg", "hello~!!");
+		
 	}
 
 }
