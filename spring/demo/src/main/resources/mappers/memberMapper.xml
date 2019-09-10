@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- interface의 full name을 namespace의 속성으로 사용 : 필수 -->
+<mapper namespace="com.weovercome.mapper.MemberMapper">
+
+	<!-- select 결과 메핑을 위한 resultMap 설정 -->
+	<resultMap id="resultMemberInfo"
+		type="com.weovercome.domain.MemberInfo">
+		<id property="idx" column="idx" />
+		<result property="uId" column="uid" />
+		<result property="uPW" column="upw" />
+		<result property="uName" column="uname" />
+		<result property="uPhoto" column="uphoto" />
+		<result property="regDate" column="date" />
+		<!-- verify, code 추가 -->
+		<result property="verify" column="verify" />
+		<result property="code" column="code" />
+	</resultMap>
+
+
+	<!-- 회원로그인 -->
+	<select id="selectMemberById" resultMap="resultMemberInfo">
+	
+		select * from member where uid=#{id}
+		
+	</select>
+
+	<!-- 아이디 중복체크 -->
+	<select id="selectMemberById2" resultMap="resultMemberInfo">
+		select * from member
+		where uid=#{id}
+	</select>
+
+	<!-- 회원가입 -->
+	<!-- 2019.08.20 컬럼 추가 입력 -->
+	<insert id="insertMember"
+		parameterType="com.weovercome.domain.MemberInfo">
+		
+		insert into member (uid, uname, upw, uphoto, code) 
+		  values
+		(#{uId},#{uName},#{uPW},#{uPhoto},#{code})
+		
+	</insert>
+
+	<!-- 회원 정보 수정을 위한 정보 획득 -->
+	<select id="selectMemberByIdx" resultMap="resultMemberInfo">
+		select * from member where idx=#{idx}
+	</select>
+
+	<!-- 회원정보수정 -->
+	<update id="memberUpdate"
+		parameterType="com.weovercome.domain.MemberInfo">
+		update member set uname=#{uName}, upw=#{uPW},
+		uphoto=#{uPhoto} where idx=#{idx}
+	</update>
+
+	<!-- 회원정보 삭제 -->
+	<delete id="memberDelete">
+		delete from member where idx=#{idx}
+	</delete>
+
+	
+	
+	<!-- 전체 회원 리스트 구하기 -->
+	<select id="selectAllList"
+			resultMap="resultMemberInfo" >
+		
+		select * from member order by uname
+		
+	</select>
+	
+	<update id="verify">
+		update member set verify='Y' 
+		where uid=#{param1} and code=#{param2} 
+	</update>
+	
+
+
+
+
+
+
+
+
+
+
+</mapper>
+
+
+ 
+ 
