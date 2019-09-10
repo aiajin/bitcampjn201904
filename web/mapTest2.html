@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=33509c6afdcbed9836aacb40db30734c&libraries=drawing"></script>
+<body>
+	<section id="container" class="">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<h3 class="page-header">Courseinfo</h3>
+					<div class="col-lg-12">
+						<form>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">img</label>
+								<div class="col-lg-10">
+									<p class="form-control-static">
+										<img src="/uploadFile/coursePhoto/${course.cimg }"
+											style="width: 200px; heigth: 200px;">
+									</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">name</label>
+								<div class="col-lg-10">
+									<p class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">info</label>
+								<div class="col-lg-10">
+									<p class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">price</label>
+								<div class="col-lg-10">
+									<p class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">start point</label>
+								<div class="col-lg-10">
+									<p class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">map</label>
+								<div id="map" style="width:500px;height:500px;"></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</section>
+	</section>
+	
+	<script type="text/javascript">	
+	var data ={"marker":[{"type":"marker","x":126.98325819316727,"y":37.57094249547649,"coordinate":"wgs84","zIndex":0,"content":""},{"type":"marker","x":126.99016341473104,"y":37.56929445120032,"coordinate":"wgs84","zIndex":0,"content":""}],"polyline":[{"type":"polyline","points":[{"x":126.98320161095796,"y":37.570870407817246},{"x":126.98357526884801,"y":37.57037491297171},{"x":126.98737865239445,"y":37.57037538085566},{"x":126.98743530485275,"y":37.57005102856172},{"x":126.98788808519139,"y":37.5700600858366},{"x":126.98788815230506,"y":37.569645627942855},{"x":126.98951815416132,"y":37.56967281378114},{"x":126.98949557339165,"y":37.56925835384565},{"x":126.99006153387043,"y":37.56933949244362}],"coordinate":"wgs84","options":{"strokeColor":"#39f","strokeWeight":3,"strokeStyle":"solid","strokeOpacity":1}}],"rectangle":[],"circle":[],"polygon":[]};
+	var x=data.marker[0].x;
+	var y=data.marker[0].y;
+	var mapContainer = document.getElementById('map'), mapOptions ={
+		center : new daum.maps.LatLng(y,x ), // 지도의 중심좌표
+		level : 5
+	}
+	var map = new daum.maps.Map(mapContainer, mapOptions), overlays = [];
+	$(document).ready(function(){
+	console.log(data);
+	console.log(overlays);
+
+	    drawMarker(data[daum.maps.drawing.OverlayType.MARKER]);
+	    drawPolyline(data[daum.maps.drawing.OverlayType.POLYLINE]);
+	});
+	
+	function drawMarker(markers) {
+	    var len = markers.length, i = 0;
+
+	    for (; i < len; i++) {
+	        var marker = new daum.maps.Marker({
+	            map: map, 
+	            position: new daum.maps.LatLng(markers[i].y, markers[i].x), 
+	            zIndex: markers[i].zIndex
+	        });
+
+	        overlays.push(marker);
+	    }
+	}
+
+	// Drawing Manager에서 가져온 데이터 중 선을 아래 지도에 표시하는 함수입니다
+	function drawPolyline(lines) {
+	    var len = lines.length, i = 0;
+
+	    for (; i < len; i++) {
+	        var path = pointsToPath(lines[i].points);
+	        var style = lines[i].options;
+	        var polyline = new daum.maps.Polyline({
+	            map: map,
+	            path: path,
+	            strokeColor: style.strokeColor,
+	            strokeOpacity: style.strokeOpacity,
+	            strokeStyle: style.strokeStyle,
+	            strokeWeight: style.strokeWeight
+	        });
+
+	        overlays.push(polyline);
+	    }
+	}
+
+	// Drawing Manager에서 가져온 데이터 중 사각형을 아래 지도에 표시하는 함수입니다
+	function drawRectangle(rects) {
+	    var len = rects.length, i = 0;
+
+	    for (; i < len; i++) {
+	        var style = rects[i].options;
+	        var rect = new daum.maps.Rectangle({
+	            map: map, 
+	            bounds: new daum.maps.LatLngBounds(
+	                new daum.maps.LatLng(rects[i].sPoint.y, rects[i].sPoint.x),
+	                new daum.maps.LatLng(rects[i].ePoint.y, rects[i].ePoint.x)
+	            ), 
+	            strokeColor: style.strokeColor,
+	            strokeOpacity: style.strokeOpacity,
+	            strokeStyle: style.strokeStyle,
+	            strokeWeight: style.strokeWeight,
+	            fillColor: style.fillColor,
+	            fillOpacity: style.fillOpacity
+	        });
+
+	        overlays.push(rect);
+	    }
+	}
+
+	// Drawing Manager에서 가져온 데이터 중 원을 아래 지도에 표시하는 함수입니다
+	function drawCircle(circles) {
+	    var len = circles.length, i = 0;
+
+	    for (; i < len; i++) {
+	        var style = circles[i].options;
+	        var circle = new daum.maps.Circle({
+	            map: map, 
+	            center: new daum.maps.LatLng(circles[i].center.y, circles[i].center.x), 
+	            radius: circles[i].radius,
+	            strokeColor: style.strokeColor,
+	            strokeOpacity: style.strokeOpacity,
+	            strokeStyle: style.strokeStyle,
+	            strokeWeight: style.strokeWeight,
+	            fillColor: style.fillColor,
+	            fillOpacity: style.fillOpacity
+	        });
+
+	        overlays.push(circle);
+	    }
+	}
+
+	// Drawing Manager에서 가져온 데이터 중 다각형을 아래 지도에 표시하는 함수입니다
+	function drawPolygon(polygons) {
+	    var len = polygons.length, i = 0;
+
+	    for (; i < len; i++) {
+	        var path = pointsToPath(polygons[i].points);
+	        var style = polygons[i].options;
+	        var polygon = new daum.maps.Polygon({
+	            map: map,
+	            path: path,
+	            strokeColor: style.strokeColor,
+	            strokeOpacity: style.strokeOpacity,
+	            strokeStyle: style.strokeStyle,
+	            strokeWeight: style.strokeWeight,
+	            fillColor: style.fillColor,
+	            fillOpacity: style.fillOpacity
+	        });
+
+	        overlays.push(polygon);
+	    }
+	}
+
+	// Drawing Manager에서 가져온 데이터 중 
+	// 선과 다각형의 꼭지점 정보를 daum.maps.LatLng객체로 생성하고 배열로 반환하는 함수입니다 
+	function pointsToPath(points) {
+	    var len = points.length, 
+	        path = [], 
+	        i = 0;
+
+	    for (; i < len; i++) { 
+	        var latlng = new daum.maps.LatLng(points[i].y, points[i].x);
+	        path.push(latlng); 
+	    }
+
+	    return path;
+	}	
+	</script>
+
+</body>
+</html>
