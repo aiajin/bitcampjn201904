@@ -57,7 +57,8 @@ public class MemberDaoImpl implements MemberDao<MemberEntity> {
 		//String qStr = "from MemberEntity where idx= :fstr"; // :○○○ --> JPQL 에서 매개변수로 사용 
 		//Query query = entityManager.createQuery(qStr).setParameter("fstr", Long.parseLong(fstr));
 		
-		String qStr = "from MemberEntity where idx= :fidx or uname like :fname or uid like :fuid ";
+		//String qStr = "from MemberEntity where idx= :fidx or uname like :fname or uid like :fuid ";
+		String qStr = "from MemberEntity where idx= ?1 or uname like ?2 or uid like ?3 ";
 		Long fidx = 0L;
 		try {
 			fidx = Long.parseLong(fstr);
@@ -65,10 +66,17 @@ public class MemberDaoImpl implements MemberDao<MemberEntity> {
 			// TODO: handle exception
 		}
 		
+//		Query query = entityManager.createQuery(qStr)
+//				.setParameter("fidx", fidx)
+//				.setParameter("fname", "%"+fstr+"%")
+//				.setParameter("fuid", "%"+fstr);
+		
+
+		
 		Query query = entityManager.createQuery(qStr)
-				.setParameter("fidx", fidx)
-				.setParameter("fname", "%"+fstr+"%")
-				.setParameter("fuid", "%"+fstr);
+				.setParameter(1, fidx)
+				.setParameter(2, "%"+fstr+"%")
+				.setParameter(3, "%"+fstr);
 		
 		list = query.getResultList();
 				
