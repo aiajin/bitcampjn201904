@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.weovercome.domain.MemberEntity;
@@ -106,10 +107,6 @@ public class IndexController {
 	
 	private MemberDaoImpl dao;
 	
-	public IndexController() {
-		this.dao = new MemberDaoImpl(entityManager);
-	}
-
 	@RequestMapping("/listall")
 	public void memberListAll(Model model) {
 		
@@ -122,5 +119,21 @@ public class IndexController {
 		model.addAttribute("list", list);
 		
 	}
+
+	@RequestMapping("/find")
+	public void memberfind(@RequestParam("fstr") String fstr, Model model) {
+		
+		dao = new MemberDaoImpl(entityManager);
+		
+		List<MemberEntity> list = dao.find(fstr);
+		
+		for (MemberEntity memberEntity : list) {
+			System.out.println(memberEntity);
+		}
+		
+		model.addAttribute("list", list);
+		
+	}
+
 
 }

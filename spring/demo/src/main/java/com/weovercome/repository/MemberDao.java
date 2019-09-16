@@ -8,5 +8,8 @@ public interface MemberDao <T> extends Serializable {
 	public List<T> getAll();
 	public T findByIdx(long idx);
 	public List<T> findByUname(String name);
-
+	
+	//JPQL
+	public List<T> find(String fstr);
+	
 }

@@ -12,14 +12,14 @@ import com.weovercome.domain.MemberEntity;
 @Repository
 public class MemberDaoImpl implements MemberDao<MemberEntity> {
 
+	
 	private EntityManager entityManager;
 
 	public MemberDaoImpl() {
-		super();
+	
 	}
 
 	public MemberDaoImpl(EntityManager entityManager) {
-		super();
 		this.entityManager = entityManager;
 	}
 
@@ -46,5 +46,35 @@ public class MemberDaoImpl implements MemberDao<MemberEntity> {
 		List<MemberEntity> list = query.getResultList();
 		return list;
 	}
+
+	@Override
+	public List<MemberEntity> find(String fstr) {
+		
+		System.out.println("데이터 확인 : " + fstr);
+		
+		List<MemberEntity> list = null;
+		
+		//String qStr = "from MemberEntity where idx= :fstr"; // :○○○ --> JPQL 에서 매개변수로 사용 
+		//Query query = entityManager.createQuery(qStr).setParameter("fstr", Long.parseLong(fstr));
+		
+		String qStr = "from MemberEntity where idx= :fidx or uname like :fname or uid like :fuid ";
+		Long fidx = 0L;
+		try {
+			fidx = Long.parseLong(fstr);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		Query query = entityManager.createQuery(qStr)
+				.setParameter("fidx", fidx)
+				.setParameter("fname", "%"+fstr+"%")
+				.setParameter("fuid", "%"+fstr);
+		
+		list = query.getResultList();
+				
+		return list;
+	}
+	
+	
 
 }
