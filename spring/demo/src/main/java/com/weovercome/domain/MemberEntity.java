@@ -3,13 +3,33 @@ package com.weovercome.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
 
 @Entity
+@NamedQuery(
+		name = "findWithIdx",
+		query ="from MemberEntity where idx= :fidx  "
+		)
+@NamedQueries(
+		value= {
+				@NamedQuery(
+						name = "findWithName",
+						query ="from MemberEntity where uname like :fname"
+				),
+				@NamedQuery(
+						name = "findWithParam",
+						query ="from MemberEntity where idx= :fidx or uname like :fname or uid like :fuid"
+				)
+		}
+		
+	)
 @Table(name = "member")
 public class MemberEntity {
 
