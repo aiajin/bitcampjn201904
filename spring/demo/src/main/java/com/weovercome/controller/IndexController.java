@@ -37,6 +37,26 @@ public class IndexController {
 		
 	}
 	
+	
+
+	
+	@RequestMapping("/")
+	@ResponseBody
+	public Iterable<MemberEntity> memberAllList() {
+		
+		Iterable<MemberEntity> list = repository.findAllOrderByIdxDesc();
+		
+		for (MemberEntity memberEntity : list) {
+			System.out.println(memberEntity);
+		}		
+		
+		return list;
+		
+	}
+	
+	
+	
+	
 	@RequestMapping("/list")
 	public void memberList(Model model) {
 		

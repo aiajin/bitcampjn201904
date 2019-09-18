@@ -73,10 +73,15 @@ public class MemberDaoImpl implements MemberDao<MemberEntity> {
 		
 
 		
-		Query query = entityManager.createQuery(qStr)
-				.setParameter(1, fidx)
-				.setParameter(2, "%"+fstr+"%")
-				.setParameter(3, "%"+fstr);
+//		Query query = entityManager.createQuery(qStr)
+//				.setParameter(1, fidx)
+//				.setParameter(2, "%"+fstr+"%")
+//				.setParameter(3, "%"+fstr);
+		
+		Query query = entityManager.createNamedQuery("findWithParam")
+				.setParameter("fidx", fidx)
+				.setParameter("fname", "%"+fstr+"%")
+				.setParameter("fuid", "%"+fstr);
 		
 		list = query.getResultList();
 				
