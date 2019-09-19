@@ -81,12 +81,12 @@ public class IndexController {
 		repository.saveAndFlush(member);	
 	}
 	
-	@RequestMapping("/edit")
-	public void memberEdit(Model model) {
+	@RequestMapping("/edit/{idx}")
+	public void memberEdit(Model model, @PathVariable("idx") int idx) {
 		
 		System.out.println("/edit");
 		MemberEntity emember = new MemberEntity();
-		emember.setIdx(40);
+		emember.setIdx(idx);
 		emember.setUid("cool@hot.com");
 		emember.setUname("COOLinHOT");
 		emember.setUpw("editPW");
@@ -97,12 +97,11 @@ public class IndexController {
 		repository.saveAndFlush(emember);
 	}
 	
-
 	
-	@RequestMapping("/delete")
-	public void memberDelete(Model model) {
+	@RequestMapping("/delete/{idx}")
+	public void memberDelete(Model model, @PathVariable("idx") int idx) {
 		MemberEntity entity = new MemberEntity();
-		entity.setIdx(40);
+		entity.setIdx(idx);
 		repository.delete(entity);
 	}
 	
