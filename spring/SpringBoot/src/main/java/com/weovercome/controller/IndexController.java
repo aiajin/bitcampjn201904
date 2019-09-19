@@ -124,9 +124,72 @@ public class IndexController {
 		return "delete success";
 		
 	}
+	
+	@RequestMapping("/member/member/{idx}")
+	@ResponseBody
+	public MemberEntity getMeberInfo(@PathVariable("idx") long idx ) {
+		
+		MemberEntity entity = null;
+		
+		entity = repository.findByIdx(idx);
+		
+		System.out.println(entity);
+		
+		return entity;
+		
+		
+	}
+
 
 	
+	@RequestMapping("/member/memberbyname/{fname}")
+	@ResponseBody
+	public List<MemberEntity> getMeberInfo(@PathVariable("fname") String name ) {
+		
+		System.out.println("enter : " + name);
+		
+		List<MemberEntity> entitys = null;
+		
+		
+		
+		entitys = repository.findByUnameLike("%"+name+"%");
+		
+		System.out.println(entitys.isEmpty());
+		
+		for (MemberEntity memberEntity : entitys) {
+			System.out.println(memberEntity);
+		}
+		
+		return entitys;
+		
+		
+	}
+
 	
+
+	
+	@RequestMapping("/member/memberbybetwwen")
+	@ResponseBody
+	public List<MemberEntity> getMeberInfo() {
+		
+		
+		List<MemberEntity> entitys = null;
+		
+		entitys = repository.findByIdxBetween(20L, 39L);
+		
+		System.out.println(entitys.isEmpty());
+		
+		for (MemberEntity memberEntity : entitys) {
+			System.out.println(memberEntity);
+		}
+		
+		return entitys;
+		
+		
+	}
+
+	
+
 	
 	
 	
