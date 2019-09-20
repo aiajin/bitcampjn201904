@@ -2,6 +2,9 @@ package com.weovercome.controller;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.weovercome.dao.MemberDaoImpl;
 import com.weovercome.domain.MemberInfo;
 import com.weovercome.entity.MemberEntity;
 import com.weovercome.mapper.MemberMapper;
@@ -187,9 +191,76 @@ public class IndexController {
 		
 		
 	}
+	
+	
+	
+	@PersistenceContext
+	EntityManager entityManager;
+
+	private MemberDaoImpl dao;
 
 	
+	@RequestMapping("/listall")
+	@ResponseBody
+	public List<MemberEntity> memberListAll(){
 
+		this.dao = new MemberDaoImpl(entityManager);
+		
+		List<MemberEntity> list = dao.getAll();
+		
+		for (MemberEntity memberEntity : list) {
+			System.out.println(memberEntity);
+		}
+		
+		return list;
+		
+	}
+	
+
+	@RequestMapping("/listbyidx/{idx}")
+	@ResponseBody
+	public MemberEntity memberByIdx(@PathVariable("idx") long idx){
+
+		this.dao = new MemberDaoImpl(entityManager);
+		MemberEntity entity = dao.findByIdx(idx);
+		System.out.println(entity);
+		return entity;
+		
+	}
+	
+
+	@RequestMapping("/listbyname/{name}")
+	@ResponseBody
+	public List<MemberEntity> memberByName(@PathVariable("name") String name){
+
+		this.dao = new MemberDaoImpl(entityManager);
+		List<MemberEntity> entity = dao.findByUname(name);
+		System.out.println(entity);
+		return entity;
+		
+	}
+	
+
+	@RequestMapping("/listfind/{str}")
+	@ResponseBody
+	public List<MemberEntity> memberFind(@PathVariable("str") String str){
+
+		this.dao = new MemberDaoImpl(entityManager);
+		List<MemberEntity> entity = dao.find(str);
+		System.out.println(entity);
+		return entity;
+		
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
