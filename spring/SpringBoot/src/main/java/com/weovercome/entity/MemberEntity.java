@@ -3,9 +3,14 @@ package com.weovercome.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
+@NamedQuery(
+		name = "findWithParam",
+		query = "from MemberEntity  where idx=:fidx or uname like :fname or uid like :fid"		
+		)
 @Table(name = "member")
 public class MemberEntity {
 

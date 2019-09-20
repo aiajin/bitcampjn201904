@@ -32,9 +32,11 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	@ResponseBody
-	public String index() {
+	public List<MemberEntity> index() {
 		
-		return "Spring Boot Start";
+		List<MemberEntity> list = repository.findall();
+		
+		return list;
 	}
 	
 	

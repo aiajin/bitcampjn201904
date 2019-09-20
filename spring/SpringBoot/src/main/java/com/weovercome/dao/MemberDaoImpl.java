@@ -58,7 +58,12 @@ public class MemberDaoImpl implements MemberDao<MemberEntity> {
 			fIdx = Long.parseLong(fstr);
 		} catch (Exception e) {}
 		
-		Query query = entityManager.createQuery(qSql)
+//		Query query = entityManager.createQuery(qSql)
+//				.setParameter("fidx", fIdx)
+//				.setParameter("fname", "%"+fstr+"%")
+//				.setParameter("fid", "%"+fstr+"%");
+		
+		Query query = entityManager.createNamedQuery("findWithParam")
 				.setParameter("fidx", fIdx)
 				.setParameter("fname", "%"+fstr+"%")
 				.setParameter("fid", "%"+fstr+"%");
