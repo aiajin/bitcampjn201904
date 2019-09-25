@@ -35,6 +35,7 @@ util.inherits(Person, EventEmitter);
 
 // Person 객체 생성
 var person = new Person();
+
 // 이벤트 등록
 person.on('hi', function(){
     console.log('안녕하세요~ 반갑습니다.');
