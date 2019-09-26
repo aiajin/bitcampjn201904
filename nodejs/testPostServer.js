@@ -65,7 +65,7 @@ server.listen(3000);
 function addNewMovie(req, res){
 
     var form = formidable.IncomingForm();
-    form.uploadDir = imgDirPath;
+    //form.uploadDir = imgDirPath;
 
     form.parse(req, function(err, fields, files){
 
@@ -75,11 +75,11 @@ function addNewMovie(req, res){
 
         var date = new Date();
 
-        var newFileName = 'poster_'+date.getHours()+date.getMinutes+date.getSeconds;
+        var newFileName = 'poster_'+date.getHours()+date.getMinutes()+date.getSeconds();
 
         var ext = pathUtil.parse(posterImg.name).ext;
 
-        var newPath = __dirname + newFileName + ext;
+        var newPath = __dirname + pathUtil.sep + 'images' + pathUtil.sep + newFileName + ext;
 
         fs.renameSync(posterImg.path, newPath);
 
