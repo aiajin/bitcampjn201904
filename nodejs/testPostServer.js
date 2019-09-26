@@ -2,26 +2,58 @@
 // Http.Server
 var http = require('http');
 var querystring = require('querystring');
+var fs = require('fs');
+var formidable = require('formidable');
+var pathUtil = require('path');
 
 
 // 데이터 
 var movieList = [
-    { title: '스타워즈', director: '조지루카스' }
+    { 
+        title: '스타워즈', 
+        director: '조지루카스', 
+        image: 'images/starwars.jpg' 
+    }
 ];
+
+// images 경로
+var imgDirPath = __dirname + '/images';
+
+
 
 var server = http.createServer(function (req, res) {
 
-    // GET / POST 구분 
+    var url = req.url;
     var method = req.method.toLocaleLowerCase();
-    console.log('request Method : ' + method);
 
-    if (method == 'post') {
-        console.log('post 요청일 때 처리');
-        addMovie(req, res);
-    } else {
-        console.log('get 요청일 때 처리');
+    if(url == '/' && method == 'get') {
+
         list(req, res);
+
+    } else if(url.indexOf('/images/') == 0 && method == 'get') {
+        var  urlPath = __dirname + req.url ;  // /images/starwars.jpg
+
+        res.writeHead(200, {'Content-Type' : 'image/jpg'});
+        fs.createReadStream(urlPath).pipe(res);
+    } else if(url == '/' && method == 'post'){
+        addNewMovie(req, res);
     }
+
+
+
+
+
+    // GET / POST 구분 
+    // var method = req.method.toLocaleLowerCase();
+    // console.log('request Method : ' + method);
+
+    // if (method == 'post') {
+    //     console.log('post 요청일 때 처리');
+    //     addMovie(req, res);
+    // } else {
+    //     console.log('get 요청일 때 처리');
+    //     list(req, res);
+    // }
 
 
 
@@ -29,6 +61,48 @@ var server = http.createServer(function (req, res) {
 
 // 포트설정
 server.listen(3000);
+
+function addNewMovie(req, res){
+
+    var form = formidable.IncomingForm();
+    form.uploadDir = imgDirPath;
+
+    form.parse(req, function(err, fields, files){
+
+        var title = fields.title;
+        var director = fields.director;
+        var posterImg = files.poster;
+
+        var date = new Date();
+
+        var newFileName = 'poster_'+date.getHours()+date.getMinutes+date.getSeconds;
+
+        var ext = pathUtil.parse(posterImg.name).ext;
+
+        var newPath = __dirname + newFileName + ext;
+
+        fs.renameSync(posterImg.path, newPath);
+
+        var newPosterImgUrl = 'images/'+newFileName+ext;
+
+        var mInfo = {
+            title : title ,
+            director : director,
+            image : newPosterImgUrl
+        };
+
+        movieList.push(mInfo);
+        
+        res.statusCode = 302;
+        res.setHeader('Location', '.');
+        res.end('success');
+
+
+    });
+
+}
+
+
 
 function addMovie(req, res) {
 
@@ -78,14 +152,15 @@ function list(req, res) {
     res.write('<div><ul>');
 
     movieList.forEach(function (item) {
-        res.write('<li>' + item.title + '(' + item.director + ')' + '</li>')
+        res.write('<li><img src="'+ item.image +'" height="50">' + item.title + '(' + item.director + ')' + '</li>')
     });
 
     res.write('</ul></div>');
     res.write(
-        '<form method="post"><h4>새 영화 입력</h4>' +
+        '<form method="post" enctype="multipart/form-data" ><h4>새 영화 입력</h4>' +
         '<div><input type="text" name="title" placeholder="영화제목"></div>' +
         '<div><input type="text" name="director" placeholder="감독"></div>' +
+        '<div><input type="file" name="poster"></div>' +
         '<input type="submit" value="upload">' +
         '</form>'
     );
