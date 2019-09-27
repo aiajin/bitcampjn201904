@@ -37,6 +37,8 @@ var server = http.createServer(function (req, res) {
         fs.createReadStream(urlPath).pipe(res);
     } else if(url == '/' && method == 'post'){
         addNewMovie(req, res);
+    } else if(url == '/v1/movies' && method == 'get'){
+        responseJson(req, res);
     }
 
 
@@ -61,6 +63,15 @@ var server = http.createServer(function (req, res) {
 
 // 포트설정
 server.listen(3000);
+
+
+function responseJson(req, res){
+    res.writeHeader(200, {'Content-Type' : 'application/json'});
+    res.end(JSON.stringify(movieList));
+}
+
+
+
 
 function addNewMovie(req, res){
 
